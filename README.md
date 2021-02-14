@@ -11,10 +11,12 @@
 
 
 
-**If you want to MOD your own ROM please check [this](https://github.com/ElTifo/CustomSettingsForDevs/tree/Pixel4a/app/src/mods)!**
+
+**If you want to MOD your own Android 11 ROM please check [this](https://github.com/ElTifo/CustomSettingsForDevs/tree/Pixel4a/app/src/mods)!**
 
 
 - Just make sure to give proper credits to original devs who made this possible for you.
+
 
 
 
@@ -30,6 +32,7 @@
 - @Ticklefish for [Tickle My Android](https://forum.xda-developers.com/t/tool-tickle-my-android-decompile-recompile-with-ease.1633333/)
 
 - @topjohnwu for [Magisk](https://forum.xda-developers.com/t/magisk-the-magic-mask-for-android.3473445/)
+
 
 
 
