@@ -35,13 +35,13 @@ I'm assuming you know what to do with this. Things are already made easy so I'm 
 
 How-to:
 
-1 - Extract sytem.img stock ROM
-2 - Deodex full ROM if needed
-3 - Decompile SystemUI.apk
-4 - Apply all xml and smali changes
+1 - Extract your desired ROM zip (using Kitchen)
+2 - Fully deodex the ROM if needed (using Kitchen)
+3 - Decompile SystemUI.apk (Tickle My Android)
+4 - Apply all xml and smali changes (Notepad++ | WinMerge)
 4.1 - Remember that ALL IDs are DIFFERENT, YOU MUST change them accordingly to your ROM
 4.2 - Also, you must check on smali files for every 0x10****** or 0x11******* instances. They are context resources and could be different. You'll need to be change them accordingly as well.
-5 - Recompile SystemUI.apk
+5 - Recompile SystemUI.apk (Tickle My Android)
 6 - Take res folder, resources.arsc and all classes.dex from recompiled SystemUI.apk and store them inside SystemUI.apk or SytemUIGoogle.apk VR Theme zip folder.
 7 - Flash VR Theme zip through Magisk
 8 - Reboot your device to check if it's booting ok after all changes
