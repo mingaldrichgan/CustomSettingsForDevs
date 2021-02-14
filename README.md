@@ -41,10 +41,10 @@ EvolutionX ROM team, specially @joeyhuab
 XDA Threads:
 
 
-Xiaomi Mi A3 MODs for stock ROM:
+Pixel 4a -> https://forum.xda-developers.com/t/addon-features-for-pixel-4-devices-and-exclusive-features-for-pixel-4a.4215069/
 
 
-Android 10 -> https://forum.xda-developers.com/t/mod-app-root-magisk-mia3-mods-for-stock-android-10-rom.4193461/
+Xiaomi Mi A3 MODs for stock Android 10 ROM -> https://forum.xda-developers.com/t/mod-app-root-magisk-mia3-mods-for-stock-android-10-rom.4193461/
 
 
-Android 11 -> https://forum.xda-developers.com/t/theme-root-magisk-android-11-pixel-theme-for-aosp-roms-and-mods-for-stock-rom.4181849/
+Xiaomi Mi A3 MODs for stock Android 11 ROM -> https://forum.xda-developers.com/t/theme-root-magisk-android-11-pixel-theme-for-aosp-roms-and-mods-for-stock-rom.4181849/
