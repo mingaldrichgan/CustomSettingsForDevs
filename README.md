@@ -37,11 +37,14 @@ EvolutionX ROM team, specially @joeyhuab
 
 
 
+
 XDA Threads:
 
 
 Xiaomi Mi A3 MODs for stock ROM:
 
+
 Android 10 -> https://forum.xda-developers.com/t/mod-app-root-magisk-mia3-mods-for-stock-android-10-rom.4193461/
+
 
 Android 11 -> https://forum.xda-developers.com/t/theme-root-magisk-android-11-pixel-theme-for-aosp-roms-and-mods-for-stock-rom.4181849/
