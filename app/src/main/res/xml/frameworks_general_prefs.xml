@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/blur_quicksettings_title">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="qs_blur"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/blur_quicksettings_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/adaptive_sound_title">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="adaptive_sound"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/adaptive_sound_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/dt_styles">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/dt_style_entries"
+            android:entryValues="@array/dt_style_values"
+            android:key="dt_style"
+            android:title="@string/dt_styles" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/theme_customization_font_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/fonts_entries"
+            android:entryValues="@array/fonts_values"
+            android:key="font_style"
+            android:title="@string/theme_customization_font_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="SystemUI Tuner">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="sysui_tuner"
+            android:summaryOff="@string/flashlight_on_call_disabled"
+            android:summaryOn="@string/enable_navbar_title"
+            android:title="SystemUI Tuner" />
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CustomSettingsForDevs.iml" filepath="$PROJECT_DIR$/CustomSettingsForDevs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CustomSettingsForDevs_Pixel4a.iml" filepath="$PROJECT_DIR$/.idea/modules/CustomSettingsForDevs_Pixel4a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CustomSettingsForDevs_Pixel4a.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CustomSettingsForDevs_Pixel4a.app.iml" />
     </modules>
   </component>
 </project>

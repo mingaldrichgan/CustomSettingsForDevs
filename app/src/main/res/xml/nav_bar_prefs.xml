@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/nav_bar_tuner_title">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="navbar_hide_pill"
+            android:summaryOff="@string/quick_pulldown_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/hidepill" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="navbar_hide_hint_launcher"
+            android:summaryOff="@string/quick_pulldown_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/hidehintlauncher" />
+        <!-- Removed since it doesn't work as it should upon reboot. Added it programmatically. ALWAYS OFF.
+       <SwitchPreference
+           android:defaultValue="false"
+           android:key="navbar_hide_hint_lockscreen"
+           android:summaryOff="@string/quick_pulldown_off"
+           android:summaryOn="@string/switch_bar_on"
+           android:title="@string/hidehintlockscreen" />
+       -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="gestures_reduce_keyboard"
+            android:summaryOff="@string/quick_pulldown_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/reducekeyboard" />
+    </PreferenceCategory>
+</PreferenceScreen>

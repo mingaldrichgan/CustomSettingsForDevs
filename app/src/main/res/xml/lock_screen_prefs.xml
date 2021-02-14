@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <PreferenceCategory android:title="@string/lockscreen_clock_title">
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/lockscreen_clock_entries"
+                android:entryValues="@array/lockscreen_clock_values"
+                android:key="lockscreen_clock_style"
+                android:title="@string/lockscreen_clock_title" />
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="clock_show_status_area"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/lockscreen_clock_show_status_area" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/lockscreen_media_category">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="lockscreen_media_metadata"
+                android:summaryOff="@string/media_art_summary"
+                android:summaryOn="@string/media_art_summary"
+                android:title="@string/media_art_title" />
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/lockscreen_cover_filter_entries"
+                android:entryValues="@array/lockscreen_cover_filter_values"
+                android:key="lockscreen_albumart_filter"
+                android:title="@string/lockscreen_cover_filter_title"
+                android:dependency="lockscreen_media_metadata"/>
+            <com.typhus.romcontrol.prefs.SeekBarPreference
+                min="5"
+                units="%"
+                android:defaultValue="100"
+                android:icon="@null"
+                android:key="lockscreen_media_blur"
+                android:title="@string/lockscreen_media_blur_title"
+                android:max="100"
+                android:dependency="lockscreen_media_metadata"
+                interval="5"/>
+        </PreferenceCategory>
+        <!-- Removed since it doesn't work on Pixel stock build....
+        <PreferenceCategory android:title="@string/lockscreen_visualizer_enable">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="lockscreen_visualizer_enabled"
+                android:summaryOff="@string/lockscreen_visualizer_enable_summary"
+                android:summaryOn="@string/lockscreen_visualizer_enable_summary"
+                android:title="@string/lockscreen_visualizer_enable" />
+        </PreferenceCategory>
+        -->
+</PreferenceScreen>
