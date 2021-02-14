@@ -47,12 +47,12 @@ I'm assuming you know what to do with this. Things are already made easy so I'm 
 2. Fully deodex the ROM if needed (using Kitchen)
 3. Decompile SystemUI.apk (Tickle My Android)
 4. Apply all xml and smali changes (Notepad++ | WinMerge)
-4.1. Remember that ALL IDs are DIFFERENT, YOU MUST change them accordingly to your ROM
-4.2. Also, you must check on smali files for every 0x10xxxx or 0x11xxxx instances. They are context resources and could be different. You'll need to change them accordingly as well.
+   - Remember that ALL IDs are DIFFERENT, YOU MUST change them accordingly to your ROM
+   - Also, you must check on smali files for every 0x10xxxx or 0x11xxxx instances. They are context resources and could be different. You'll need to change them accordingly as well.
 5. Recompile SystemUI.apk (Tickle My Android)
 6. Take res folder, resources.arsc and all classes.dex from recompiled SystemUI.apk and store them inside SystemUI.apk or SytemUIGoogle.apk VR Theme zip folder.
 7. Flash VR Theme zip through Magisk
 8. Reboot your device to check if it's booting ok after all changes
-8.1. If not, take logcats at boot to check what went wrong
+   - If not, take logcats at boot to check what went wrong
 9. If it rebooted ok, then you can use RomControl app to MOD your device.
 10. RomControl is already compiled on XDA Thread inside the Magisk Module Zip for Pixel4a. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care.
