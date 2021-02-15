@@ -55,4 +55,4 @@ I'm assuming you know what to do with this. Things are already made easy so I'm 
 8. Reboot your device to check if it's booting ok after all changes
    - If not, take logcats at boot to check what went wrong
 9. If it rebooted ok, then you can use RomControl app to MOD your device.
-10. RomControl is already compiled on XDA Thread inside the Magisk Module Zip for Pixel4a. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care.
+10. RomControl is already compiled on XDA Thread inside the Magisk Module Zip for Pixel4a. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care. Remember that Rom Control needs to be installed on /system/priv-app, if not, it won't be allowed to store system settings.
