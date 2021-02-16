@@ -50,9 +50,9 @@ I'm assuming you know what to do with this. Things are already made easy so I'm 
    - Remember that ALL IDs are DIFFERENT, YOU MUST change them accordingly to your ROM
    - Also, you must check on smali files for every 0x10xxxx or 0x11xxxx instances. They are context resources and could be different. You'll need to change them accordingly as well.
 5. Recompile SystemUI.apk (Tickle My Android)
-6. Take res folder, resources.arsc and all classes.dex from recompiled SystemUI.apk and store them inside SystemUI.apk or SytemUIGoogle.apk VR Theme zip folder.
+6. Take res folder, resources.arsc and all classes.dex from recompiled SystemUI.apk and store them inside SystemUI.apk VR Theme zip folder.
 7. Flash VR Theme zip through Magisk
 8. Reboot your device to check if it's booting ok after all changes
    - If not, take logcats at boot to check what went wrong
 9. If it rebooted ok, then you can use RomControl app to MOD your device.
-10. RomControl is already compiled on XDA Thread inside the Magisk Module Zip for Pixel4a. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care. Remember that Rom Control needs to be installed on /system/priv-app, if not, it won't be allowed to store system settings.
+10. RomControl is already compiled on XDA Thread inside the Mi A3 MODs Magisk Module Zip. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care. Remember that Rom Control needs to be installed on /system/priv-app, if not, it won't be allowed to store system settings.
