@@ -4,7 +4,7 @@
 
 MODs zip is a complilation of all xml and smali changes made in order to get custom features working on Pixel 4a.
 
-You can download this zip, extract it, and use it to implement the changes on your own device ROM, as long as it's running an AOSP (or close to it) Android 11 ROM.
+You can download this zip, extract it, and use it to implement the changes on your own Pixel device running stock Android 11 ROM.
 
 
 
@@ -27,7 +27,7 @@ https://forum.xda-developers.com/t/tool-tickle-my-android-decompile-recompile-wi
 https://forum.xda-developers.com/t/magisk-the-magic-mask-for-android.3473445/
 
 
-- VR Theme zip (included in this repository). Use Pixel version if using a Pixel phone.
+- VR Theme zip (included in this repository).
 
 - Notepad++
 
