@@ -9,14 +9,6 @@
             android:entryValues="@array/qs_selector_values"
             android:key="qs_tile_style"
             android:title="@string/qs_tile_style_title" />
-        <!-- Removed from here
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/qs_header_style_entries"
-            android:entryValues="@array/qs_header_style_values"
-            android:key="qs_header_style"
-            android:title="@string/qs_header_style_title" />
-        -->
         <SwitchPreference
             android:defaultValue="true"
             android:key="qs_panel_bg_use_new_tint"
@@ -57,7 +49,6 @@
                     android:title="@string/qs_panel_alpha_title" />
             </PreferenceCategory>
         </PreferenceScreen>
-        <!-- Not in the mood to implement this...will do if I get a lot of requests
         <PreferenceScreen
             android:title="@string/qs_columns_rows_category_title"
             android:summary="@string/restartui_required" >
@@ -96,7 +87,6 @@
                     android:title="@string/qs_columns_landscape_title" />
             </PreferenceCategory>
         </PreferenceScreen>
-        -->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/corners_title">
         <com.typhus.romcontrol.prefs.MyListPreference
@@ -123,12 +113,12 @@
             android:entryValues="@array/battery_percent_values"
             android:key="qs_show_battery_percent"
             android:title="@string/battery_percentage_title" />
-        <SwitchPreference
+        <!--<SwitchPreference
             android:defaultValue="true"
             android:key="qs_show_battery_estimate"
             android:summaryOff="@string/battery_estimate_summary"
             android:summaryOn="@string/battery_estimate_summary"
-            android:title="@string/battery_estimate_title" />
+            android:title="@string/battery_estimate_title" />-->
     </PreferenceCategory>
     <!--<PreferenceScreen
         android:title="@string/more_line_text">

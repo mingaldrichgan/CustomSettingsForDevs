@@ -9,14 +9,28 @@
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/blur_quicksettings_title" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/adaptive_sound_title">
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="adaptive_sound"
-            android:summaryOff="@string/lockscreen_charging_animation_off"
-            android:summaryOn="@string/switch_bar_on"
-            android:title="@string/adaptive_sound_title" />
+        <!--
+        <com.typhus.romcontrol.prefs.SeekBarPreference
+            min="0"
+            units="%"
+            android:defaultValue="100"
+            android:icon="@null"
+            android:key="qs_blur_alpha"
+            android:max="100"
+            android:title="@string/qs_blur_alpha_title"
+            android:summary="@string/qs_blur_alpha_summary"
+            android:dependency="qs_blur"
+            />
+        <com.typhus.romcontrol.prefs.SeekBarPreference
+            min="0"
+            units="%"
+            android:defaultValue="35"
+            android:icon="@null"
+            android:key="qs_blur_intensity"
+            android:title="@string/qs_blur_intensity_title"
+            android:summary="@string/qs_blur_intensity_summary"
+            android:dependency="qs_blur"
+            />-->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/dt_styles">
         <com.typhus.romcontrol.prefs.MyListPreference
@@ -34,12 +48,20 @@
             android:key="font_style"
             android:title="@string/theme_customization_font_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/powermenu_screenrecord">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="qs_screenrecord"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/powermenu_screenrecord" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="SystemUI Tuner">
         <SwitchPreference
             android:defaultValue="true"
             android:key="sysui_tuner"
-            android:summaryOff="@string/flashlight_on_call_disabled"
-            android:summaryOn="@string/enable_navbar_title"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
             android:title="SystemUI Tuner" />
     </PreferenceCategory>
 </PreferenceScreen>

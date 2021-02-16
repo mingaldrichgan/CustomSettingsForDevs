@@ -1555,12 +1555,16 @@
     <!-- Statusbar Clock -->
     <string-array name="status_bar_clock_style_entries" translatable="false">
         <item>@string/status_bar_clock_style_left</item>
+        <!--Removed due to notch
         <item>@string/status_bar_clock_style_center</item>
+        -->
         <item>@string/status_bar_clock_style_right</item>
     </string-array>
     <string-array name="status_bar_clock_style_values" translatable="false">
         <item>0</item>
+        <!--Removed due to notch
         <item>1</item>
+        -->
         <item>2</item>
     </string-array>
     <string-array name="status_bar_am_pm_entries" translatable="false">
@@ -2284,7 +2288,7 @@
         <item>3</item>
     </string-array>
 
-    <!-- FOD icon options | Only for Xiaomi Mi A3 or other devices with FoD icon on screen-->
+    <!-- FOD icon options -->
     <string name="red_button">Red Button</string>
     <string name="clines">Cube Lines</string>
 
@@ -2298,6 +2302,8 @@
         <item>@string/clines</item>
         <item>MiUI 2</item>
         <item>One Plus 2</item>
+        <item>MiUI 3</item>
+        <item>Circles</item>
     </string-array>
 
     <string-array name="fod_icon_picker_values" translatable="false">
@@ -2310,9 +2316,11 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
-    <!-- FOD pressed state options | Only for Xiaomi Mi A3 or other devices with FoD icon on screen-->
+    <!-- FOD pressed state options -->
     <string-array name="fod_pressed_state_entries" translatable="false">
         <item>@string/default_string</item>
         <item>@string/fod_pressed_state_realme_green_shadow</item>
@@ -2339,7 +2347,7 @@
         -->
     </string-array>
 
-    <!-- FOD Recognizing fingerprint animations | Only for Xiaomi Mi A3 or other devices with FoD icon on screen-->
+    <!-- FOD Recognizing fingerprint animations -->
     <string-array name="fod_recog_animation_entries" translatable="false">
         <item>@string/fod_recog_animation_stock</item>
         <item>@string/fod_recog_animation_miui_normal</item>
@@ -2373,11 +2381,34 @@
         <item>@string/fod_recog_animation_smog</item>
         <item>@string/fod_recog_animation_rog_fusion</item>
         <item>@string/fod_recog_animation_round</item>
+		<item>@string/fod_recog_animation_blueaurora</item>
+		<item>@string/fod_recog_animation_bluediamond</item>
+		<item>@string/fod_recog_animation_bounce</item>
+		<item>@string/fod_recog_animation_circuit</item>
+		<item>@string/fod_recog_animation_colourful</item>
+		<item>@string/fod_recog_animation_icontransform</item>
+		<item>@string/fod_recog_animation_purpleblueaura</item>
+		<item>@string/fod_recog_animation_purplesmoke</item>
+		<item>@string/fod_recog_animation_ripplelines</item>
+		<item>@string/fod_recog_animation_shortcircuit</item>
+		<item>@string/fod_recog_animation_starexplosion</item>
     </string-array>
-
+	
+	<!--NEW ANIMATIONS-->
     <string name="fod_recog_animation_fantasy">Fantasy</string>
     <string name="fod_recog_animation_smog">Smog</string>
     <string name="fod_recog_animation_round">Round</string>
+	<string name="fod_recog_animation_blueaurora">Blue Aurora</string>
+	<string name="fod_recog_animation_bluediamond">Blue Diamond</string>
+	<string name="fod_recog_animation_bounce">Bounce</string>
+	<string name="fod_recog_animation_circuit">Circuit</string>
+	<string name="fod_recog_animation_colourful">Colourful</string>
+	<string name="fod_recog_animation_icontransform">Icon Transform</string>
+	<string name="fod_recog_animation_purpleblueaura">Purple Blue Halo</string>
+	<string name="fod_recog_animation_purplesmoke">Purple Smoke</string>
+	<string name="fod_recog_animation_ripplelines">Ripple Lines</string>
+	<string name="fod_recog_animation_shortcircuit">Circuit 2</string>
+	<string name="fod_recog_animation_starexplosion">Star Explosion</string>
 
     <string-array name="fod_recog_animation_values" translatable="false">
         <item>0</item>
@@ -2408,6 +2439,17 @@
         <item>25</item>
         <item>26</item>
         <item>27</item>
+		<item>28</item>
+		<item>29</item>
+		<item>30</item>
+		<item>31</item>
+		<item>32</item>
+		<item>33</item>
+		<item>34</item>
+		<item>35</item>
+		<item>36</item>
+		<item>37</item>
+		<item>38</item>
     </string-array>
 
     <!-- Lockscreen clock style -->
@@ -2876,7 +2918,7 @@
         <item>@string/qs_header_lightgray</item>
         <item>@string/qs_header_accent</item>
         <item>@string/qs_header_followdark</item>
-        <!--Removed since it's controlled with slider opacity level
+        <!-- Not needed anymore since we can now control opacity value
         <item>@string/qs_header_transparent</item>
         -->
     </string-array>
@@ -2887,9 +2929,9 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
-        <!--
+        <!-- Not needed anymore since we can now control opacity value
         <item>5</item>
-        -->
+         -->
     </string-array>
 
     <!-- Dark theme styles -->
@@ -2931,6 +2973,34 @@
         <item>9</item>
     </string-array>
 
+    <!-- Restart required -->
+    <string name="restart_required">Requires restart</string>
+
+    <!-- Restart SystemUI required -->
+    <string name="restartui_required">Requires SystemUI restart</string>
+
+    <!-- Rounded corners options -->
+
+    <string-array name="rounded_corners_entries">
+        <item>@string/qstile_default</item>
+        <item>@string/qs_tile_animation_style_off</item>
+        <item>@string/big</item>
+    </string-array>
+
+    <string name="big">Big</string>
+
+    <string-array name="rounded_corners_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="hidepill">Hide gestures pill</string>
+    <string name="reducekeyboard">Reduce gestures keyboard space</string>
+    <string name="requiresgestures">Requires gestures navigation</string>
+    <string name="requiresgesturessummary">Please enable gestures navigation on system settings</string>
+    <string name="novibrate">Please have in mind that, by disabling this option, all vibrations will be disabled on the device!</string>
+
     <!-- QS rows and columns -->
     <string name="qs_columns_rows_category_title">QS columns and rows</string>
     <string name="qs_rows_columns_title">QS rows and columns</string>
@@ -2960,38 +3030,6 @@
     <!-- Battery estimate -->
     <string name="battery_estimate_title">Battery estimate</string>
     <string name="battery_estimate_summary">Display estimated remaining battery life when available</string>
-
-    <!-- END OF EVOLUTION X STRINGS -->
-
-    <!-- CUSTOM APP STRINGS -->
-
-    <!-- Restart required -->
-    <string name="restart_required">Requires restart</string>
-
-    <!-- Restart SystemUI required -->
-    <string name="restartui_required">Requires SystemUI restart</string>
-
-    <!-- Rounded corners options -->
-
-    <string-array name="rounded_corners_entries">
-        <item>@string/qstile_default</item>
-        <item>@string/qs_tile_animation_style_off</item>
-        <item>@string/big</item>
-    </string-array>
-
-    <string name="big">Big</string>
-
-    <string-array name="rounded_corners_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
-    <string name="hidepill">Hide gestures pill</string>
-    <string name="reducekeyboard">Reduce gestures keyboard space</string>
-    <string name="requiresgestures">Requires gestures navigation</string>
-    <string name="requiresgesturessummary">Please enable gestures navigation on system settings</string>
-    <string name="novibrate">Please have in mind that, by disabling this option, all vibrations will be disabled on the device!</string>
 
     <string-array name="fonts_entries" translatable="false">
         <item>@string/default_string</item>
@@ -3054,13 +3092,6 @@
         <item>26</item>
         <item>27</item>
     </string-array>
-
-    <!-- Adaptive Sound -->
-    <string name="adaptive_sound_title">Adaptive Sound Service</string>
-
-    <!-- Navigation bar hints -->
-    <string name="hidehintlauncher">Hide navigation side handles on launcher</string>
-    <string name="hidehintlockscreen">Hide navigation side handles on lockscreen</string>
 
     <!-- QS panel gradient below status bar -->
     <string name="qs_panel_gradient_title">Status bar gradient</string>

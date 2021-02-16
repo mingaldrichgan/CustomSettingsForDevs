@@ -299,6 +299,32 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                //Blur on/off Android 11
+                if (key.equals("qs_blur")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "resetprop ro.surface_flinger.supports_background_blur 1 && sed -re 's/supports_background_blur=0/supports_background_blur=1/g' /data/adb/modules/PixelForAndroid11/system.prop > /data/adb/modules/PixelForAndroid11/new_system.prop && mv /data/adb/modules/PixelForAndroid11/new_system.prop /data/adb/modules/PixelForAndroid11/system.prop && sed -re 's/supports_background_blur=0/supports_background_blur=1/g' /data/adb/modules/MiA3ModsA11/system.prop > /data/adb/modules/MiA3ModsA11/new_system.prop && mv /data/adb/modules/MiA3ModsA11/new_system.prop /data/adb/modules/MiA3ModsA11/system.prop");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "resetprop ro.surface_flinger.supports_background_blur 0 && sed -re 's/supports_background_blur=1/supports_background_blur=0/g' /data/adb/modules/PixelForAndroid11/system.prop > /data/adb/modules/PixelForAndroid11/new_system.prop && mv /data/adb/modules/PixelForAndroid11/new_system.prop /data/adb/modules/PixelForAndroid11/system.prop && sed -re 's/supports_background_blur=1/supports_background_blur=0/g' /data/adb/modules/MiA3ModsA11/system.prop > /data/adb/modules/MiA3ModsA11/new_system.prop && mv /data/adb/modules/MiA3ModsA11/new_system.prop /data/adb/modules/MiA3ModsA11/system.prop");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 //Enable/Disable Tuner
                 if (key.equals("sysui_tuner")){
                     if (s.isChecked()) {
@@ -325,10 +351,10 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
-                //Enable/Disable Launcher navigation hints
-                if (key.equals("navbar_hide_hint_launcher")){
+                //Screen record on/off Android 11
+                if (key.equals("qs_screenrecord")){
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_launcher true && sed -re 's/on_launcher false/on_launcher true/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c0 = new Command(0, "settings list secure | grep sysui_qs_tiles > /sdcard/current_qs_tiles.txt && sed 's/,screenrecord//g' /sdcard/current_qs_tiles.txt > /sdcard/noscreen_qs_tiles.txt && sed 's/=/ /g' /sdcard/noscreen_qs_tiles.txt > /sdcard/new_qs_tiles.txt && sed 's/sysui_qs_tiles/settings put secure sysui_qs_tiles/g' /sdcard/new_qs_tiles.txt > /sdcard/new2_qs_tiles.txt && sed -re 's/\\(/\"(\"/g' /sdcard/new2_qs_tiles.txt > /sdcard/new3_qs_tiles.txt && sed -re 's/\\)/\")\"/g' /sdcard/new3_qs_tiles.txt > /sdcard/new4_qs_tiles.txt && echo -n \",screenrecord\" >> /sdcard/new5_qs_tiles.txt && paste -d \"\" /sdcard/new4_qs_tiles.txt /sdcard/new5_qs_tiles.txt > /sdcard/final_qs_tiles.txt && sh /sdcard/final_qs_tiles.txt && rm -rf /sdcard/current_qs_tiles.txt && rm -rf /sdcard/new_qs_tiles.txt && rm -rf /sdcard/new2_qs_tiles.txt && rm -rf /sdcard/new3_qs_tiles.txt && rm -rf /sdcard/new4_qs_tiles.txt && rm -rf /sdcard/new5_qs_tiles.txt && rm -rf /sdcard/final_qs_tiles.txt && rm -rf /sdcard/noscreen_qs_tiles.txt");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -339,7 +365,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             e.printStackTrace();
                         }
                     } else {
-                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_launcher false && sed -re 's/on_launcher true/on_launcher false/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c1 = new Command(1, "settings list secure | grep sysui_qs_tiles > /sdcard/current_qs_tiles.txt && sed 's/,screenrecord//g' /sdcard/current_qs_tiles.txt > /sdcard/noscreen_qs_tiles.txt && sed 's/=/ /g' /sdcard/noscreen_qs_tiles.txt > /sdcard/new_qs_tiles.txt && sed 's/sysui_qs_tiles/settings put secure sysui_qs_tiles/g' /sdcard/new_qs_tiles.txt > /sdcard/new2_qs_tiles.txt && sed -re 's/\\(/\"(\"/g' /sdcard/new2_qs_tiles.txt > /sdcard/new3_qs_tiles.txt && sed -re 's/\\)/\")\"/g' /sdcard/new3_qs_tiles.txt > /sdcard/new4_qs_tiles.txt && echo -n \"\" >> /sdcard/new5_qs_tiles.txt && paste -d \"\" /sdcard/new4_qs_tiles.txt /sdcard/new5_qs_tiles.txt > /sdcard/final_qs_tiles.txt && sh /sdcard/final_qs_tiles.txt && rm -rf /sdcard/current_qs_tiles.txt && rm -rf /sdcard/new_qs_tiles.txt && rm -rf /sdcard/new2_qs_tiles.txt && rm -rf /sdcard/new3_qs_tiles.txt && rm -rf /sdcard/new4_qs_tiles.txt && rm -rf /sdcard/new5_qs_tiles.txt && rm -rf /sdcard/final_qs_tiles.txt && rm -rf /sdcard/noscreen_qs_tiles.txt");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -351,66 +377,40 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
-                /*Removed since it doesn't work as it should upon reboot. Added it programmatically. ALWAYS OFF.
-                //Enable/Disable Lockscreen navigation hints
-                if (key.equals("navbar_hide_hint_lockscreen")){
+                //FOD animation on/off
+                if (key.equals("fod_recognizing_animation")){
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_lockscreen true && sed -re 's/on_lockscreen false/on_lockscreen true/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
+                        Settings.System.putInt(c.getContentResolver(), "fod_animation_type", 1);
                     } else {
-                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_lockscreen false && sed -re 's/on_lockscreen true/on_lockscreen false/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }*/
-                /* Removed since it doesn't work on Pixel stock build....
-                //Enable/Disable Visualizer
-                if (key.equals("lockscreen_visualizer_enabled")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "settings put secure lockscreen_visualizer_enabled 1");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "settings put secure lockscreen_visualizer_enabled 0");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
+                        Settings.System.putInt(c.getContentResolver(), "fod_animation_type", 4);
                     }
                 }
-                */
-                /*QS Estiamtes warning*/
-                if (key.equals("qs_show_battery_estimate")){
+                //FOD vibration on/off
+                if (key.equals("fod_vibrate")){
+                    if (s.isChecked()) {
+                        Settings.System.putInt(c.getContentResolver(), "haptic_feedback_intensity", 1);
+                    } else {
+                        AlertDialog.Builder mVibWarnBuilder = new AlertDialog.Builder(c);
+                        mVibWarnBuilder.setTitle(R.string.attention);
+                        mVibWarnBuilder.setMessage(R.string.novibrate);
+                        mVibWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                        mVibWarnBuilder.create();
+                        AlertDialog mVibWarn = mVibWarnBuilder.create();
+                        mVibWarn.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mVibWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mVibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        Settings.System.putInt(c.getContentResolver(), "haptic_feedback_intensity", 0);
+                    }
+                }
+                /*Blur switch warning*/
+                if (key.equals("qs_blur")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
                     mSysUIWarnBuilder.setTitle(R.string.attention);
-                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                    mSysUIWarnBuilder.setMessage(R.string.restart_required);
                     mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
                     AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
                     mSysUIWarn.show();
@@ -436,7 +436,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     ok.setTextColor(typedValue.data);
                     mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                 }
-                /*Clock data and alarm info switch warning*/
+                /*Lock screen clock date and alarm info warning*/
                 if (key.equals("clock_show_status_area")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
                     mSysUIWarnBuilder.setTitle(R.string.attention);
@@ -450,82 +450,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
                     ok.setTextColor(typedValue.data);
                     mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                }
-                //Blur on/off Android 11
-                if (key.equals("qs_blur")){
-                    AlertDialog.Builder mRestartWarnBuilder = new AlertDialog.Builder(c);
-                    mRestartWarnBuilder.setTitle(R.string.attention);
-                    mRestartWarnBuilder.setMessage(R.string.restart_required);
-                    mRestartWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mRestartWarn = mRestartWarnBuilder.create();
-                    mRestartWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mRestartWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mRestartWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "resetprop ro.surface_flinger.supports_background_blur 1 && sed -re 's/supports_background_blur 0/supports_background_blur 1 \\&\\& killall surfaceflinger/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "resetprop ro.surface_flinger.supports_background_blur 0 && sed -re 's/supports_background_blur 1 \\&\\& killall surfaceflinger/supports_background_blur 0/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                //Adaptive Sound Service on/off
-                if (key.equals("adaptive_sound")){
-                    AlertDialog.Builder mRestartWarnBuilder = new AlertDialog.Builder(c);
-                    mRestartWarnBuilder.setTitle(R.string.attention);
-                    mRestartWarnBuilder.setMessage(R.string.restart_required);
-                    mRestartWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mRestartWarn = mRestartWarnBuilder.create();
-                    mRestartWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mRestartWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mRestartWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio true && sed -re 's/enable_adaptive_audio false/enable_adaptive_audio true/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio false && sed -re 's/enable_adaptive_audio true/enable_adaptive_audio false/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
                 }
                 //Hide gestures navigation pill on/off
                 if (key.equals("navbar_hide_pill")){
@@ -635,6 +559,15 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
+                //Ambient visualizer on/off
+                /* REMOVED ON ANDROID 11
+                if (key.equals("lockscreen_visualizer_enabled")){
+                    if (s.isChecked()) {
+                        Settings.System.putInt(c.getContentResolver(), "ambient_visualizer_enabled", 1);
+                    } else {
+                        Settings.System.putInt(c.getContentResolver(), "ambient_visualizer_enabled", 0);
+                    }
+                }*/
                 break;
             case "CheckBoxPreference":
                 CheckBoxPreference cbp = (CheckBoxPreference) pf.findPreference(key);
@@ -1145,20 +1078,747 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     //QS Tiles Styles options end
                     //QS battery percentage warning
                     if (key.equals("qs_show_battery_percent")){
-                        AlertDialog.Builder mVibWarnBuilder = new AlertDialog.Builder(c);
-                        mVibWarnBuilder.setTitle(R.string.attention);
-                        mVibWarnBuilder.setMessage(R.string.restartui_required);
-                        mVibWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                        mVibWarnBuilder.create();
-                        AlertDialog mNibWarn = mVibWarnBuilder.create();
-                        mNibWarn.show();
+                        AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                        mSysUIWarnBuilder.setTitle(R.string.attention);
+                        mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                        mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                        AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                        mSysUIWarn.show();
                         TypedValue typedValue = new TypedValue();
                         Resources.Theme theme = c.getTheme();
                         theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                        Button ok = mNibWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
                         ok.setTextColor(typedValue.data);
-                        mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        switch(mValueIndex) {
+                            case 0:
+                                Settings.System.putInt(c.getContentResolver(), "qs_show_battery_estimate", 0);
+                                break;
+                            case 1:
+                                Settings.System.putInt(c.getContentResolver(), "qs_show_battery_estimate", 0);
+                                break;
+                            case 2:
+                                Settings.System.putInt(c.getContentResolver(), "qs_show_battery_estimate", 0);
+                                break;
+                            default:
+                                Settings.System.putInt(c.getContentResolver(), "qs_show_battery_estimate", 0);
+                                break;
+                        }
                     }
+                    //FOD Animations options begin
+                    if (key.equals("fod_anim")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.miuinormal");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.miuiblue");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.aurora1");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 4:
+                                Command c4 = new Command(4, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.aurora2");
+                                try {
+                                    RootTools.getShell(true).add(c4);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 5:
+                                Command c5 = new Command(5, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.miuilight");
+                                try {
+                                    RootTools.getShell(true).add(c5);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 6:
+                                Command c6 = new Command(6, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.pop");
+                                try {
+                                    RootTools.getShell(true).add(c6);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 7:
+                                Command c7 = new Command(7, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.pulse");
+                                try {
+                                    RootTools.getShell(true).add(c7);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 8:
+                                Command c8 = new Command(8, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.whitepulse");
+                                try {
+                                    RootTools.getShell(true).add(c8);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 9:
+                                Command c9 = new Command(9, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.rhythm");
+                                try {
+                                    RootTools.getShell(true).add(c9);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 10:
+                                Command c10 = new Command(10, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.miuistar");
+                                try {
+                                    RootTools.getShell(true).add(c10);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 11:
+                                Command c11 = new Command(11, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.cosmos");
+                                try {
+                                    RootTools.getShell(true).add(c11);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 12:
+                                Command c12 = new Command(12, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.energy");
+                                try {
+                                    RootTools.getShell(true).add(c12);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 13:
+                                Command c13 = new Command(13, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.mclaren");
+                                try {
+                                    RootTools.getShell(true).add(c13);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 14:
+                                Command c14 = new Command(14, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.ripple");
+                                try {
+                                    RootTools.getShell(true).add(c14);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 15:
+                                Command c15 = new Command(15, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.stripe");
+                                try {
+                                    RootTools.getShell(true).add(c15);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 16:
+                                Command c16 = new Command(16, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.wave");
+                                try {
+                                    RootTools.getShell(true).add(c16);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 17:
+                                Command c17 = new Command(17, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.dna");
+                                try {
+                                    RootTools.getShell(true).add(c17);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 18:
+                                Command c18 = new Command(18, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.future");
+                                try {
+                                    RootTools.getShell(true).add(c18);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 19:
+                                Command c19 = new Command(19, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.haloring");
+                                try {
+                                    RootTools.getShell(true).add(c19);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 20:
+                                Command c20 = new Command(20, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.molecular");
+                                try {
+                                    RootTools.getShell(true).add(c20);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 21:
+                                Command c21 = new Command(21, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.firework");
+                                try {
+                                    RootTools.getShell(true).add(c21);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 22:
+                                Command c22 = new Command(22, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.coloros1");
+                                try {
+                                    RootTools.getShell(true).add(c22);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 23:
+                                Command c23 = new Command(23, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.coloros2");
+                                try {
+                                    RootTools.getShell(true).add(c23);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 24:
+                                Command c24 = new Command(24, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.fantasy");
+                                try {
+                                    RootTools.getShell(true).add(c24);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 25:
+                                Command c25 = new Command(25, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.smog");
+                                try {
+                                    RootTools.getShell(true).add(c25);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 26:
+                                Command c26 = new Command(26, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.fusion");
+                                try {
+                                    RootTools.getShell(true).add(c26);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 27:
+                                Command c27 = new Command(27, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.round");
+                                try {
+                                    RootTools.getShell(true).add(c27);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 28:
+                                Command c28 = new Command(28, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.blueaurora");
+                                try {
+                                    RootTools.getShell(true).add(c28);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 29:
+                                Command c29 = new Command(29, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.bluediamond");
+                                try {
+                                    RootTools.getShell(true).add(c29);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 30:
+                                Command c30 = new Command(30, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.bounce");
+                                try {
+                                    RootTools.getShell(true).add(c30);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 31:
+                                Command c31 = new Command(31, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.circuit");
+                                try {
+                                    RootTools.getShell(true).add(c31);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 32:
+                                Command c32 = new Command(32, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.colourful");
+                                try {
+                                    RootTools.getShell(true).add(c32);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 33:
+                                Command c33 = new Command(33, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.icontransform");
+                                try {
+                                    RootTools.getShell(true).add(c33);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 34:
+                                Command c34 = new Command(34, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.purpleblueaura");
+                                try {
+                                    RootTools.getShell(true).add(c34);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 35:
+                                Command c35 = new Command(35, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.purplesmoke");
+                                try {
+                                    RootTools.getShell(true).add(c35);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 36:
+                                Command c36 = new Command(36, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.ripplelines");
+                                try {
+                                    RootTools.getShell(true).add(c36);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 37:
+                                Command c37 = new Command(37, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.shortcircuit");
+                                try {
+                                    RootTools.getShell(true).add(c37);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 38:
+                                Command c38 = new Command(38, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke && cmd overlay enable com.android.theme.fod.starexplosion");
+                                try {
+                                    RootTools.getShell(true).add(c38);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(39, "cmd overlay disable com.android.theme.fod.miuilight && cmd overlay disable com.android.theme.fod.coloros1 && cmd overlay disable com.android.theme.fod.coloros2 && cmd overlay disable com.android.theme.fod.firework && cmd overlay disable com.android.theme.fod.haloring && cmd overlay disable com.android.theme.fod.cosmos && cmd overlay disable com.android.theme.fod.energy && cmd overlay disable com.android.theme.fod.fusion && cmd overlay disable com.android.theme.fod.future && cmd overlay disable com.android.theme.fod.rhythm && cmd overlay disable com.android.theme.fod.ripple && cmd overlay disable com.android.theme.fod.stripe && cmd overlay disable com.android.theme.fod.mclaren && cmd overlay disable com.android.theme.fod.miuinormal && cmd overlay disable com.android.theme.fod.pulse && cmd overlay disable com.android.theme.fod.round && cmd overlay disable com.android.theme.fod.molecular && cmd overlay disable com.android.theme.fod.whitepulse && cmd overlay disable com.android.theme.fod.fantasy && cmd overlay disable com.android.theme.fod.smog && cmd overlay disable com.android.theme.fod.wave && cmd overlay disable com.android.theme.fod.miuiblue && cmd overlay disable com.android.theme.fod.miuistar && cmd overlay disable com.android.theme.fod.dna && cmd overlay disable com.android.theme.fod.pop && cmd overlay disable com.android.theme.fod.aurora1 && cmd overlay disable com.android.theme.fod.aurora2 && cmd overlay disable com.android.theme.fod.bounce && cmd overlay disable com.android.theme.fod.circuit && cmd overlay disable com.android.theme.fod.icontransform && cmd overlay disable com.android.theme.fod.ripplelines && cmd overlay disable com.android.theme.fod.blueaurora && cmd overlay disable com.android.theme.fod.starexplosion && cmd overlay disable com.android.theme.fod.purpleblueaura && cmd overlay disable com.android.theme.fod.colourful && cmd overlay disable com.android.theme.fod.bluediamond && cmd overlay disable com.android.theme.fod.shortcircuit && cmd overlay disable com.android.theme.fod.purplesmoke");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //FOD Animations options end
+                    //FOD Icon picker options begin
+                    if (key.equals("fod_icon_picker")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.miui");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.g");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.op");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 4:
+                                Command c4 = new Command(4, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.ar");
+                                try {
+                                    RootTools.getShell(true).add(c4);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 5:
+                                Command c5 = new Command(5, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.rb");
+                                try {
+                                    RootTools.getShell(true).add(c5);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 6:
+                                Command c6 = new Command(6, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.cl");
+                                try {
+                                    RootTools.getShell(true).add(c6);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 7:
+                                Command c7 = new Command(7, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.mb");
+                                try {
+                                    RootTools.getShell(true).add(c7);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 8:
+                                Command c8 = new Command(8, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.op2");
+                                try {
+                                    RootTools.getShell(true).add(c8);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 9:
+                                Command c9 = new Command(9, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.miui3");
+                                try {
+                                    RootTools.getShell(true).add(c9);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 10:
+                                Command c10 = new Command(10, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro && cmd overlay enable com.android.theme.fodicon.ro");
+                                try {
+                                    RootTools.getShell(true).add(c10);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(11, "cmd overlay disable com.android.theme.fodicon.miui && cmd overlay disable com.android.theme.fodicon.g && cmd overlay disable com.android.theme.fodicon.op && cmd overlay disable com.android.theme.fodicon.ar && cmd overlay disable com.android.theme.fodicon.rb && cmd overlay disable com.android.theme.fodicon.cl && cmd overlay disable com.android.theme.fodicon.mb && cmd overlay disable com.android.theme.fodicon.op2 && cmd overlay disable com.android.theme.fodicon.miui3 && cmd overlay disable com.android.theme.fodicon.ro");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //FOD Icon picker options end
+                    //FOD Icon pressed options begin
+                    if (key.equals("fod_icon_pressed")){
+                        AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                        mSysUIWarnBuilder.setTitle(R.string.attention);
+                        mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                        mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                        AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                        mSysUIWarn.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.fodiconp.g && cmd overlay disable com.android.theme.fodiconp.w && cmd overlay disable com.android.theme.fodiconp.y");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay disable com.android.theme.fodiconp.g && cmd overlay disable com.android.theme.fodiconp.w && cmd overlay disable com.android.theme.fodiconp.y && cmd overlay enable com.android.theme.fodiconp.g");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay disable com.android.theme.fodiconp.g && cmd overlay disable com.android.theme.fodiconp.w && cmd overlay disable com.android.theme.fodiconp.y && cmd overlay enable com.android.theme.fodiconp.y");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay disable com.android.theme.fodiconp.g && cmd overlay disable com.android.theme.fodiconp.w && cmd overlay disable com.android.theme.fodiconp.y && cmd overlay enable com.android.theme.fodiconp.w");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(4, "cmd overlay disable com.android.theme.fodiconp.g && cmd overlay disable com.android.theme.fodiconp.w && cmd overlay disable com.android.theme.fodiconp.y");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //FOD Icon pressed options end
                     //Rounded corners options begin
                     if (key.equals("rounded_corners")){
                         switch(mValueIndex) {
@@ -1276,8 +1936,8 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                     e.printStackTrace();
                                 }
                                 break;
-                            /* Removed since it's controlled with slider opacity level
-                            case 5:
+                                /*Not needed anymore since now we control the opacity
+                                case 5:
                                 Command c5 = new Command(5, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.transparent && cmd overlay disable com.android.systemui.qsheader.followdark && cmd overlay enable com.android.systemui.qsheader.transparent");
                                 try {
                                     RootTools.getShell(true).add(c5);
@@ -1288,8 +1948,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 } catch (RootDeniedException e) {
                                     e.printStackTrace();
                                 }
-                                break;
-                             */
+                                break;*/
                             default:
                                 Command cd = new Command(6, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark");
                                 try {

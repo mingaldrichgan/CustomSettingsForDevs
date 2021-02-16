@@ -903,6 +903,21 @@
     <string name="fod_recog_animation_bluefirework">Fogos de artifício azuis</string>
     <string name="fod_recog_animation_coloros7_1">ColorOS7 1</string>
     <string name="fod_recog_animation_coloros7_2">ColorOS7 2</string>
+	<!--NEW ANIMATIONS-->	
+	<string name="fod_recog_animation_fantasy">Fantasia</string>
+    <string name="fod_recog_animation_smog">Smog</string>
+    <string name="fod_recog_animation_round">Redonda</string>
+	<string name="fod_recog_animation_blueaurora">Aurora Azul</string>
+	<string name="fod_recog_animation_bluediamond">Diamante Azul</string>
+	<string name="fod_recog_animation_bounce">Pedra no Charco</string>
+	<string name="fod_recog_animation_circuit">Circuito</string>
+	<string name="fod_recog_animation_colourful">Colorida</string>
+	<string name="fod_recog_animation_icontransform">Transformação em ícone</string>
+	<string name="fod_recog_animation_purpleblueaura">Aura Azul-Roxa</string>
+	<string name="fod_recog_animation_purplesmoke">Fumo Roxo</string>
+	<string name="fod_recog_animation_ripplelines">Linhas Onduladas</string>
+	<string name="fod_recog_animation_shortcircuit">Circuito 2</string>
+	<string name="fod_recog_animation_starexplosion">Explosão de Estrelas</string>
     <!-- Charging animation -->
     <string name="charging_animation_title">Animação de carregamento</string>
     <string name="charging_animation_summary">Exibir uma animação quando o dispositivo está conectado</string>
@@ -1300,13 +1315,6 @@
     <string name="lockscreen_charging_animation_phone">Telefone</string>
     <string name="lockscreen_charging_animation_stack">Pilha</string>
     <string name="lockscreen_charging_animation_wavy">Ondulada</string>
-
-    <!-- Adaptive Sound -->
-    <string name="adaptive_sound_title">Serviço de Som Adaptativo</string>
-
-    <!-- Navigation bar hints -->
-    <string name="hidehintlauncher">Esconder as barras laterais no ecrã principal</string>
-    <string name="hidehintlockscreen">Esconder as barras laterais no ecrã de bloqueio</string>
 
     <!-- QS panel gradient below status bar -->
     <string name="qs_panel_gradient_title">Fundo em degradê</string>

@@ -95,6 +95,36 @@
                     android:defaultValue="false"
                     android:key="statusbar_battery_bar_animate"
                     android:title="@string/battery_bar_animate_title" />
+                <!--
+                <SwitchPreference
+                    android:defaultValue="false"
+                    android:key="battery_bar_use_gradient_color"
+                    android:summaryOff="@string/sb_battery_bar_gradient_color_summary"
+                    android:summaryOn="@string/sb_battery_bar_gradient_color_summary"
+                    android:title="@string/sb_battery_bar_use_gradient_color" />
+                -->
+                <!--#ffff4400-->
+                <!-- -48128 -->
+                <!--
+                <com.typhus.romcontrol.prefs.ColorPickerPreference
+                    alphaSlider="false"
+                    hexValue="true"
+                    android:defaultValue="0xffff4400"
+                    android:key="battery_bar_low_color"
+                    android:title="@string/sb_battery_bar_low_color"
+                    android:dependency="battery_bar_use_gradient_color"/>
+                -->
+                <!--#ff99cc00-->
+                <!-- -6697984 -->
+                <!--
+                <com.typhus.romcontrol.prefs.ColorPickerPreference
+                    alphaSlider="false"
+                    hexValue="true"
+                    android:defaultValue="0xff99cc00"
+                    android:key="battery_bar_high_color"
+                    android:title="@string/sb_battery_bar_high_color"
+                    android:dependency="battery_bar_use_gradient_color"/>
+                 -->
                 </PreferenceCategory>
         </PreferenceScreen>
         <PreferenceScreen
