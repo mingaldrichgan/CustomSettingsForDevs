@@ -2,7 +2,7 @@
 
 
 
-MODs zip is a complilation of all xml and smali changes made in order to get custom features working on Pixel 4a.
+MODs_AOSP zip is a complilation of all xml and smali changes made in order to get custom features working on Xiaomi Mi A3.
 
 You can download this zip, extract it, and use it to implement the changes on your own device ROM, as long as it's running an AOSP (or close to it) Android 11 ROM.
 
