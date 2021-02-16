@@ -12,7 +12,7 @@
 
 
 
-**If you want to MOD your own Android 11 ROM please check [this](https://github.com/ElTifo/CustomSettingsForDevs/tree/Pixel4a/app/src/mods)!**
+**If you want to MOD your own AOSP** (or close to it) **Android 11 ROM please check [this](https://github.com/ElTifo/CustomSettingsForDevs/tree/MiA3/app/src/mods)!**
 
 
 - Just make sure to give proper credits to original devs who made this possible for you.
