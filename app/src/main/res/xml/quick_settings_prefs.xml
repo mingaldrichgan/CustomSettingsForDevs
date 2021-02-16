@@ -106,6 +106,15 @@
             android:key="rounded_corners"
             android:title="@string/corners_title" />
     </PreferenceCategory>
+    <!-- QS Header data uasge -->
+    <PreferenceCategory android:title="@string/qs_datausage_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/qs_datausage_entries"
+            android:entryValues="@array/qs_datausage_values"
+            android:key="qs_datausage"
+            android:title="@string/qs_datausage_title" />
+    </PreferenceCategory>
     <!-- QS Header battery Mods -->
     <PreferenceCategory android:title="@string/status_bar_battery_percentage_title">
         <com.typhus.romcontrol.prefs.MyListPreference

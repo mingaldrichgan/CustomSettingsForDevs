@@ -1315,4 +1315,10 @@
     <!-- QS status bar background opacity -->
     <string name="qs_sb_bg_alpha_title">Opacidade da barra de estado</string>
 
+    <!-- QS DataUsage Toggle -->
+    <string name="qs_datausage_title">Consumo de dados nas configurações rápidas</string>
+    <string name="qs_datausage_disabled">Desativado</string>
+    <string name="qs_datausage_daily">Consumo diário</string>
+    <string name="qs_datausage_monthly">Consumo mensal</string>
+
 </resources>
