@@ -1295,6 +1295,7 @@
     <string name="lockscreen_clock_sfuny">SFuny</string>
     <string name="lockscreen_clock_type_center">Texto Centrado</string>
     <string name="lockscreen_clock_Samsung_hl">Duas Linhas Colorido</string>
+    <string name="lockscreen_clock_ide">Relógio IDE</string>
 
     <!-- Android 11 more Charging animations -->
     <string name="lockscreen_charging_animation_phone">Telefone</string>

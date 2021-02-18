@@ -906,8 +906,20 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                     e.printStackTrace();
                                 }
                                 break;
+                            case 13:
+                                Command c13 = new Command(13, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.IDEClockController\"");
+                                try {
+                                    RootTools.getShell(true).add(c13);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
                             default:
-                                Command cd = new Command(13, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DefaultClockController\"");
+                                Command cd = new Command(14, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DefaultClockController\"");
                                 try {
                                     RootTools.getShell(true).add(cd);
                                 } catch (IOException e) {

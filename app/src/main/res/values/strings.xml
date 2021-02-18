@@ -2439,7 +2439,7 @@
     <string name="lockscreen_clock_type_center">Text Centered</string>
     <string name="lockscreen_clock_Samsung">Two lines</string>
     <string name="lockscreen_clock_Samsung_hl">Two lines Highligth</string>
-
+    <string name="lockscreen_clock_ide">IDE Clock</string>
 
 
 
@@ -2458,6 +2458,7 @@
         <item>@string/lockscreen_clock_type_center</item>
         <item>@string/lockscreen_clock_Samsung</item>
         <item>@string/lockscreen_clock_Samsung_hl</item>
+        <item>@string/lockscreen_clock_ide</item>
         <!--
         <item>@string/lockscreen_clock_default_bold</item>
         <item>@string/lockscreen_clock_default_accent</item>
@@ -2486,6 +2487,7 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>13</item>
     </string-array>
 
     <!-- Lockscreen date styles -->
