@@ -9,14 +9,6 @@
             android:entryValues="@array/qs_selector_values"
             android:key="qs_tile_style"
             android:title="@string/qs_tile_style_title" />
-        <!-- Removed from here
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/qs_header_style_entries"
-            android:entryValues="@array/qs_header_style_values"
-            android:key="qs_header_style"
-            android:title="@string/qs_header_style_title" />
-        -->
         <SwitchPreference
             android:defaultValue="true"
             android:key="qs_panel_bg_use_new_tint"
@@ -55,48 +47,14 @@
                     android:max="255"
                     android:summary="@string/qs_panel_alpha_summary"
                     android:title="@string/qs_panel_alpha_title" />
+                <com.typhus.romcontrol.prefs.MyListPreference
+                    android:defaultValue="0"
+                    android:entries="@array/qs_colrow_entries"
+                    android:entryValues="@array/qs_colrow_values"
+                    android:key="qs_colrow"
+                    android:title="@string/qs_columns_rows_category_title" />
             </PreferenceCategory>
         </PreferenceScreen>
-        <!-- Not in the mood to implement this...will do if I get a lot of requests
-        <PreferenceScreen
-            android:title="@string/qs_columns_rows_category_title"
-            android:summary="@string/restartui_required" >
-            <PreferenceCategory android:title="@string/qs_columns_rows_category_title">
-                <com.typhus.romcontrol.prefs.SeekBarPreference
-                    min="1"
-                    units=""
-                    android:defaultValue="3"
-                    android:icon="@null"
-                    android:key="qs_rows_portrait"
-                    android:max="5"
-                    android:title="@string/qs_rows_portrait_title" />
-                <com.typhus.romcontrol.prefs.SeekBarPreference
-                    min="1"
-                    units=""
-                    android:defaultValue="1"
-                    android:icon="@null"
-                    android:key="qs_rows_landscape"
-                    android:max="5"
-                    android:title="@string/qs_rows_landscape_title" />
-                <com.typhus.romcontrol.prefs.SeekBarPreference
-                    min="1"
-                    units=""
-                    android:defaultValue="4"
-                    android:icon="@null"
-                    android:key="qs_columns_portrait"
-                    android:max="5"
-                    android:title="@string/qs_columns_portrait_title" />
-                <com.typhus.romcontrol.prefs.SeekBarPreference
-                    min="1"
-                    units=""
-                    android:defaultValue="6"
-                    android:icon="@null"
-                    android:key="qs_columns_landscape"
-                    android:max="9"
-                    android:title="@string/qs_columns_landscape_title" />
-            </PreferenceCategory>
-        </PreferenceScreen>
-        -->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/corners_title">
         <com.typhus.romcontrol.prefs.MyListPreference

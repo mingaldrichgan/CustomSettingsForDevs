@@ -3090,4 +3090,50 @@
         <item>2</item>
     </string-array>
 
+    <!-- Privacy indicators and dashboard -->
+    <string name="privacy_indicators_title">Privacy dashboard</string>
+
+    <!-- QS Rows x Columns based on overlays -->
+    <string-array name="qs_colrow_entries" translatable="false">
+        <item>2 x 3</item>
+        <item>2 x 4</item>
+        <item>2 x 5</item>
+        <item>2 x 6</item>
+        <item>2 x 7</item>
+        <item>2 x 8</item>
+        <item>3 x 3</item>
+        <item>3 x 4</item>
+        <item>3 x 5</item>
+        <item>3 x 6</item>
+        <item>3 x 7</item>
+        <item>3 x 8</item>
+        <item>4 x 3</item>
+        <item>4 x 4</item>
+        <item>4 x 5</item>
+        <item>4 x 6</item>
+        <item>4 x 7</item>
+        <item>4 x 8</item>
+    </string-array>
+
+    <string-array name="qs_colrow_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+    </string-array>
+
 </resources>

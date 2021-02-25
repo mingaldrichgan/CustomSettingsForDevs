@@ -42,4 +42,10 @@
             android:summaryOn="@string/enable_navbar_title"
             android:title="SystemUI Tuner" />
     </PreferenceCategory>
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="privacy_indicators"
+        android:summaryOff="@string/lockscreen_charging_animation_off"
+        android:summaryOn="@string/switch_bar_on"
+        android:title="@string/privacy_indicators_title" />
 </PreferenceScreen>

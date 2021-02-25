@@ -1322,4 +1322,7 @@
     <string name="qs_datausage_daily">Consumo diário</string>
     <string name="qs_datausage_monthly">Consumo mensal</string>
 
+    <!-- Privacy indicators and dashboard -->
+    <string name="privacy_indicators_title">Painel de controle de privacidade</string>
+
 </resources>
