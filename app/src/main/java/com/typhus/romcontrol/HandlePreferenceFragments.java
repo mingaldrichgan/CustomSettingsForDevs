@@ -381,6 +381,21 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     ok.setTextColor(typedValue.data);
                     mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                 }
+                /*QS Hide tile lables warning*/
+                if (key.equals("qs_tile_title_visibility")){
+                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                    mSysUIWarnBuilder.setTitle(R.string.attention);
+                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                    mSysUIWarn.show();
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = c.getTheme();
+                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                    ok.setTextColor(typedValue.data);
+                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                }
                 /*Clock data and alarm info switch warning*/
                 if (key.equals("clock_show_status_area")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
@@ -1130,240 +1145,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         ok.setTextColor(typedValue.data);
                         mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                     }
-                    //QS Colums Rows based on overlays options begin
-                    if (key.equals("qs_colrow")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.systemui.qstiles24 && cmd overlay disable com.android.systemui.qstiles25 && cmd overlay disable com.android.systemui.qstiles26 && cmd overlay disable com.android.systemui.qstiles27 && cmd overlay disable com.android.systemui.qstiles28 && cmd overlay disable com.android.systemui.qstiles33 && cmd overlay disable com.android.systemui.qstiles34 && cmd overlay disable com.android.systemui.qstiles35 && cmd overlay disable com.android.systemui.qstiles36 && cmd overlay disable com.android.systemui.qstiles37 && cmd overlay disable com.android.systemui.qstiles38 && cmd overlay disable com.android.systemui.qstiles43 && cmd overlay disable com.android.systemui.qstiles44 && cmd overlay disable com.android.systemui.qstiles45 && cmd overlay disable com.android.systemui.qstiles46 && cmd overlay disable com.android.systemui.qstiles47 && cmd overlay disable com.android.systemui.qstiles48");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.systemui.qstiles24");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.systemui.qstiles25");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 3:
-                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.systemui.qstiles26");
-                                try {
-                                    RootTools.getShell(true).add(c3);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 4:
-                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.systemui.qstiles27");
-                                try {
-                                    RootTools.getShell(true).add(c4);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 5:
-                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.systemui.qstiles28");
-                                try {
-                                    RootTools.getShell(true).add(c5);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 6:
-                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category com.android.systemui.qstiles33");
-                                try {
-                                    RootTools.getShell(true).add(c6);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 7:
-                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category com.android.systemui.qstiles34");
-                                try {
-                                    RootTools.getShell(true).add(c7);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 8:
-                                Command c8 = new Command(8, "cmd overlay enable-exclusive --category com.android.systemui.qstiles35");
-                                try {
-                                    RootTools.getShell(true).add(c8);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 9:
-                                Command c9 = new Command(9, "cmd overlay enable-exclusive --category com.android.systemui.qstiles36");
-                                try {
-                                    RootTools.getShell(true).add(c9);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 10:
-                                Command c10 = new Command(10, "cmd overlay enable-exclusive --category com.android.systemui.qstiles37");
-                                try {
-                                    RootTools.getShell(true).add(c10);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 11:
-                                Command c11 = new Command(11, "cmd overlay enable-exclusive --category com.android.systemui.qstiles38");
-                                try {
-                                    RootTools.getShell(true).add(c11);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 12:
-                                Command c12 = new Command(12, "cmd overlay enable-exclusive --category com.android.systemui.qstiles43");
-                                try {
-                                    RootTools.getShell(true).add(c12);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 13:
-                                Command c13 = new Command(13, "cmd overlay enable-exclusive --category com.android.systemui.qstiles44");
-                                try {
-                                    RootTools.getShell(true).add(c13);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 14:
-                                Command c14 = new Command(14, "cmd overlay enable-exclusive --category com.android.systemui.qstiles45");
-                                try {
-                                    RootTools.getShell(true).add(c14);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 15:
-                                Command c15 = new Command(15, "cmd overlay enable-exclusive --category com.android.systemui.qstiles46");
-                                try {
-                                    RootTools.getShell(true).add(c15);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 16:
-                                Command c16 = new Command(16, "cmd overlay enable-exclusive --category com.android.systemui.qstiles47");
-                                try {
-                                    RootTools.getShell(true).add(c16);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 17:
-                                Command c17 = new Command(17, "cmd overlay enable-exclusive --category com.android.systemui.qstiles48");
-                                try {
-                                    RootTools.getShell(true).add(c17);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(18, "cmd overlay disable com.android.systemui.qstiles24 && cmd overlay disable com.android.systemui.qstiles25 && cmd overlay disable com.android.systemui.qstiles26 && cmd overlay disable com.android.systemui.qstiles27 && cmd overlay disable com.android.systemui.qstiles28 && cmd overlay disable com.android.systemui.qstiles33 && cmd overlay disable com.android.systemui.qstiles34 && cmd overlay disable com.android.systemui.qstiles35 && cmd overlay disable com.android.systemui.qstiles36 && cmd overlay disable com.android.systemui.qstiles37 && cmd overlay disable com.android.systemui.qstiles38 && cmd overlay disable com.android.systemui.qstiles43 && cmd overlay disable com.android.systemui.qstiles44 && cmd overlay disable com.android.systemui.qstiles45 && cmd overlay disable com.android.systemui.qstiles46 && cmd overlay disable com.android.systemui.qstiles47 && cmd overlay disable com.android.systemui.qstiles48");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //QS Colums Rows based on overlays options end
                     //Rounded corners options begin
                     if (key.equals("rounded_corners")){
                         switch(mValueIndex) {
