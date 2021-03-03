@@ -11,10 +11,10 @@
             android:title="@string/qs_tile_style_title" />
         <SwitchPreference
             android:defaultValue="true"
-            android:key="qs_panel_bg_use_new_tint"
-            android:summaryOff="@string/qs_bg_use_new_tint_summary"
-            android:summaryOn="@string/qs_bg_use_new_tint_summary"
-            android:title="@string/qs_bg_use_new_tint" />
+            android:key="qs_tile_title_visibility"
+            android:summaryOff="@string/qs_tile_title_visibility_summary"
+            android:summaryOn="@string/qs_tile_title_visibility_summary"
+            android:title="@string/qs_tile_title_visibility_title" />
         <PreferenceScreen
             android:title="@string/qs_themes_category_title">
             <PreferenceCategory android:title="@string/qs_themes_category_title">
@@ -47,6 +47,18 @@
                     android:max="255"
                     android:summary="@string/qs_panel_alpha_summary"
                     android:title="@string/qs_panel_alpha_title" />
+                <SwitchPreference
+                    android:defaultValue="true"
+                    android:key="qs_panel_bg_use_new_tint"
+                    android:summaryOff="@string/qs_bg_use_new_tint_summary"
+                    android:summaryOn="@string/qs_bg_use_new_tint_summary"
+                    android:title="@string/qs_bg_use_new_tint" />
+                <SwitchPreference
+                    android:defaultValue="false"
+                    android:key="qs_tiles_bg_disco"
+                    android:summaryOff="@string/qs_bg_use_disco_summary"
+                    android:summaryOn="@string/qs_bg_use_disco_summary"
+                    android:title="@string/qs_bg_use_disco" />
             </PreferenceCategory>
         </PreferenceScreen>
         <PreferenceScreen
@@ -59,7 +71,7 @@
                     android:defaultValue="3"
                     android:icon="@null"
                     android:key="qs_rows_portrait"
-                    android:max="5"
+                    android:max="4"
                     android:title="@string/qs_rows_portrait_title" />
                 <com.typhus.romcontrol.prefs.SeekBarPreference
                     min="1"
@@ -67,7 +79,7 @@
                     android:defaultValue="1"
                     android:icon="@null"
                     android:key="qs_rows_landscape"
-                    android:max="5"
+                    android:max="4"
                     android:title="@string/qs_rows_landscape_title" />
                 <com.typhus.romcontrol.prefs.SeekBarPreference
                     min="1"
@@ -75,7 +87,7 @@
                     android:defaultValue="4"
                     android:icon="@null"
                     android:key="qs_columns_portrait"
-                    android:max="5"
+                    android:max="6"
                     android:title="@string/qs_columns_portrait_title" />
                 <com.typhus.romcontrol.prefs.SeekBarPreference
                     min="1"
@@ -87,14 +99,6 @@
                     android:title="@string/qs_columns_landscape_title" />
             </PreferenceCategory>
         </PreferenceScreen>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/corners_title">
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/rounded_corners_entries"
-            android:entryValues="@array/rounded_corners_values"
-            android:key="rounded_corners"
-            android:title="@string/corners_title" />
     </PreferenceCategory>
     <!-- QS Header data uasge -->
     <PreferenceCategory android:title="@string/qs_datausage_title">

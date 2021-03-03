@@ -2289,8 +2289,13 @@
     </string-array>
 
     <!-- FOD icon options -->
-    <string name="red_button">Red Button</string>
-    <string name="clines">Cube Lines</string>
+    <string name="fod_icon_red_button">Red Button</string>
+    <string name="fod_icon_clines">Cube Lines</string>
+    <string name="fod_icon_circles">Circles</string>
+    <string name="fod_icon_dal">Dots and Lines</string>
+    <string name="fod_icon_dotted">Red Dotted</string>
+    <string name="fod_icon_scircle">S Circle</string>
+    <string name="fod_icon_sphere">Blue Sphere</string>
 
     <string-array name="fod_icon_picker_entries" translatable="false">
         <item>@string/default_string</item>
@@ -2298,12 +2303,16 @@
         <item>Google</item>
         <item>One Plus</item>
         <item>Arc Reactor</item>
-        <item>@string/red_button</item>
-        <item>@string/clines</item>
+        <item>@string/fod_icon_red_button</item>
+        <item>@string/fod_icon_clines</item>
         <item>MiUI 2</item>
         <item>One Plus 2</item>
         <item>MiUI 3</item>
-        <item>Circles</item>
+        <item>@string/fod_icon_circles</item>
+        <item>@string/fod_icon_dal</item>
+        <item>@string/fod_icon_dotted</item>
+        <item>@string/fod_icon_scircle</item>
+        <item>@string/fod_icon_sphere</item>
     </string-array>
 
     <string-array name="fod_icon_picker_values" translatable="false">
@@ -2318,6 +2327,10 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
     </string-array>
 
     <!-- FOD pressed state options -->
@@ -2370,10 +2383,6 @@
         <item>@string/fod_recog_animation_pureview_future</item>
         <item>@string/fod_recog_animation_pureview_halo_ring</item>
         <item>@string/fod_recog_animation_pureview_molecular</item>
-        <!--
-        <item>@string/fod_recog_animation_rog_pulsar</item>
-        <item>@string/fod_recog_animation_rog_supernova</item>
-        -->
         <item>@string/fod_recog_animation_bluefirework</item>
         <item>@string/fod_recog_animation_coloros7_1</item>
         <item>@string/fod_recog_animation_coloros7_2</item>
@@ -2392,6 +2401,13 @@
 		<item>@string/fod_recog_animation_ripplelines</item>
 		<item>@string/fod_recog_animation_shortcircuit</item>
 		<item>@string/fod_recog_animation_starexplosion</item>
+        <item>@string/fod_recog_animation_redripple</item>
+        <item>@string/fod_recog_animation_purplebluering</item>
+        <item>@string/fod_recog_animation_futurered</item>
+        <item>@string/fod_recog_animation_bluexplosion</item>
+        <item>@string/fod_recog_animation_calcangles</item>
+        <item>@string/fod_recog_animation_coolblue</item>
+        <item>@string/fod_recog_animation_confetis</item>
     </string-array>
 	
 	<!--NEW ANIMATIONS-->
@@ -2409,6 +2425,13 @@
 	<string name="fod_recog_animation_ripplelines">Ripple Lines</string>
 	<string name="fod_recog_animation_shortcircuit">Circuit 2</string>
 	<string name="fod_recog_animation_starexplosion">Star Explosion</string>
+    <string name="fod_recog_animation_redripple">Red Ripple</string>
+    <string name="fod_recog_animation_purplebluering">Purple Blue Ring</string>
+    <string name="fod_recog_animation_futurered">Future Red</string>
+    <string name="fod_recog_animation_bluexplosion">BlueXplosion</string>
+    <string name="fod_recog_animation_calcangles">Angles</string>
+    <string name="fod_recog_animation_coolblue">Cool Blue</string>
+    <string name="fod_recog_animation_confetis">Colorful Confetti</string>
 
     <string-array name="fod_recog_animation_values" translatable="false">
         <item>0</item>
@@ -2450,6 +2473,13 @@
 		<item>36</item>
 		<item>37</item>
 		<item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
     </string-array>
 
     <!-- Lockscreen clock style -->

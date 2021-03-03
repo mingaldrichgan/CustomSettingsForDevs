@@ -48,6 +48,14 @@
             android:key="font_style"
             android:title="@string/theme_customization_font_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/corners_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/rounded_corners_entries"
+            android:entryValues="@array/rounded_corners_values"
+            android:key="rounded_corners"
+            android:title="@string/corners_title" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/powermenu_screenrecord">
         <SwitchPreference
             android:defaultValue="false"
@@ -58,7 +66,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="SystemUI Tuner">
         <SwitchPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="sysui_tuner"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"

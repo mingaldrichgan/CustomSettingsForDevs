@@ -918,6 +918,13 @@
 	<string name="fod_recog_animation_ripplelines">Linhas Onduladas</string>
 	<string name="fod_recog_animation_shortcircuit">Circuito 2</string>
 	<string name="fod_recog_animation_starexplosion">Explosão de Estrelas</string>
+    <string name="fod_recog_animation_redripple">Odulação Vermelha</string>
+    <string name="fod_recog_animation_purplebluering">Anel Azul Púrpura</string>
+    <string name="fod_recog_animation_futurered">Vermelho Futurista</string>
+    <string name="fod_recog_animation_bluexplosion">Xplosão Azul</string>
+    <string name="fod_recog_animation_calcangles">Ângulos</string>
+    <string name="fod_recog_animation_coolblue">Frescura Azul</string>
+    <string name="fod_recog_animation_confetis">Confetis Coloridos</string>
     <!-- Charging animation -->
     <string name="charging_animation_title">Animação de carregamento</string>
     <string name="charging_animation_summary">Exibir uma animação quando o dispositivo está conectado</string>
@@ -935,7 +942,7 @@
     <string name="qs_bg_use_new_tint_summary">Ativa o novo estilo de cores dos botões das configurações rápidas</string>
     <string name="qs_bg_use_rgb">Usar cores RGB</string>
     <string name="qs_bg_use_rgb_summary">Ativar o modo disco no fundo das configurações rápidas para mostrar diferentes cores RGB</string>
-    <string name="qs_bg_use_disco">Disco nas Configurações Rápidas</string>
+    <string name="qs_bg_use_disco">Colorir as Configurações Rápidas</string>
     <string name="qs_bg_use_disco_summary">Deixe suas configurações rápidas coloridas!</string>
     <!-- Option to enable/disable scrolling cache -->
     <string name="pref_scrollingcache_title">Cache de rolagem</string>
@@ -1232,8 +1239,13 @@
     <string name="dt_solarizeddark">Solarizado</string>
 
     <!-- FOD icon options -->
-    <string name="red_button">Botão vermelho</string>
-    <string name="clines">Cubo em linhas</string>
+    <string name="fod_icon_red_button">Botão vermelho</string>
+    <string name="fod_icon_clines">Cubo em linhas</string>
+    <string name="fod_icon_circles">Círculos</string>
+    <string name="fod_icon_dal">Pontos e Linhas</string>
+    <string name="fod_icon_dotted">Ponteado Vermelho</string>
+    <string name="fod_icon_scircle">Círculo em S</string>
+    <string name="fod_icon_sphere">Esfera Azul</string>
 
     <!-- Restart required -->
     <string name="restart_required">É necessário reiniciar</string>
