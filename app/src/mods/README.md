@@ -46,13 +46,16 @@ I'm assuming you know what to do with this. Things are already made easy so I'm 
 1. Extract your desired ROM zip (using Kitchen)
 2. Fully deodex the ROM if needed (using Kitchen)
 3. Decompile SystemUIGoogle.apk (Tickle My Android)
-4. Apply all xml and smali changes (Notepad++ | WinMerge)
+4. Apply all xml changes (use Notepad++ and/or WinMerge) from "res" folder
+5. Recompile the modified SystemUIGoogle.apk just with the xml changes
+6. Decompile that modified SystemUIGoogle.apk (we need this to obtain the new public.xml where all new IDs will be present)
+7. Apply all smali changes (Notepad++ | WinMerge)
    - Remember that ALL IDs are DIFFERENT, YOU MUST change them accordingly to your ROM
    - Also, you must check on smali files for every 0x10xxxx or 0x11xxxx instances. They are context resources and could be different. You'll need to change them accordingly as well.
-5. Recompile SystemUIGoogle.apk (Tickle My Android)
-6. Take res folder, resources.arsc and all classes.dex from recompiled SystemUIGoogle.apk and store them inside SystemUIGoogle.apk VR Theme zip folder.
-7. Flash VR Theme zip through Magisk
-8. Reboot your device to check if it's booting ok after all changes
+8. Recompile the fully modified SystemUIGoogle.apk (Tickle My Android)
+9. Take res folder, resources.arsc and all classes.dex from recompiled SystemUIGoogle.apk and store them inside SystemUIGoogle.apk VR Theme zip folder.
+10. Flash VR Theme zip through Magisk
+11. Reboot your device to check if it's booting ok after all changes
    - If not, take logcats at boot to check what went wrong
-9. If it rebooted ok, then you can use RomControl app to MOD your device.
-10. RomControl is already compiled on XDA Thread inside the Magisk Module Zip for Pixel4a. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care. Remember that Rom Control needs to be installed on /system/priv-app, if not, it won't be allowed to store system settings.
+12. If it rebooted ok, then you can use RomControl app to MOD your device.
+13. RomControl is already compiled on XDA Thread inside the Magisk Module Zip for Pixel4a. You can use it as it is, or download the code and compile it yourselt. Make every change you want/need, I don't care. Remember that Rom Control needs to be installed on /system/priv-app, if not, it won't be allowed to store system settings.
