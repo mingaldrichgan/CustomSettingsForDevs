@@ -12,7 +12,7 @@ You can download this zip, extract it, and use it to implement the changes on yo
 **Tools you'll need:**
 
 
-- SuperR's Kitchen (to extract system image from your stock ROM zip and deodex your ROM, if needed)
+- SuperR's Kitchen (to extract system image from your ROM zip and deodex it, if needed)
 
 https://forum.xda-developers.com/t/windows-linux-mac-donate-superrs-kitchen-v3-2-1-2-1-14-2021.3601702/
 
