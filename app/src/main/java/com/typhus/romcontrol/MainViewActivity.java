@@ -98,6 +98,7 @@ public class MainViewActivity extends AppCompatActivity
         int[] mIcons = {R.drawable.ic_settings_statusbar,
                 R.drawable.ic_settings_lockscreen,
                 R.drawable.ic_settings_quicksettings,
+                R.drawable.ic_settings_themes,
                 R.drawable.ic_settings_miscellaneous,
                 R.drawable.ic_settings_navigation,
                 R.drawable.ic_settings_app_theme};
@@ -128,12 +129,15 @@ public class MainViewActivity extends AppCompatActivity
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new QuickSettingsPrefsFragment()).commitAllowingStateLoss();
                 break;
             case 3:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new FrameworksGeneralFragment()).commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new ThemingFragment()).commitAllowingStateLoss();
                 break;
             case 4:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new NavBarPrefsFragment()).commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new FrameworksGeneralFragment()).commitAllowingStateLoss();
                 break;
             case 5:
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new NavBarPrefsFragment()).commitAllowingStateLoss();
+                break;
+            case 6:
                 showThemeChooserDialog();
                 break;
 

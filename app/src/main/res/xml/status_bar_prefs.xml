@@ -205,9 +205,14 @@
                 android:summaryOn="@string/network_traffic_hidearrow_summary"
                 android:title="@string/network_traffic_hidearrow" />
 
-    </PreferenceCategory>
-</PreferenceScreen>
--->
+            </PreferenceCategory>
+        </PreferenceScreen>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="more_notif"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/more_notif_title" />
 <!--
 <typhusromcontrol.prefs.ColorPickerPreference
 alphaSlider="true"

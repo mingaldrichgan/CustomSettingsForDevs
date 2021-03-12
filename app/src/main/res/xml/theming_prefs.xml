@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/blur_quicksettings_title">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="qs_blur"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/blur_quicksettings_title" />
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="5"
+            android:entries="@array/blur_max_radius_entries"
+            android:entryValues="@array/blur_max_radius_values"
+            android:key="blur_max_radius"
+            android:title="@string/qs_blur_intensity_title"
+            android:dependency="qs_blur" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/dt_styles">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/dt_style_entries"
+            android:entryValues="@array/dt_style_values"
+            android:key="dt_style"
+            android:title="@string/dt_styles" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/theme_customization_font_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/fonts_entries"
+            android:entryValues="@array/fonts_values"
+            android:key="font_style"
+            android:title="@string/theme_customization_font_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/corners_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/rounded_corners_entries"
+            android:entryValues="@array/rounded_corners_values"
+            android:key="rounded_corners"
+            android:title="@string/corners_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -7,6 +7,7 @@
         <item>@string/statusbar_title</item>
         <item>@string/lockscreen_title</item>
         <item>@string/quicksettings_title</item>
+        <item>@string/themes_title</item>
         <item>@string/misc_title</item>
         <item>@string/nav_bar_tuner_title</item>
         <item>@string/theme_chooser_dialog_title</item>
@@ -3134,6 +3135,32 @@
         <item>15</item>
         <item>16</item>
         <item>17</item>
+    </string-array>
+
+    <!-- More notification icons -->
+    <string name="more_notif_title">Show more notification icons</string>
+
+    <!-- Blur maximum radius level based on overlays -->
+    <string-array name="blur_max_radius_entries" translatable="false">
+        <item>25</item>
+		<item>50</item>
+        <item>75</item>
+        <item>100</item>
+        <item>125</item>
+        <item>150</item>
+        <item>175</item>
+        <item>200</item>
+    </string-array>
+
+    <string-array name="blur_max_radius_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+		<item>7</item>
     </string-array>
 
 </resources>

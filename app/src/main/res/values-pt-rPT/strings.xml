@@ -1325,4 +1325,7 @@
     <!-- Privacy indicators and dashboard -->
     <string name="privacy_indicators_title">Painel de controle de privacidade</string>
 
+    <!-- More notification icons -->
+    <string name="more_notif_title">Mostrar mais ícones de notificação</string>
+
 </resources>

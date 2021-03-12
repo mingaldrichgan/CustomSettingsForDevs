@@ -302,7 +302,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 //Enable/Disable Tuner
                 if (key.equals("sysui_tuner")){
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "pm enable com.android.systemui/.tuner.TunerActivity && sed -re 's/pm disable/pm enable/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c0 = new Command(0, "pm enable com.android.systemui/.tuner.TunerActivity && sed -re 's/pm disable/pm enable/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -313,7 +313,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             e.printStackTrace();
                         }
                     } else {
-                        Command c1 = new Command(1, "pm disable com.android.systemui/.tuner.TunerActivity && sed -re 's/pm enable/pm disable/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c1 = new Command(1, "pm disable com.android.systemui/.tuner.TunerActivity && sed -re 's/pm enable/pm disable/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -328,7 +328,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 //Enable/Disable Launcher navigation hints
                 if (key.equals("navbar_hide_hint_launcher")){
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_launcher true && sed -re 's/assist_handles_suppress_on_launcher false/assist_handles_suppress_on_launcher true/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_launcher true && sed -re 's/assist_handles_suppress_on_launcher false/assist_handles_suppress_on_launcher true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -339,7 +339,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             e.printStackTrace();
                         }
                     } else {
-                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_launcher false && sed -re 's/assist_handles_suppress_on_launcher true/assist_handles_suppress_on_launcher false/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_launcher false && sed -re 's/assist_handles_suppress_on_launcher true/assist_handles_suppress_on_launcher false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -414,7 +414,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 //Enable/Disable Privacy indicators
                 if (key.equals("privacy_indicators")){
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put privacy permissions_hub_enabled true && sed -re 's/permissions_hub_enabled false/permissions_hub_enabled true/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c0 = new Command(0, "device_config put privacy permissions_hub_enabled true && sed -re 's/permissions_hub_enabled false/permissions_hub_enabled true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -425,7 +425,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             e.printStackTrace();
                         }
                     } else {
-                        Command c1 = new Command(1, "device_config put privacy permissions_hub_enabled false && sed -re 's/permissions_hub_enabled true/permissions_hub_enabled false/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c1 = new Command(1, "device_config put privacy permissions_hub_enabled false && sed -re 's/permissions_hub_enabled true/permissions_hub_enabled false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -452,7 +452,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     ok.setTextColor(typedValue.data);
                     mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "resetprop ro.surface_flinger.supports_background_blur 1 && sed -re 's/supports_background_blur 0/supports_background_blur 1 \\&\\& killall surfaceflinger/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c0 = new Command(0, "resetprop ro.surface_flinger.supports_background_blur 1 && sed -re 's/supports_background_blur 0/supports_background_blur 1 \\&\\& killall surfaceflinger/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -463,7 +463,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             e.printStackTrace();
                         }
                     } else {
-                        Command c1 = new Command(1, "resetprop ro.surface_flinger.supports_background_blur 0 && sed -re 's/supports_background_blur 1 \\&\\& killall surfaceflinger/supports_background_blur 0/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c1 = new Command(1, "resetprop ro.surface_flinger.supports_background_blur 0 && sed -re 's/supports_background_blur 1 \\&\\& killall surfaceflinger/supports_background_blur 0/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -478,7 +478,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 //Adaptive Sound Service on/off
                 if (key.equals("adaptive_sound")){
                     if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio true && sed -re 's/enable_adaptive_audio false/enable_adaptive_audio true/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c0 = new Command(0, "device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio true && sed -re 's/enable_adaptive_audio false/enable_adaptive_audio true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -489,7 +489,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             e.printStackTrace();
                         }
                     } else {
-                        Command c1 = new Command(1, "device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio false && sed -re 's/enable_adaptive_audio true/enable_adaptive_audio false/g' /data/adb/modules/AddonFeaturesForPixel4a/service.sh > /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel4a/new_service.sh /data/adb/modules/AddonFeaturesForPixel4a/service.sh");
+                        Command c1 = new Command(1, "device_config put device_personalization_services AdaptiveAudio__enable_adaptive_audio false && sed -re 's/enable_adaptive_audio true/enable_adaptive_audio false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -600,6 +600,32 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         Command c2 = new Command(2, "cmd overlay disable com.android.overlay.reducekeyboard");
                         try {
                             RootTools.getShell(true).add(c2);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //More notifications icons on/off
+                if (key.equals("more_notif")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.overlay.mnotif");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.overlay.mnotif");
+                        try {
+                            RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (TimeoutException e) {
@@ -1769,6 +1795,133 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //System fonts options end
+                    //Blur maximum radius level  begin
+                    if (key.equals("blur_max_radius")){
+                        AlertDialog.Builder mVibWarnBuilder = new AlertDialog.Builder(c);
+                        mVibWarnBuilder.setTitle(R.string.attention);
+                        mVibWarnBuilder.setMessage(R.string.restartui_required);
+                        mVibWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                        mVibWarnBuilder.create();
+                        AlertDialog mNibWarn = mVibWarnBuilder.create();
+                        mNibWarn.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mNibWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay enable-exclusive --category com.android.systemui.blur.a");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.systemui.blur.b");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.systemui.blur.c");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.systemui.blur.d");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+							case 4:
+                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.systemui.blur.e");
+                                try {
+                                    RootTools.getShell(true).add(c4);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 5:
+                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.systemui.blur.a && cmd overlay disable com.android.systemui.blur.a");
+                                try {
+                                    RootTools.getShell(true).add(c5);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 6:
+                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category com.android.systemui.blur.f");
+                                try {
+                                    RootTools.getShell(true).add(c6);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 7:
+                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category com.android.systemui.blur.g");
+                                try {
+                                    RootTools.getShell(true).add(c7);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(8, "cmd overlay enable-exclusive --category com.android.systemui.blur.a && cmd overlay disable com.android.systemui.blur.a");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //Blur maximum radius level options end
                 } else {
                     l.setSummary("");
                 }
