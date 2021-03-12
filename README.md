@@ -7,7 +7,7 @@
 
 - App is now **AndroidX**!
 
-- All changes on the code made by myself in order to get this app running on both Google Pixel 4a and Xiaomi Mi A3.
+- All changes on the code made by myself in order to get this app running on Google Pixel Devices and Xiaomi Mi A3.
 
 
 
