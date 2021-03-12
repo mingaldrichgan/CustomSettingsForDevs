@@ -38,11 +38,35 @@
 
 **XDA Threads:**
 
+- [Pixel 3](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-3-thread.4246251/)
+
+
+- [Pixel 3 XL](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-3-xl-thread.4246267/)
+
+
+- [Pixel 3a](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-3a-thread.4246261/)
+
+
+- [Pixel 3a XL](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-3a-xl-thread.4246265/)
+
+
+- [Pixel 4](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-4-thread.4246255/)
+
+
+- [Pixel 4 XL](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-4-xl-thread.4246257/)
+
 
 - [Pixel 4a](https://forum.xda-developers.com/t/addon-features-for-pixel-4-devices-and-exclusive-features-for-pixel-4a.4215069/)
+
+
+- [Pixel 4a 5g](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-4a-5g-thread.4246263/)
+
+
+- [Pixel 5](https://forum.xda-developers.com/t/mod-magisk-android-11-addon-features-for-pixel-devices-pixel-5-thread.4246253/)
 
 
 - [Xiaomi Mi A3 MODs for stock Android 10 ROM](https://forum.xda-developers.com/t/mod-app-root-magisk-mia3-mods-for-stock-android-10-rom.4193461/)
 
 
 - [Xiaomi Mi A3 MODs for stock Android 11 ROM](https://forum.xda-developers.com/t/theme-root-magisk-android-11-pixel-theme-for-aosp-roms-and-mods-for-stock-rom.4181849/)
+
