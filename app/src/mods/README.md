@@ -17,7 +17,7 @@ You can download this zip, extract it, and use it to implement the changes on yo
 https://forum.xda-developers.com/t/windows-linux-mac-donate-superrs-kitchen-v3-2-1-2-1-14-2021.3601702/
 
 
-- Tickle My Android (to decompile/recompile SystemUIGoogle.apk or SystemUI.apk if using other ROM rather than stock Pixel)
+- Tickle My Android (to decompile/recompile SystemUIGoogle.apk or SystemUI.apk, if using other ROM rather than stock Pixel)
 
 https://forum.xda-developers.com/t/tool-tickle-my-android-decompile-recompile-with-ease.1633333/
 
@@ -40,7 +40,7 @@ https://winmerge.org/
 
 
 
-I'm assuming you know what to do with this. Things are already made easy so I'm not going to guide you step by step...well...I will guide you thoguh...
+I'm assuming you know what to do with this. Things are already made easy so I'm not going to guide you step by step...well...I will guide you though...
 
 
 
