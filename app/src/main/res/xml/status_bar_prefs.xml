@@ -27,77 +27,6 @@
             android:summaryOn="@string/status_bar_battery_text_charging_summary"
             android:title="@string/status_bar_battery_text_charging_title" />
         <PreferenceScreen
-            android:title="@string/sb_battery_bar_title">
-            <PreferenceCategory android:title="@string/sb_battery_bar_title">
-                <com.typhus.romcontrol.prefs.MyListPreference
-                    android:defaultValue="0"
-                    android:entries="@array/battery_bar_no_navbar_entries"
-                    android:entryValues="@array/battery_bar_no_navbar_values"
-                    android:key="statusbar_battery_bar_no_navbar_list"
-                    android:title="@string/battery_bar_no_navbar" />
-                <!--#ffffffff-->
-                <!-- -16711936 -->
-                <com.typhus.romcontrol.prefs.ColorPickerPreference
-                    alphaSlider="false"
-                    hexValue="true"
-                    android:defaultValue="0xffffffff"
-                    android:key="statusbar_battery_bar_color"
-                    android:title="@string/battery_bar_color" />
-                <!--#ffff6600-->
-                <!-- -39424 -->
-                <com.typhus.romcontrol.prefs.ColorPickerPreference
-                    alphaSlider="false"
-                    hexValue="true"
-                    android:defaultValue="0xffff6600"
-                    android:key="statusbar_battery_bar_battery_low_color"
-                    android:title="@string/battery_bar_battery_low_color" />
-                <SwitchPreference
-                    android:defaultValue="true"
-                    android:key="statusbar_battery_bar_enable_charging_color"
-                    android:title="@string/battery_bar_use_charging_color" />
-                <!--#ff00ff00-->
-                <!-- -16711936 -->
-                <com.typhus.romcontrol.prefs.ColorPickerPreference
-                    alphaSlider="false"
-                    hexValue="true"
-                    android:defaultValue="0xff00ff00"
-                    android:key="statusbar_battery_bar_charging_color"
-                    android:title="@string/battery_bar_charging_color"
-                    android:dependency="statusbar_battery_bar_enable_charging_color" />
-                <SwitchPreference
-                    android:defaultValue="false"
-                    android:key="statusbar_battery_bar_blend_color"
-                    android:summaryOff="@string/battery_bar_blend_color_summary"
-                    android:summaryOn="@string/battery_bar_blend_color_summary"
-                    android:title="@string/battery_bar_blend_color_title" />
-                <SwitchPreference
-                    android:defaultValue="false"
-                    android:key="statusbar_battery_bar_blend_color_reverse"
-                    android:summaryOff="@string/battery_bar_blend_color_reverse_summary_off"
-                    android:summaryOn="@string/battery_bar_blend_color_reverse_summary_on"
-                    android:title="@string/battery_bar_blend_color_reverse_title"
-                    android:dependency="statusbar_battery_bar_blend_color" />
-                <com.typhus.romcontrol.prefs.MyListPreference
-                    android:defaultValue="0"
-                    android:entries="@array/battery_bar_style_entries"
-                    android:entryValues="@array/battery_bar_style_values"
-                    android:key="statusbar_battery_bar_style"
-                    android:title="@string/battery_bar_style_title" />
-                <com.typhus.romcontrol.prefs.SeekBarPreference
-                    min="1"
-                    units="dp"
-                    android:defaultValue="1"
-                    android:icon="@null"
-                    android:key="statusbar_battery_bar_thickness"
-                    android:max="4"
-                    android:title="@string/battery_bar_thickness_title" />
-                <SwitchPreference
-                    android:defaultValue="false"
-                    android:key="statusbar_battery_bar_animate"
-                    android:title="@string/battery_bar_animate_title" />
-                </PreferenceCategory>
-        </PreferenceScreen>
-        <PreferenceScreen
             android:title="@string/status_bar_clock_title">
             <PreferenceCategory android:title="@string/status_bar_clock_title">
                 <SwitchPreference
@@ -213,6 +142,92 @@
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/more_notif_title" />
+        <PreferenceCategory android:title="@string/lockscreen_show_status_bar_title">
+            <PreferenceScreen
+                android:title="@string/sb_battery_bar_title">
+                <PreferenceCategory android:title="@string/sb_battery_bar_title">
+                    <com.typhus.romcontrol.prefs.MyListPreference
+                        android:defaultValue="0"
+                        android:entries="@array/battery_bar_no_navbar_entries"
+                        android:entryValues="@array/battery_bar_no_navbar_values"
+                        android:key="statusbar_battery_bar_no_navbar_list"
+                        android:title="@string/battery_bar_no_navbar" />
+                    <!--#ffffffff-->
+                    <!-- -16711936 -->
+                    <com.typhus.romcontrol.prefs.ColorPickerPreference
+                        alphaSlider="false"
+                        hexValue="true"
+                        android:defaultValue="0xffffffff"
+                        android:key="statusbar_battery_bar_color"
+                        android:title="@string/battery_bar_color" />
+                    <!--#ffff6600-->
+                    <!-- -39424 -->
+                    <com.typhus.romcontrol.prefs.ColorPickerPreference
+                        alphaSlider="false"
+                        hexValue="true"
+                        android:defaultValue="0xffff6600"
+                        android:key="statusbar_battery_bar_battery_low_color"
+                        android:title="@string/battery_bar_battery_low_color" />
+                    <SwitchPreference
+                        android:defaultValue="true"
+                        android:key="statusbar_battery_bar_enable_charging_color"
+                        android:title="@string/battery_bar_use_charging_color" />
+                    <!--#ff00ff00-->
+                    <!-- -16711936 -->
+                    <com.typhus.romcontrol.prefs.ColorPickerPreference
+                        alphaSlider="false"
+                        hexValue="true"
+                        android:defaultValue="0xff00ff00"
+                        android:key="statusbar_battery_bar_charging_color"
+                        android:title="@string/battery_bar_charging_color"
+                        android:dependency="statusbar_battery_bar_enable_charging_color" />
+                    <SwitchPreference
+                        android:defaultValue="false"
+                        android:key="statusbar_battery_bar_blend_color"
+                        android:summaryOff="@string/battery_bar_blend_color_summary"
+                        android:summaryOn="@string/battery_bar_blend_color_summary"
+                        android:title="@string/battery_bar_blend_color_title" />
+                    <SwitchPreference
+                        android:defaultValue="false"
+                        android:key="statusbar_battery_bar_blend_color_reverse"
+                        android:summaryOff="@string/battery_bar_blend_color_reverse_summary_off"
+                        android:summaryOn="@string/battery_bar_blend_color_reverse_summary_on"
+                        android:title="@string/battery_bar_blend_color_reverse_title"
+                        android:dependency="statusbar_battery_bar_blend_color" />
+                    <com.typhus.romcontrol.prefs.MyListPreference
+                        android:defaultValue="0"
+                        android:entries="@array/battery_bar_style_entries"
+                        android:entryValues="@array/battery_bar_style_values"
+                        android:key="statusbar_battery_bar_style"
+                        android:title="@string/battery_bar_style_title" />
+                    <com.typhus.romcontrol.prefs.SeekBarPreference
+                        min="1"
+                        units="dp"
+                        android:defaultValue="1"
+                        android:icon="@null"
+                        android:key="statusbar_battery_bar_thickness"
+                        android:max="4"
+                        android:title="@string/battery_bar_thickness_title" />
+                    <SwitchPreference
+                        android:defaultValue="false"
+                        android:key="statusbar_battery_bar_animate"
+                        android:title="@string/battery_bar_animate_title" />
+                </PreferenceCategory>
+            </PreferenceScreen>
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="reduce_sb_height"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/reduce_status_bar_height" />
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="fix_sb_left_paddding"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/fix_status_bar_padding"
+                android:dependency="reduce_sb_height"/>
+        </PreferenceCategory>
 <!--
 <typhusromcontrol.prefs.ColorPickerPreference
 alphaSlider="true"

@@ -381,7 +381,22 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     ok.setTextColor(typedValue.data);
                     mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                 }
-                /*QS Hide tile lables warning*/
+                /*QS Disco Dingo the QS warning*/
+                if (key.equals("qs_tiles_bg_disco")){
+                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                    mSysUIWarnBuilder.setTitle(R.string.attention);
+                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                    mSysUIWarn.show();
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = c.getTheme();
+                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                    ok.setTextColor(typedValue.data);
+                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                }
+                /*QS Hide tile labels warning*/
                 if (key.equals("qs_tile_title_visibility")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
                     mSysUIWarnBuilder.setTitle(R.string.attention);
@@ -609,6 +624,84 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
+                //Lock screen camera shortcut on/off
+                if (key.equals("lockscreen_camera_shortcut")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.theme.keyguard.cshortcut");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.theme.keyguard.cshortcut");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Reduce status bar height on/off
+                if (key.equals("reduce_sb_height")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
+                if (key.equals("fix_sb_left_paddding")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 //More notifications icons on/off
                 if (key.equals("more_notif")){
                     if (s.isChecked()) {
@@ -649,6 +742,26 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     int mValueIndex = l.findIndexOfValue(lValue);
                     l.setSummary(mEntries[mValueIndex]);
                     l.setSummary(mEntries[l.findIndexOfValue(lValue)]);
+                    //Quick QS pulldown options begin
+                    if (key.equals("status_bar_quick_qs_pulldown")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 0);
+                                break;
+                            case 1:
+                                Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 1);
+                                break;
+                            case 2:
+                                Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 2);
+                                break;
+                            case 3:
+                                Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 3);
+                                break;
+                            default:
+                                Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 0);
+                                break;
+                        }
+                    }
                     //Network Traffic specific options begin
                     if (key.equals("network_traffic_location")){
                         switch(mValueIndex) {

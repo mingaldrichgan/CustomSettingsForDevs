@@ -138,9 +138,9 @@
     <string name="quick_pulldown_title">Deslize rápido para baixo</string>
     <string name="quick_pulldown_summary">A borda %1$s da barra de status puxa para baixo as configurações rápidas</string>
     <string name="quick_pulldown_summary_always">Sempre expandir as configurações rápidas ao deslizar para baixo na barra de status</string>
-    <string name="quick_pulldown_off">Desativado</string>
-    <string name="quick_pulldown_left">Esquerda</string>
-    <string name="quick_pulldown_right">Direita</string>
+    <string name="quick_pulldown_off">Nunca</string>
+    <string name="quick_pulldown_left">Ao deslizar pela esquerda</string>
+    <string name="quick_pulldown_right">Ao deslizar pela direita</string>
     <string name="quick_pulldown_always">Sempre</string>
     <string name="notification_light_settings">Luz de notificações</string>
     <!-- Statusbar net monitor -->
@@ -1327,5 +1327,14 @@
 
     <!-- More notification icons -->
     <string name="more_notif_title">Mostrar mais ícones de notificação</string>
+
+    <!-- Reduce Status Bar Height -->
+    <string name="reduce_status_bar_height">Reduzir a altura da barra de estado</string>
+    <string name="fix_status_bar_padding">Corrigir espaço do lado esquerdo</string>
+
+    <!-- QS advanced settings -->
+    <string name="status_bar_quick_qs_pulldown_title">Expandir o painel das configurações rápidas ao deslizar para baixo na barra de estado</string>
+    <string name="status_bar_quick_qs_pulldown">Quando expandir</string>
+    <string name="quick_pulldown_none">Nunca</string>
 
 </resources>
