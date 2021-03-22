@@ -2441,7 +2441,7 @@
     <string name="lockscreen_clock_Samsung">Two lines</string>
     <string name="lockscreen_clock_Samsung_hl">Two lines Highligth</string>
     <string name="lockscreen_clock_ide">IDE Clock</string>
-
+    <string name="lockscreen_clock_fluid">Fluid Clock</string>
 
 
     <!-- Lockscreen clock style -->
@@ -2460,6 +2460,7 @@
         <item>@string/lockscreen_clock_Samsung</item>
         <item>@string/lockscreen_clock_Samsung_hl</item>
         <item>@string/lockscreen_clock_ide</item>
+        <item>@string/lockscreen_clock_fluid</item>
         <!--
         <item>@string/lockscreen_clock_default_bold</item>
         <item>@string/lockscreen_clock_default_accent</item>
@@ -2489,6 +2490,7 @@
         <item>11</item>
         <item>12</item>
         <item>13</item>
+        <item>14</item>
     </string-array>
 
     <!-- Lockscreen date styles -->
@@ -3164,8 +3166,23 @@
     </string-array>
 
     <!-- Reduce Status Bar Height -->
-    <string name="reduce_status_bar_height">Reduce status bar height</string>
+    <string name="status_bar_height">Status bar height</string>
+    <string name="status_bar_height_default">Default</string>
+    <string name="status_bar_height_small">Small</string>
+    <string name="status_bar_height_medium">Medium</string>
     <string name="fix_status_bar_padding">Correct left side padding</string>
+
+    <string-array name="status_bar_height_entries" translatable="false">
+        <item>@string/status_bar_height_default</item>
+        <item>@string/status_bar_height_small</item>
+        <item>@string/status_bar_height_medium</item>
+    </string-array>
+
+    <string-array name="status_bar_height_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 
     <!-- QS advanced settings -->
     <string name="status_bar_quick_qs_pulldown_title">Expand QS panel when pulling down from status bar</string>

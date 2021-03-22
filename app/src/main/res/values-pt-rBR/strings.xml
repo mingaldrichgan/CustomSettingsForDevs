@@ -1296,6 +1296,7 @@
     <string name="lockscreen_clock_type_center">Texto Centrado</string>
     <string name="lockscreen_clock_Samsung_hl">Duas Linhas Colorido</string>
     <string name="lockscreen_clock_ide">Relógio IDE</string>
+    <string name="lockscreen_clock_fluid">Relógio Fluid</string>
 
     <!-- Android 11 more Charging animations -->
     <string name="lockscreen_charging_animation_phone">Telefone</string>
@@ -1329,8 +1330,11 @@
     <string name="more_notif_title">Mostrar mais ícones de notificação</string>
 
     <!-- Reduce Status Bar Height -->
-    <string name="reduce_status_bar_height">Reduzir a altura da barra de estado</string>
-    <string name="fix_status_bar_padding">Corrigir espaço do lado esquerdo</string>
+    <string name="status_bar_height">Altura da barra de estado</string>
+    <string name="status_bar_height_default">Por defeito</string>
+    <string name="status_bar_height_small">Pequena</string>
+    <string name="status_bar_height_medium">Média</string>
+    <string name="fix_status_bar_padding">Corrigir espaçamento esquerdo</string>
 
     <!-- QS advanced settings -->
     <string name="status_bar_quick_qs_pulldown_title">Expandir o painel das configurações rápidas ao deslizar para baixo na barra de estado</string>

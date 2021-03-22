@@ -650,10 +650,13 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
-                //Reduce status bar height on/off
-                if (key.equals("reduce_sb_height")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "cmd overlay enable com.android.sb_height_small");
+                //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
+                if (key.equals("fix_sb_left_paddding")){
+                    int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
+                    if(reduceon==0){
+                        s.setChecked(false);
+                        s.setEnabled(false);
+                        Command c0 = new Command(0, "cmd overlay disable com.android.systemui.sb_height_small");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -663,22 +666,8 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         } catch (RootDeniedException e) {
                             e.printStackTrace();
                         }
-                    } else {
-                        Command c1 = new Command(1, "cmd overlay disable com.android.sb_height_small");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
                     }
-                }
-                //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
-                if (key.equals("fix_sb_left_paddding")){
-                    if (s.isChecked()) {
+                    if (s.isChecked() & reduceon!=0) {
                         Command c0 = new Command(0, "cmd overlay enable com.android.systemui.sb_height_small");
                         try {
                             RootTools.getShell(true).add(c0);
@@ -742,6 +731,59 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     int mValueIndex = l.findIndexOfValue(lValue);
                     l.setSummary(mEntries[mValueIndex]);
                     l.setSummary(mEntries[l.findIndexOfValue(lValue)]);
+                    //Status bar height options
+                    if (key.equals("status_bar_height")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.sb_height_small && cmd overlay disable com.android.sb_height_medium");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.sb_height_small");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.sb_height_medium");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(3, "cmd overlay disable com.android.sb_height_small && cmd overlay disable com.android.sb_height_medium");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
                     //Quick QS pulldown options begin
                     if (key.equals("status_bar_quick_qs_pulldown")){
                         switch(mValueIndex) {
@@ -1031,8 +1073,20 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                     e.printStackTrace();
                                 }
                                 break;
+                            case 14:
+                                Command c14 = new Command(14, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.FluidClockController\"");
+                                try {
+                                    RootTools.getShell(true).add(c14);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
                             default:
-                                Command cd = new Command(14, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DefaultClockController\"");
+                                Command cd = new Command(15, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DefaultClockController\"");
                                 try {
                                     RootTools.getShell(true).add(cd);
                                 } catch (IOException e) {
