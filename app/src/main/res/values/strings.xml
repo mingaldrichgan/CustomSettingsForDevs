@@ -3188,4 +3188,58 @@
     <string name="status_bar_quick_qs_pulldown_title">Expand QS panel when pulling down from status bar</string>
     <string name="status_bar_quick_qs_pulldown">When to expand</string>
     <string name="quick_pulldown_none">Never</string>
+
+
+    <!-- Remove Nav bar -->
+    <string name="remove_navbar">Remove navigation bar</string>
+    <string name="remove_navbar_warning">This option completely removes the navigation bar for any mode. Stock gestures navigation will still work so, if you want to use 3rd party gestures naviagtion modes, you need to either enable 2 button or 3 button navigation mode on Settings.</string>
+
+    <!-- QS Footer Drag Handle Options -->
+    <string name="qs_fdh_title">QS Footer Drag Handle</string>
+    <string name="qs_fdh_colored">Accent based</string>
+    <string name="qs_fdh_hidden">Hidden</string>
+
+    <string-array name="qs_fdh_entries" translatable="false">
+        <item>@string/default_string</item>
+        <item>@string/qs_fdh_colored</item>
+        <item>@string/qs_fdh_hidden</item>
+    </string-array>
+
+    <string-array name="qs_fdh_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Fix center clock padding -->
+    <string name="fix_center_clock_padding">Fix center clock position</string>
+
+    <!-- Switch styles -->
+    <string name="switch_style_title">Switch style</string>
+    <string name="switch_default">@string/default_string</string>
+    <string name="switch_contained">Contained</string>
+    <string name="switch_telegram" translatable="false">Telegram</string>
+    <string name="switch_md2" translatable="false">Material Design 2</string>
+    <string name="switch_retro" translatable="false">Retro</string>
+    <string name="switch_oos" translatable="false">OxygenOS 11</string>
+
+    <!-- Switch Styles -->
+    <string-array name="switch_style_entries" translatable="false">
+        <item>@string/switch_default</item>
+        <item>@string/switch_contained</item>
+        <item>@string/switch_telegram</item>
+        <item>@string/switch_md2</item>
+        <item>@string/switch_retro</item>
+        <item>@string/switch_oos</item>
+    </string-array>
+
+    <string-array name="switch_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
 </resources>

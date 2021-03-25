@@ -1,5 +1,7 @@
 package com.typhus.romcontrol;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -325,32 +327,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
-                //Enable/Disable Launcher navigation hints
-                if (key.equals("navbar_hide_hint_launcher")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_launcher true && sed -re 's/assist_handles_suppress_on_launcher false/assist_handles_suppress_on_launcher true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_launcher false && sed -re 's/assist_handles_suppress_on_launcher true/assist_handles_suppress_on_launcher false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
                 /*QS Estiamtes warning*/
                 if (key.equals("qs_show_battery_estimate")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
@@ -516,26 +492,10 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
-                //Hide gestures navigation pill on/off
-                if (key.equals("navbar_hide_pill")){
-                    int geston = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
-                    if(geston!=2){
-                        AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
-                        mNoGesturesBuilder.setTitle(R.string.requiresgestures);
-                        mNoGesturesBuilder.setMessage(R.string.requiresgesturessummary);
-                        mNoGesturesBuilder.setPositiveButton(android.R.string.ok,null);
-                        mNoGesturesBuilder.create();
-                        AlertDialog mNoGestures = mNoGesturesBuilder.create();
-                        mNoGestures.show();
-                        TypedValue typedValue = new TypedValue();
-                        Resources.Theme theme = c.getTheme();
-                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                        Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
-                        ok.setTextColor(typedValue.data);
-                        mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                        s.setChecked(false);
-                        s.setEnabled(false);
-                        Command c0 = new Command(0, "cmd overlay disable com.android.systemui.overlay.hidepill");
+                //Enable/Disable Launcher navigation hints
+                if (key.equals("navbar_hide_hint_launcher")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_launcher true && sed -re 's/assist_handles_suppress_on_launcher false/assist_handles_suppress_on_launcher true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c0);
                         } catch (IOException e) {
@@ -545,9 +505,8 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         } catch (RootDeniedException e) {
                             e.printStackTrace();
                         }
-                    }
-                    if (s.isChecked() & geston==2) {
-                        Command c1 = new Command(1, "cmd overlay enable com.android.systemui.overlay.hidepill");
+                    } else {
+                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_launcher false && sed -re 's/assist_handles_suppress_on_launcher true/assist_handles_suppress_on_launcher false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
                         try {
                             RootTools.getShell(true).add(c1);
                         } catch (IOException e) {
@@ -557,167 +516,304 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         } catch (RootDeniedException e) {
                             e.printStackTrace();
                         }
-                    } else {
-                        Command c2 = new Command(2, "cmd overlay disable com.android.systemui.overlay.hidepill");
-                        try {
-                            RootTools.getShell(true).add(c2);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
+                    }
+                }
+                //Hide gestures navigation pill on/off
+                if (key.equals("navbar_hide_pill")) {
+                    int removenbon = Settings.System.getInt(c.getContentResolver(), "remove_navbar", 0);
+                    if (removenbon != 1) {
+                        int geston = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
+                        if (geston != 2) {
+                            AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
+                            mNoGesturesBuilder.setTitle(R.string.requiresgestures);
+                            mNoGesturesBuilder.setMessage(R.string.requiresgesturessummary);
+                            mNoGesturesBuilder.setPositiveButton(android.R.string.ok, null);
+                            mNoGesturesBuilder.create();
+                            AlertDialog mNoGestures = mNoGesturesBuilder.create();
+                            mNoGestures.show();
+                            TypedValue typedValue = new TypedValue();
+                            Resources.Theme theme = c.getTheme();
+                            theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                            Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
+                            ok.setTextColor(typedValue.data);
+                            mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                            s.setChecked(false);
+                            s.setEnabled(false);
+                            Command c0 = new Command(0, "cmd overlay disable com.android.systemui.overlay.hidepill");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
                         }
+                        if (s.isChecked() & geston == 2) {
+                            Command c1 = new Command(1, "cmd overlay enable com.android.systemui.overlay.hidepill");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c2 = new Command(2, "cmd overlay disable com.android.systemui.overlay.hidepill");
+                            try {
+                                RootTools.getShell(true).add(c2);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } else {
+                        s.setChecked(false);
+                        s.setEnabled(false);
                     }
                 }
                 //Reduce keyboard space on gestures navigation on/off
-                if (key.equals("gestures_reduce_keyboard")){
-                    int geston = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
-                    if(geston!=2){
-                        AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
-                        mNoGesturesBuilder.setTitle(R.string.requiresgestures);
-                        mNoGesturesBuilder.setMessage(R.string.requiresgesturessummary);
-                        mNoGesturesBuilder.setPositiveButton(android.R.string.ok,null);
-                        mNoGesturesBuilder.create();
-                        AlertDialog mNoGestures = mNoGesturesBuilder.create();
-                        mNoGestures.show();
-                        TypedValue typedValue = new TypedValue();
-                        Resources.Theme theme = c.getTheme();
-                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                        Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
-                        ok.setTextColor(typedValue.data);
-                        mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                if (key.equals("gestures_reduce_keyboard")) {
+                    int removenbon = Settings.System.getInt(c.getContentResolver(), "remove_navbar", 0);
+                    if (removenbon != 1) {
+                        int geston = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
+                        if (geston != 2) {
+                            AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
+                            mNoGesturesBuilder.setTitle(R.string.requiresgestures);
+                            mNoGesturesBuilder.setMessage(R.string.requiresgesturessummary);
+                            mNoGesturesBuilder.setPositiveButton(android.R.string.ok, null);
+                            mNoGesturesBuilder.create();
+                            AlertDialog mNoGestures = mNoGesturesBuilder.create();
+                            mNoGestures.show();
+                            TypedValue typedValue = new TypedValue();
+                            Resources.Theme theme = c.getTheme();
+                            theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                            Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
+                            ok.setTextColor(typedValue.data);
+                            mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                            s.setChecked(false);
+                            s.setEnabled(false);
+                            Command c0 = new Command(0, "cmd overlay disable com.android.overlay.reducekeyboard");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (s.isChecked() & geston == 2) {
+                            Command c1 = new Command(1, "cmd overlay enable com.android.overlay.reducekeyboard");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c2 = new Command(2, "cmd overlay disable com.android.overlay.reducekeyboard");
+                            try {
+                                RootTools.getShell(true).add(c2);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } else {
                         s.setChecked(false);
                         s.setEnabled(false);
-                        Command c0 = new Command(0, "cmd overlay disable com.android.overlay.reducekeyboard");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (s.isChecked() & geston==2) {
-                        Command c1 = new Command(1, "cmd overlay enable com.android.overlay.reducekeyboard");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c2 = new Command(2, "cmd overlay disable com.android.overlay.reducekeyboard");
-                        try {
-                            RootTools.getShell(true).add(c2);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
-                //Lock screen camera shortcut on/off
-                if (key.equals("lockscreen_camera_shortcut")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "cmd overlay enable com.android.theme.keyguard.cshortcut");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "cmd overlay disable com.android.theme.keyguard.cshortcut");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
-                if (key.equals("fix_sb_left_paddding")){
-                    int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
-                    if(reduceon==0){
-                        s.setChecked(false);
-                        s.setEnabled(false);
-                        Command c0 = new Command(0, "cmd overlay disable com.android.systemui.sb_height_small");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
+                    //Lock screen camera shortcut on/off
+                    if (key.equals("lockscreen_camera_shortcut")) {
+                        if (s.isChecked()) {
+                            Command c0 = new Command(0, "cmd overlay enable com.android.theme.keyguard.cshortcut");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c1 = new Command(1, "cmd overlay disable com.android.theme.keyguard.cshortcut");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                    if (s.isChecked() & reduceon!=0) {
-                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.sb_height_small");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
+                    //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
+                    if (key.equals("fix_sb_left_paddding")) {
+                        int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
+                        if (reduceon == 0) {
+                            s.setChecked(false);
+                            s.setEnabled(false);
+                            Command c0 = new Command(0, "cmd overlay disable com.android.systemui.sb_height_small");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    } else {
-                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.sb_height_small");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                //More notifications icons on/off
-                if (key.equals("more_notif")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.overlay.mnotif");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.overlay.mnotif");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
+                        if (s.isChecked() & reduceon != 0) {
+                            Command c0 = new Command(0, "cmd overlay enable com.android.systemui.sb_height_small");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c1 = new Command(1, "cmd overlay disable com.android.systemui.sb_height_small");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                }
-                break;
+                    //Remove navigation bar
+                    if (key.equals("remove_navbar")) {
+                        if (s.isChecked()) {
+                            AlertDialog.Builder mNavBarWarnBuilder = new AlertDialog.Builder(c);
+                            mNavBarWarnBuilder.setTitle(R.string.attention);
+                            mNavBarWarnBuilder.setMessage(R.string.remove_navbar_warning);
+                            mNavBarWarnBuilder.setPositiveButton(android.R.string.ok, null);
+                            mNavBarWarnBuilder.create();
+                            AlertDialog mNavBarWarn = mNavBarWarnBuilder.create();
+                            mNavBarWarn.show();
+                            TypedValue typedValue = new TypedValue();
+                            Resources.Theme theme = c.getTheme();
+                            theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                            Button ok = mNavBarWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                            ok.setTextColor(typedValue.data);
+                            mNavBarWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                            Command c0 = new Command(0, "sleep 10 && cmd overlay enable com.android.overlay.removenavbar && cmd overlay disable com.android.overlay.reducekeyboard && cmd overlay disable com.android.systemui.overlay.hidepill");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c1 = new Command(1, "cmd overlay disable com.android.overlay.removenavbar");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    //More notifications icons on/off
+                    if (key.equals("more_notif")) {
+                        if (s.isChecked()) {
+                            Command c0 = new Command(0, "cmd overlay enable com.android.systemui.overlay.mnotif");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c1 = new Command(1, "cmd overlay disable com.android.systemui.overlay.mnotif");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    //Center clock fix on/off
+                    if (key.equals("center_clock_fix")) {
+                        int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
+                        int cclockon = Settings.System.getInt(c.getContentResolver(), "statusbar_clock_style", 0);
+                        //If status bar height is small or medium, we don't need this fix
+                        if (reduceon != 0) {
+                            s.setChecked(false);
+                            s.setEnabled(false);
+                            Command c0 = new Command(0, "cmd overlay disable com.android.systemui.cclock_fix");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (s.isChecked() & reduceon == 0 & cclockon == 1) {
+                            Command c0 = new Command(0, "cmd overlay enable com.android.systemui.cclock_fix");
+                            try {
+                                RootTools.getShell(true).add(c0);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_fix");
+                            try {
+                                RootTools.getShell(true).add(c1);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (TimeoutException e) {
+                                e.printStackTrace();
+                            } catch (RootDeniedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    break;
             case "CheckBoxPreference":
                 CheckBoxPreference cbp = (CheckBoxPreference) pf.findPreference(key);
                 cbp.setChecked(sharedPreferences.getBoolean(key, true));
@@ -735,7 +831,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     if (key.equals("status_bar_height")){
                         switch(mValueIndex) {
                             case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.sb_height_small && cmd overlay disable com.android.sb_height_medium");
+                                Command c0 = new Command(0, "cmd overlay disable com.android.sb_height_small && cmd overlay disable com.android.sb_height_medium && cmd overlay disable com.android.systemui.sb_height_small");
                                 try {
                                     RootTools.getShell(true).add(c0);
                                 } catch (IOException e) {
@@ -747,7 +843,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 1:
-                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.sb_height_small");
+                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_fix && cmd overlay enable-exclusive --category com.android.sb_height_small");
                                 try {
                                     RootTools.getShell(true).add(c1);
                                 } catch (IOException e) {
@@ -759,7 +855,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 2:
-                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.sb_height_medium");
+                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.cclock_fix && cmd overlay enable-exclusive --category com.android.sb_height_medium");
                                 try {
                                     RootTools.getShell(true).add(c2);
                                 } catch (IOException e) {
@@ -771,7 +867,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             default:
-                                Command cd = new Command(3, "cmd overlay disable com.android.sb_height_small && cmd overlay disable com.android.sb_height_medium");
+                                Command cd = new Command(3, "cmd overlay disable com.android.sb_height_small && cmd overlay disable com.android.sb_height_medium && cmd overlay disable com.android.systemui.sb_height_small");
                                 try {
                                     RootTools.getShell(true).add(cd);
                                 } catch (IOException e) {
@@ -1338,6 +1434,60 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         ok.setTextColor(typedValue.data);
                         mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                     }
+                    //QS Footer Drag Handle options begin
+                    if (key.equals("qs_fdh")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.systemui.fdh.overlay && cmd overlay disable com.android.systemui.hfdh.overlay");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.hfdh.overlay && cmd overlay enable com.android.systemui.fdh.overlay");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.fdh.overlay && cmd overlay enable com.android.systemui.hfdh.overlay");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(3, "cmd overlay disable com.android.systemui.fdh.overlay && cmd overlay disable com.android.systemui.hfdh.overlay");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //QS Footer Drag Handle options end
                     //Rounded corners options begin
                     if (key.equals("rounded_corners")){
                         switch(mValueIndex) {
@@ -2089,6 +2239,96 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //Blur maximum radius level options end
+                    //Blur maximum radius level  begin
+                    if (key.equals("switch_style")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.system.switch.contained && cmd overlay disable com.android.system.switch.telegram && cmd overlay disable com.android.system.switch.md2 && cmd overlay disable com.android.system.switch.retro && cmd overlay disable com.android.system.switch.oos");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.system.switch.contained");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.system.switch.telegram");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.system.switch.md2");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 4:
+                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.system.switch.retro");
+                                try {
+                                    RootTools.getShell(true).add(c4);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 5:
+                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.system.switch.oos");
+                                try {
+                                    RootTools.getShell(true).add(c5);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(6, "cmd overlay disable com.android.system.switch.contained && cmd overlay disable com.android.system.switch.telegram && cmd overlay disable com.android.system.switch.md2 && cmd overlay disable com.android.system.switch.retro && cmd overlay disable com.android.system.switch.oos");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //Switch styles options end
                 } else {
                     l.setSummary("");
                 }

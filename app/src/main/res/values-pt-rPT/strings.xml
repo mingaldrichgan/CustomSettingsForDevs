@@ -1341,4 +1341,20 @@
     <string name="status_bar_quick_qs_pulldown">Quando expandir</string>
     <string name="quick_pulldown_none">Nunca</string>
 
+    <!-- Remove Nav bar -->
+    <string name="remove_navbar">Remover a barra de navegação</string>
+    <string name="remove_navbar_warning">Esta opção remove completamente a barra de navegação em todos os modos. A navegação por gestos padrão continuará a funcionar, pelo que, se desejar utilizar um modo de navegação por gestos de terceiros, é necessário ativar o modo de navegação de 2 ou 3 botões nas Definições.</string>
+
+    <!-- QS Footer Drag Handle Options -->
+    <string name="qs_fdh_title">Alça de arrastamento do rodapé</string>
+    <string name="qs_fdh_colored">Baseada na cor de destaque</string>
+    <string name="qs_fdh_hidden">Escondida</string>
+
+    <!-- Fix center clock padding -->
+    <string name="fix_center_clock_padding">Corrigir a posição do relógio ao centro</string>
+
+    <!-- Switch styles -->
+    <string name="switch_style_title">Estilo dos botões de switch</string>
+    <string name="switch_contained">Contido</string>
+
 </resources>

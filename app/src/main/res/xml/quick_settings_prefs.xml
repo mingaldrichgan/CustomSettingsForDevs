@@ -99,6 +99,12 @@
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/qs_tile_title_visibility_title" />
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/qs_fdh_entries"
+            android:entryValues="@array/qs_fdh_values"
+            android:key="qs_fdh"
+            android:title="@string/qs_fdh_title" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/status_bar_quick_qs_pulldown_title">
         <com.typhus.romcontrol.prefs.MyListPreference

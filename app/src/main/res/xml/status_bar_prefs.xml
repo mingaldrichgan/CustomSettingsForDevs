@@ -40,6 +40,11 @@
                     android:key="statusbar_clock_style"
                     android:title="@string/status_bar_clock_style_title"
                     android:dependency="statusbar_clock" />
+                <SwitchPreference
+                    android:defaultValue="false"
+                    android:key="center_clock_fix"
+                    android:title="@string/fix_center_clock_padding"
+                    android:dependency="statusbar_clock" />
                 <com.typhus.romcontrol.prefs.MyListPreference
                     android:defaultValue="0"
                     android:entries="@array/status_bar_am_pm_entries"
