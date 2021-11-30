@@ -163,7 +163,7 @@
     <string name="traffic_category_summary">Indicador de la velocidad de la red</string>
     <string name="traffic_disabled">Desactivada</string>
     <string name="traffic_expanded_statusbar">Barra de estado expandida</string>
-    <string name="traffic_statusbar">Barra de estado y expandida</string>
+    <string name="traffic_statusbar">Barra de estado</string>
     <!-- Buttons backlight timeout -->
     <string name="backlight_timeout_title">Tiempo de espera de la iluminación de los botones</string>
     <string name="backlight_timeout_on">Siempre encendido</string>
@@ -653,6 +653,7 @@
     <string name="status_bar_battery_style_text">Texto</string>
     <string name="status_bar_battery_style_hidden">Oculto</string>
     <string name="status_bar_battery_style_big_circle">Círculo grande</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Círculo (punteado) grande</string>
     <string name="status_bar_battery_style_filled_circle">Círculo (Lleno)</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>

@@ -2,30 +2,13 @@
 <PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="@string/blur_quicksettings_title">
+    <PreferenceCategory android:title="@string/theme_customization_font_title">
         <SwitchPreference
-            android:defaultValue="true"
-            android:key="qs_blur"
+            android:defaultValue="false"
+            android:key="gsans_override"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
-            android:title="@string/blur_quicksettings_title" />
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="5"
-            android:entries="@array/blur_max_radius_entries"
-            android:entryValues="@array/blur_max_radius_values"
-            android:key="blur_max_radius"
-            android:title="@string/qs_blur_intensity_title"
-            android:dependency="qs_blur" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/dt_styles">
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/dt_style_entries"
-            android:entryValues="@array/dt_style_values"
-            android:key="dt_style"
-            android:title="@string/dt_styles" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/theme_customization_font_title">
+            android:title="@string/gsans_override_title" />
         <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
             android:entries="@array/fonts_entries"
@@ -33,20 +16,20 @@
             android:key="font_style"
             android:title="@string/theme_customization_font_title" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/corners_title">
+    <PreferenceCategory android:title="@string/icons_style_title">
         <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
-            android:entries="@array/rounded_corners_entries"
-            android:entryValues="@array/rounded_corners_values"
-            android:key="rounded_corners"
-            android:title="@string/corners_title" />
+            android:entries="@array/icons_style_entries"
+            android:entryValues="@array/icons_style_values"
+            android:key="icons_style"
+            android:title="@string/icons_style_title" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/switch_style_title">
+    <PreferenceCategory android:title="@string/icon_shapes_title">
         <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
-            android:entries="@array/switch_style_entries"
-            android:entryValues="@array/switch_style_values"
-            android:key="switch_style"
-            android:title="@string/switch_style_title" />
+            android:entries="@array/icon_shapes_entries"
+            android:entryValues="@array/icon_shapes_values"
+            android:key="icon_shapes"
+            android:title="@string/icon_shapes_title" />
     </PreferenceCategory>
 </PreferenceScreen>

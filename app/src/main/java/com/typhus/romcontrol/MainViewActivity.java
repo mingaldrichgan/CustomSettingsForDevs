@@ -96,11 +96,11 @@ public class MainViewActivity extends AppCompatActivity
         * 8. You need to add same items to the int array in NavigationDrawerFragment, which has the same method*/
         String[] mTitles = getResources().getStringArray(R.array.nav_drawer_items);
         int[] mIcons = {R.drawable.ic_settings_statusbar,
-                R.drawable.ic_settings_lockscreen,
                 R.drawable.ic_settings_quicksettings,
-                R.drawable.ic_settings_themes,
                 R.drawable.ic_settings_miscellaneous,
+                R.drawable.ic_settings_themes,
                 R.drawable.ic_settings_navigation,
+                R.drawable.ic_settings_lockscreen,
                 R.drawable.ic_settings_app_theme};
         for (int i = 0; i < mTitles.length && i < mIcons.length; i++) {
             com.typhus.romcontrol.NavItem current = new com.typhus.romcontrol.NavItem();
@@ -123,19 +123,19 @@ public class MainViewActivity extends AppCompatActivity
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new StatusBarPrefsFragment()).commitAllowingStateLoss();
                 break;
             case 1:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new LockScreenPrefsFragment()).commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new QuickSettingsPrefsFragment()).commitAllowingStateLoss();
                 break;
             case 2:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new QuickSettingsPrefsFragment()).commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new FrameworksGeneralFragment()).commitAllowingStateLoss();
                 break;
             case 3:
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new ThemingFragment()).commitAllowingStateLoss();
                 break;
             case 4:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new FrameworksGeneralFragment()).commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new NavBarPrefsFragment()).commitAllowingStateLoss();
                 break;
             case 5:
-                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new NavBarPrefsFragment()).commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new LockScreenPrefsFragment()).commitAllowingStateLoss();
                 break;
             case 6:
                 showThemeChooserDialog();
@@ -243,6 +243,8 @@ public class MainViewActivity extends AppCompatActivity
             rebootFabs[i].hide();
             rebootFabs[i].setHideAnimation(ActionButton.Animations.ROLL_TO_RIGHT);
             rebootFabs[i].setShowAnimation(ActionButton.Animations.ROLL_FROM_RIGHT);
+
+
         }
     }
 

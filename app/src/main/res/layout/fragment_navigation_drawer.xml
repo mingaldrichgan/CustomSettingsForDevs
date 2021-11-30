@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="168dp"
         android:background="?attr/nav_drawer_header"
+        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTintMode="add"
         android:id="@+id/navigationHeader"
         >
         <RelativeLayout

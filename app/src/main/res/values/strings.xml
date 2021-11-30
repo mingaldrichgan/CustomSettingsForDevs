@@ -5,11 +5,11 @@
     <string name="action_settings" tools:ignore="MissingTranslation">Settings</string>
     <string-array name="nav_drawer_items">
         <item>@string/statusbar_title</item>
-        <item>@string/lockscreen_title</item>
         <item>@string/quicksettings_title</item>
-        <item>@string/themes_title</item>
         <item>@string/misc_title</item>
+        <item>@string/themes_title</item>
         <item>@string/nav_bar_tuner_title</item>
+        <item>@string/lockscreen_title</item>
         <item>@string/theme_chooser_dialog_title</item>
     </string-array>
     <!--<string-array name="clock_position_entries">
@@ -73,6 +73,8 @@
 
     <string name="ambient_visualizer_summary">Shows white visualization bars on ambient display unless custom color is selected</string>
     <string name="ambient_visualizer_title">Ambient visualizer</string>
+
+    <string name="customize_visualizer">Customize visualizer</string>
 
     <!-- App Title -->
     <string name="evolution_settings_title">The Evolver</string>
@@ -259,8 +261,9 @@
     <string name="traffic_category">Network traffic</string>
     <string name="traffic_category_summary">Network speed indicator</string>
     <string name="traffic_disabled">Disabled</string>
-    <string name="traffic_expanded_statusbar">QS header only</string>
-    <string name="traffic_statusbar">Statusbar &amp; QS header</string>
+    <string name="traffic_expanded_statusbar">QS Header only</string>
+    <string name="traffic_statusbar">Statusbar and QS Header</string>
+    <string name="nettraf_font_size">Network traffic font size</string>
 
     <!-- Buttons backlight timeout -->
     <string name="backlight_timeout_title">Buttons backlight timeout</string>
@@ -812,6 +815,7 @@
     <string name="status_bar_battery_style_text">Text</string>
     <string name="status_bar_battery_style_hidden">Hidden</string>
     <string name="status_bar_battery_style_big_circle">Big circle</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Big (Dotted) circle</string>
     <string name="status_bar_battery_style_filled_circle">Circle (Filled)</string>
 
     <!-- Status bar - Battery percentage -->
@@ -1433,17 +1437,21 @@
         <item>@string/quick_pulldown_off</item>
         <item>@string/quick_pulldown_right</item>
         <item>@string/quick_pulldown_left</item>
+        <!--
         <item>@string/quick_pulldown_always</item>
+        -->
     </string-array>
 
     <string-array name="quick_pulldown_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <!--
         <item>3</item>
+        -->
     </string-array>
 
-    <!--- Buttons backlight timeout -->
+<!--- Buttons backlight timeout -->
     <string-array name="backlight_timeout_entries">
         <item>@string/backlight_timeout_on</item>
         <item>@string/backlight_timeout_3s</item>
@@ -1613,7 +1621,6 @@
         <item>EEE MMMM dd</item>
         <item>EEEE dd/MM</item>
         <item>EEEE MM/dd</item>
-        <item>@string/clock_date_format_custom</item>
     </string-array>
 
     <string-array name="clock_date_position_entries" translatable="false">
@@ -1856,6 +1863,8 @@
         <item>@string/status_bar_battery_style_filled_circle</item>
         <item>@string/status_bar_battery_style_text</item>
         <item>@string/status_bar_battery_style_hidden</item>
+        <item>@string/status_bar_battery_style_big_circle</item>
+        <item>@string/status_bar_battery_style_big_dotted_circle</item>
     </string-array>
 
     <string-array name="status_bar_battery_style_values" translatable="false">
@@ -1865,6 +1874,8 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 
     <!-- Battery mode -->
@@ -2177,23 +2188,19 @@
 
     <!-- Network Traffic Type -->
     <string-array name="show_network_traffic_type_entries" translatable="false">
+        <item>@string/show_network_traffic_combined</item>
+        <item>@string/show_network_traffic_dynamic</item>
         <item>@string/show_network_traffic_all</item>
         <item>@string/show_network_traffic_up</item>
         <item>@string/show_network_traffic_down</item>
-        <!-- Removed on Adnroid 11
-        <item>@string/show_network_traffic_combined</item>
-        -->
-        <item>@string/show_network_traffic_dynamic</item>
     </string-array>
 
     <string-array name="show_network_traffic_type_values" translatable="false">
+        <item>3</item>
+        <item>4</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <item>3</item>
-        <!--
-        <item>4</item>
-        -->
     </string-array>
 
     <!-- Network traffic location -->
@@ -3000,33 +3007,14 @@
 
     <string-array name="fonts_entries" translatable="false">
         <item>@string/default_string</item>
-        <item>Aclonica</item>
-        <item>Aileron</item>
-        <item>Amarante</item>
-        <item>Anaheim</item>
-        <item>Arbutus</item>
-        <item>Arvolato</item>
-        <item>Bariol</item>
-        <item>Cagliostro</item>
-        <item>Circular</item>
-        <item>Comic Sans</item>
-        <item>Coolstory</item>
-        <item>Google Sans Bold</item>
-        <item>Inter</item>
-        <item>Kai</item>
-        <item>LG Smart Gothic</item>
-        <item>Linotte</item>
-        <item>Notoserif</item>
-        <item>Rosemary</item>
-        <item>Rubik</item>
-        <item>Sam</item>
-        <item>Samsung One</item>
-        <item>Slate For One Plus</item>
-        <item>Sony Sketch</item>
-        <item>Surfer</item>
-        <item>Tinkerbell</item>
-        <item>Urbanist</item>
-        <item>Victor</item>
+        <item>Manrope</item>
+        <item>Noto Sans</item>
+        <item>Noto Serif / Source Sans Pro</item>
+        <item>Recursive Casual</item>
+        <item>Recursive Linear</item>
+        <item>Roboto</item>
+        <item>Source Sans</item>
+        <item>Source Serif</item>
     </string-array>
 
     <string-array name="fonts_values" translatable="false">
@@ -3039,25 +3027,6 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
     </string-array>
 
     <!-- Adaptive Sound -->
@@ -3212,7 +3181,8 @@
     </string-array>
 
     <!-- Fix center clock padding -->
-    <string name="fix_center_clock_padding">Fix center clock position</string>
+    <string name="fix_center_clock_padding">Move center clock to the left</string>
+    <string name="fix_center_clock_padding_right">Move center clock to the right</string>
 
     <!-- Switch styles -->
     <string name="switch_style_title">Switch style</string>
@@ -3241,5 +3211,97 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+
+    <!-- Custom themed icons -->
+    <string name="custom_themed_icons_title">Custom themed icons</string>
+    <string name="custom_themed_icons_off">Custom icons disabled</string>
+    <string name="custom_themed_icons_on">Custom icons enabled</string>
+    <string name="custom_themed_icons">Enable more themed icons on launcher</string>
+    <string name="custom_themed_icons_warning">Requires that themed icons option is disabled and enabled again on Wallpaper &amp; style</string>
+
+    <!-- Icon Styles -->
+    <string name="icons_style_title">Icons Style</string>
+
+    <string-array name="icons_style_entries" translatable="false">
+        <item>@string/switch_default</item>
+        <item>Circular</item>
+        <item>Filled</item>
+        <item>Kai</item>
+        <item>Rounded</item>
+        <item>Sam</item>
+        <item>Victor</item>
+    </string-array>
+
+    <string-array name="icons_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+
+    <!-- Icon Shapes -->
+    <string name="icon_shapes_title">Icon Shapes</string>
+
+    <string name="icon_shapes_warning">Requires that themed icons option is disabled on Wallpaper &amp; style. After choosing one of these options, you may enable it again.</string>
+
+    <string-array name="icon_shapes_entries" translatable="false">
+        <item>@string/switch_default</item>
+        <item>Cylinder</item>
+        <item>Heart</item>
+        <item>Hexagon</item>
+        <item>Mallow</item>
+        <item>Pebble</item>
+        <item>Roundedhexagon</item>
+        <item>Roundedrect</item>
+        <item>Square</item>
+        <item>Squircle</item>
+        <item>Taperedrect</item>
+        <item>Teardrop</item>
+        <item>Vessel</item>
+    </string-array>
+
+    <string-array name="icon_shapes_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <!-- Wifi, cell tiles -->
+    <string name="wifi_cell_title">Internet Tile</string>
+    <string name="wifi_cell_on">Use Wifi and Data separate Tiles</string>
+    <string name="wifi_cell_off">Use single Internet Tile</string>
+
+    <!-- Google Sans system wide override option -->
+    <string name="gsans_override_title">Force Google Sans font system wide</string>
+
+    <!-- Combined signal icons option -->
+    <string name="combine_signal_icons_title">Enable combined signal icons</string>
+
+    <!-- Dual tone battery colors -->
+    <string name="dual_tone_battery_title">Enable dual tone battery meter</string>
+    <string name="dual_tone_battery_on_summary">On (only works with portrait icon)</string>
+
+    <!-- Unread messages number -->
+    <string name="unread_messages_title">Show number of unread messages</string>
+
+    <!-- Lock screen left shortcut -->
+    <string name="show_left_shortcut">Show left shortcut on lock screen</string>
+
+    <!-- Game overlay -->
+    <string name="game_overlay_title">Enable Game overlay feature</string>
 
 </resources>

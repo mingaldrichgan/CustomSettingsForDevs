@@ -666,6 +666,7 @@
     <string name="status_bar_battery_style_text">Texte</string>
     <string name="status_bar_battery_style_hidden">Cachée</string>
     <string name="status_bar_battery_style_big_circle">Grand cercle</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Grand cercle (Pointillé)</string>
     <string name="status_bar_battery_style_filled_circle">Cercle (Rempli)</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Pourcentage de la batterie</string>

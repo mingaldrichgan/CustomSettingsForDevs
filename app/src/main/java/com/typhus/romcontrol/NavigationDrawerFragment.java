@@ -132,11 +132,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         List<NavItem> items = new ArrayList<>();
         String[] mTitles = getResources().getStringArray(R.array.nav_drawer_items);
         int[] mIcons = {R.drawable.ic_settings_statusbar,
-                R.drawable.ic_settings_lockscreen,
                 R.drawable.ic_settings_quicksettings,
-                R.drawable.ic_settings_themes,
                 R.drawable.ic_settings_miscellaneous,
+                R.drawable.ic_settings_themes,
                 R.drawable.ic_settings_navigation,
+                R.drawable.ic_settings_lockscreen,
                 R.drawable.ic_settings_app_theme};
         for (int i=0; i<mTitles.length && i<mIcons.length; i++){
             NavItem current = new NavItem();

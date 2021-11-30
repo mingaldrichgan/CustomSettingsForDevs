@@ -671,6 +671,7 @@
     <string name="status_bar_battery_style_text">Testo</string>
     <string name="status_bar_battery_style_hidden">Nascosto</string>
     <string name="status_bar_battery_style_big_circle">Cerchio grande</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Cerchio tratteggiato grande</string>
     <string name="status_bar_battery_style_filled_circle">Cerchio (riempito)</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Percentuale batteria</string>

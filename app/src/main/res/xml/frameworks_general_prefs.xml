@@ -18,12 +18,20 @@
             android:summaryOn="@string/switch_bar_on"
             android:title="SystemUI Tuner" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/privacy_indicators_title">
+    <PreferenceCategory android:title="@string/custom_themed_icons_title">
         <SwitchPreference
             android:defaultValue="false"
-            android:key="privacy_indicators"
+            android:key="themed_icons"
+            android:summaryOff="@string/custom_themed_icons_off"
+            android:summaryOn="@string/custom_themed_icons_on"
+            android:title="@string/custom_themed_icons" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/game_overlay_title">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="game_overlay"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
-            android:title="@string/privacy_indicators_title" />
+            android:title="@string/game_overlay_title" />
     </PreferenceCategory>
 </PreferenceScreen>

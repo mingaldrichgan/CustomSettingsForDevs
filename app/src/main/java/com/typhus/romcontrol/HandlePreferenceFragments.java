@@ -301,6 +301,223 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                //Game overlay on/off
+                if (key.equals("game_overlay")){
+                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                    mSysUIWarnBuilder.setTitle(R.string.attention);
+                    mSysUIWarnBuilder.setMessage(R.string.restart_required);
+                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                    mSysUIWarn.show();
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = c.getTheme();
+                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                    ok.setTextColor(typedValue.data);
+                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cp /data/adb/modules/AddonFeaturesForPixel/data/productz/etc/sysconfig/game_overlay.xml /data/adb/modules/AddonFeaturesForPixel/system/product/etc/sysconfig/");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "rm -rf /data/adb/modules/AddonFeaturesForPixel/system/product/etc/sysconfig/game_overlay.xml");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Google Sans override on/off
+                if (key.equals("gsans_override")){
+                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                    mSysUIWarnBuilder.setTitle(R.string.attention);
+                    mSysUIWarnBuilder.setMessage(R.string.restart_required);
+                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                    mSysUIWarn.show();
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = c.getTheme();
+                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                    ok.setTextColor(typedValue.data);
+                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cp /data/adb/modules/AddonFeaturesForPixel/data/fontz/GSans/*.ttf /data/adb/modules/AddonFeaturesForPixel/system/fonts/");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "rm -rf /data/adb/modules/AddonFeaturesForPixel/system/fonts/*.ttf");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                /*Themed custom icons*/
+                if (key.equals("themed_icons")){
+                    if (s.isChecked()) {
+                        /* This isn't needed after all...
+                        AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                        mSysUIWarnBuilder.setTitle(R.string.attention);
+                        mSysUIWarnBuilder.setMessage(R.string.custom_themed_icons_warning);
+                        mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                        AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                        mSysUIWarn.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);*/
+                        Command c0 = new Command(0, "cmd overlay enable com.romcontrolicons.nexuslauncher");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.romcontrolicons.nexuslauncher");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                /*Enable/Disable combined signal icons*/
+                if (key.equals("combine_signal_icons")){
+                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                    mSysUIWarnBuilder.setTitle(R.string.attention);
+                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                    mSysUIWarn.show();
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = c.getTheme();
+                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                    ok.setTextColor(typedValue.data);
+                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.combinesignal");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.combinesignal");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                /*Enable/Disable show number of unread messages*/
+                if (key.equals("show_unread_messages_number")){
+                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
+                    mSysUIWarnBuilder.setTitle(R.string.attention);
+                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
+                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
+                    mSysUIWarn.show();
+                    TypedValue typedValue = new TypedValue();
+                    Resources.Theme theme = c.getTheme();
+                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                    ok.setTextColor(typedValue.data);
+                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.shownumber");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.shownumber");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                /*Enable/Disable dual tone battery meter*/
+                if (key.equals("dual_tone_battery")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.dualtonebattery");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.dualtonebattery");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 //Enable/Disable Tuner
                 if (key.equals("sysui_tuner")){
                     if (s.isChecked()) {
@@ -342,130 +559,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     ok.setTextColor(typedValue.data);
                     mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                 }
-                /*QS New Tile colors warning*/
-                if (key.equals("qs_panel_bg_use_new_tint")){
-                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
-                    mSysUIWarnBuilder.setTitle(R.string.attention);
-                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
-                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
-                    mSysUIWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                }
-                /*QS Disco Dingo the QS warning*/
-                if (key.equals("qs_tiles_bg_disco")){
-                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
-                    mSysUIWarnBuilder.setTitle(R.string.attention);
-                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
-                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
-                    mSysUIWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                }
-                /*QS Hide tile labels warning*/
-                if (key.equals("qs_tile_title_visibility")){
-                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
-                    mSysUIWarnBuilder.setTitle(R.string.attention);
-                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
-                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
-                    mSysUIWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                }
-                /*Clock data and alarm info switch warning*/
-                if (key.equals("clock_show_status_area")){
-                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
-                    mSysUIWarnBuilder.setTitle(R.string.attention);
-                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
-                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
-                    mSysUIWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                }
-                //Enable/Disable Privacy indicators
-                if (key.equals("privacy_indicators")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put privacy permissions_hub_enabled true && sed -re 's/permissions_hub_enabled false/permissions_hub_enabled true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "device_config put privacy permissions_hub_enabled false && sed -re 's/permissions_hub_enabled true/permissions_hub_enabled false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                //Blur on/off Android 11
-                if (key.equals("qs_blur")){
-                    AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
-                    mSysUIWarnBuilder.setTitle(R.string.attention);
-                    mSysUIWarnBuilder.setMessage(R.string.restartui_required);
-                    mSysUIWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog mSysUIWarn = mSysUIWarnBuilder.create();
-                    mSysUIWarn.show();
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = c.getTheme();
-                    theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                    Button ok = mSysUIWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                    ok.setTextColor(typedValue.data);
-                    mSysUIWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "resetprop ro.surface_flinger.supports_background_blur 1 && sed -re 's/supports_background_blur 0/supports_background_blur 1 \\&\\& killall surfaceflinger/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "resetprop ro.surface_flinger.supports_background_blur 0 && sed -re 's/supports_background_blur 1 \\&\\& killall surfaceflinger/supports_background_blur 0/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
                 //Adaptive Sound Service on/off
                 if (key.equals("adaptive_sound")){
                     if (s.isChecked()) {
@@ -490,92 +583,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         } catch (RootDeniedException e) {
                             e.printStackTrace();
                         }
-                    }
-                }
-                //Enable/Disable Launcher navigation hints
-                if (key.equals("navbar_hide_hint_launcher")){
-                    if (s.isChecked()) {
-                        Command c0 = new Command(0, "device_config put systemui assist_handles_suppress_on_launcher true && sed -re 's/assist_handles_suppress_on_launcher false/assist_handles_suppress_on_launcher true/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c0);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Command c1 = new Command(1, "device_config put systemui assist_handles_suppress_on_launcher false && sed -re 's/assist_handles_suppress_on_launcher true/assist_handles_suppress_on_launcher false/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
-                        try {
-                            RootTools.getShell(true).add(c1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } catch (RootDeniedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                //Hide gestures navigation pill on/off
-                if (key.equals("navbar_hide_pill")) {
-                    int removenbon = Settings.System.getInt(c.getContentResolver(), "remove_navbar", 0);
-                    if (removenbon != 1) {
-                        int geston = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
-                        if (geston != 2) {
-                            AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
-                            mNoGesturesBuilder.setTitle(R.string.requiresgestures);
-                            mNoGesturesBuilder.setMessage(R.string.requiresgesturessummary);
-                            mNoGesturesBuilder.setPositiveButton(android.R.string.ok, null);
-                            mNoGesturesBuilder.create();
-                            AlertDialog mNoGestures = mNoGesturesBuilder.create();
-                            mNoGestures.show();
-                            TypedValue typedValue = new TypedValue();
-                            Resources.Theme theme = c.getTheme();
-                            theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                            Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
-                            ok.setTextColor(typedValue.data);
-                            mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                            s.setChecked(false);
-                            s.setEnabled(false);
-                            Command c0 = new Command(0, "cmd overlay disable com.android.systemui.overlay.hidepill");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        if (s.isChecked() & geston == 2) {
-                            Command c1 = new Command(1, "cmd overlay enable com.android.systemui.overlay.hidepill");
-                            try {
-                                RootTools.getShell(true).add(c1);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Command c2 = new Command(2, "cmd overlay disable com.android.systemui.overlay.hidepill");
-                            try {
-                                RootTools.getShell(true).add(c2);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    } else {
-                        s.setChecked(false);
-                        s.setEnabled(false);
                     }
                 }
                 //Reduce keyboard space on gestures navigation on/off
@@ -638,182 +645,251 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         s.setEnabled(false);
                     }
                 }
-                    //Lock screen camera shortcut on/off
-                    if (key.equals("lockscreen_camera_shortcut")) {
-                        if (s.isChecked()) {
-                            Command c0 = new Command(0, "cmd overlay enable com.android.theme.keyguard.cshortcut");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Command c1 = new Command(1, "cmd overlay disable com.android.theme.keyguard.cshortcut");
-                            try {
-                                RootTools.getShell(true).add(c1);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                //Lock screen camera shortcut on/off
+                if (key.equals("lockscreen_camera_shortcut")) {
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.showcamera");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.showcamera");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
                     }
-                    //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
-                    if (key.equals("fix_sb_left_paddding")) {
-                        int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
-                        if (reduceon == 0) {
-                            s.setChecked(false);
-                            s.setEnabled(false);
-                            Command c0 = new Command(0, "cmd overlay disable com.android.systemui.sb_height_small");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                }
+                //Lock screen left shortcut on/off
+                if (key.equals("lockscreen_left_shortcut")) {
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.showleftshortcut");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
-                        if (s.isChecked() & reduceon != 0) {
-                            Command c0 = new Command(0, "cmd overlay enable com.android.systemui.sb_height_small");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Command c1 = new Command(1, "cmd overlay disable com.android.systemui.sb_height_small");
-                            try {
-                                RootTools.getShell(true).add(c1);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.showleftshortcut");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
                     }
-                    //Remove navigation bar
-                    if (key.equals("remove_navbar")) {
-                        if (s.isChecked()) {
-                            AlertDialog.Builder mNavBarWarnBuilder = new AlertDialog.Builder(c);
-                            mNavBarWarnBuilder.setTitle(R.string.attention);
-                            mNavBarWarnBuilder.setMessage(R.string.remove_navbar_warning);
-                            mNavBarWarnBuilder.setPositiveButton(android.R.string.ok, null);
-                            mNavBarWarnBuilder.create();
-                            AlertDialog mNavBarWarn = mNavBarWarnBuilder.create();
-                            mNavBarWarn.show();
-                            TypedValue typedValue = new TypedValue();
-                            Resources.Theme theme = c.getTheme();
-                            theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                            Button ok = mNavBarWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                            ok.setTextColor(typedValue.data);
-                            mNavBarWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
-                            Command c0 = new Command(0, "sleep 10 && cmd overlay enable com.android.overlay.removenavbar && cmd overlay disable com.android.overlay.reducekeyboard && cmd overlay disable com.android.systemui.overlay.hidepill");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Command c1 = new Command(1, "cmd overlay disable com.android.overlay.removenavbar");
-                            try {
-                                RootTools.getShell(true).add(c1);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                }
+                //Fix left padding if status bar is reduced on Pixel 4 and 5 devices on/off
+                if (key.equals("fix_sb_left_paddding")) {
+                    int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
+                    if (reduceon == 0) {
+                        s.setChecked(false);
+                        s.setEnabled(false);
+                        Command c0 = new Command(0, "cmd overlay disable com.android.systemui.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
                     }
-                    //More notifications icons on/off
-                    if (key.equals("more_notif")) {
-                        if (s.isChecked()) {
-                            Command c0 = new Command(0, "cmd overlay enable com.android.systemui.overlay.mnotif");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Command c1 = new Command(1, "cmd overlay disable com.android.systemui.overlay.mnotif");
-                            try {
-                                RootTools.getShell(true).add(c1);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                    if (s.isChecked() & reduceon != 0) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.sb_height_small");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
                     }
-                    //Center clock fix on/off
-                    if (key.equals("center_clock_fix")) {
-                        int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
-                        int cclockon = Settings.System.getInt(c.getContentResolver(), "statusbar_clock_style", 0);
-                        //If status bar height is small or medium, we don't need this fix
-                        if (reduceon != 0) {
-                            s.setChecked(false);
-                            s.setEnabled(false);
-                            Command c0 = new Command(0, "cmd overlay disable com.android.systemui.cclock_fix");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                }
+                //Remove navigation bar
+                if (key.equals("remove_navbar")) {
+                    if (s.isChecked()) {
+                        AlertDialog.Builder mNavBarWarnBuilder = new AlertDialog.Builder(c);
+                        mNavBarWarnBuilder.setTitle(R.string.attention);
+                        mNavBarWarnBuilder.setMessage(R.string.remove_navbar_warning);
+                        mNavBarWarnBuilder.setPositiveButton(android.R.string.ok, null);
+                        mNavBarWarnBuilder.create();
+                        AlertDialog mNavBarWarn = mNavBarWarnBuilder.create();
+                        mNavBarWarn.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mNavBarWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mNavBarWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        Command c0 = new Command(0, "sleep 10 && cmd overlay enable com.android.overlay.removenavbar && cmd overlay disable com.android.overlay.reducekeyboard && cmd overlay disable com.android.systemui.overlay.hidepill");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
-                        if (s.isChecked() & reduceon == 0 & cclockon == 1) {
-                            Command c0 = new Command(0, "cmd overlay enable com.android.systemui.cclock_fix");
-                            try {
-                                RootTools.getShell(true).add(c0);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_fix");
-                            try {
-                                RootTools.getShell(true).add(c1);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (TimeoutException e) {
-                                e.printStackTrace();
-                            } catch (RootDeniedException e) {
-                                e.printStackTrace();
-                            }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.overlay.removenavbar");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
                         }
                     }
-                    break;
+                }
+                //Wifi, Cell tiles on/off
+                if (key.equals("wifi_cell")) {
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "settings put global settings_provider_model false && settings list secure | grep sysui_qs_tiles > /sdcard/current_qs_tiles.txt && sed 's/wifi,cell,//g' /sdcard/current_qs_tiles.txt > /sdcard/nowificell_qs_tiles.txt && sed 's/=/ /g' /sdcard/nowificell_qs_tiles.txt > /sdcard/new_qs_tiles.txt && sed 's/sysui_qs_tiles/settings put secure sysui_qs_tiles/g' /sdcard/new_qs_tiles.txt > /sdcard/new2_qs_tiles.txt && sed -re 's/\\(/\"\\(/g' /sdcard/new2_qs_tiles.txt > /sdcard/new3_qs_tiles.txt && sed -re 's/\\)/\\)\"/g' /sdcard/new3_qs_tiles.txt > /sdcard/new4_qs_tiles.txt && sed -re 's/internet,/wifi,cell,/g' /sdcard/new4_qs_tiles.txt > /sdcard/final_qs_tiles.txt && sh /sdcard/final_qs_tiles.txt && rm -rf /sdcard/current_qs_tiles.txt && rm -rf /sdcard/new_qs_tiles.txt && rm -rf /sdcard/new2_qs_tiles.txt && rm -rf /sdcard/new3_qs_tiles.txt && rm -rf /sdcard/new4_qs_tiles.txt && rm -rf /sdcard/final_qs_tiles.txt && rm -rf /sdcard/nowificell_qs_tiles.txt");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "settings list secure | grep sysui_qs_tiles > /sdcard/current_qs_tiles.txt && sed 's/internet,//g' /sdcard/current_qs_tiles.txt > /sdcard/nointernet_qs_tiles.txt && sed 's/=/ /g' /sdcard/nointernet_qs_tiles.txt > /sdcard/new_qs_tiles.txt && sed 's/sysui_qs_tiles/settings put secure sysui_qs_tiles/g' /sdcard/new_qs_tiles.txt > /sdcard/new2_qs_tiles.txt && sed -re 's/\\(/\"\\(/g' /sdcard/new2_qs_tiles.txt > /sdcard/new3_qs_tiles.txt && sed -re 's/\\)/\\)\"/g' /sdcard/new3_qs_tiles.txt > /sdcard/new4_qs_tiles.txt && sed -re 's/wifi,cell,/internet,/g' /sdcard/new4_qs_tiles.txt > /sdcard/final_qs_tiles.txt && sh /sdcard/final_qs_tiles.txt && rm -rf /sdcard/current_qs_tiles.txt && rm -rf /sdcard/new_qs_tiles.txt && rm -rf /sdcard/new2_qs_tiles.txt && rm -rf /sdcard/new3_qs_tiles.txt && rm -rf /sdcard/new4_qs_tiles.txt && rm -rf /sdcard/final_qs_tiles.txt && rm -rf /sdcard/nointernet_qs_tiles.txt && settings put global settings_provider_model true");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Center clock fix on/off
+                if (key.equals("center_clock_fix")) {
+                    int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
+                    int cclockon = Settings.System.getInt(c.getContentResolver(), "statusbar_clock_style", 0);
+                    //If status bar height is small or medium, we don't need this fix
+                    if (reduceon != 0) {
+                        s.setChecked(false);
+                        s.setEnabled(false);
+                        Command c0 = new Command(0, "cmd overlay disable com.android.systemui.cclock_fix");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (s.isChecked() & reduceon == 0 & cclockon == 1) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.cclock_fix");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_fix");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Center clock fix to the right on/off
+                if (key.equals("center_clock_rfix")) {
+                    int reduceon = Settings.System.getInt(c.getContentResolver(), "status_bar_height", 0);
+                    int cclockon = Settings.System.getInt(c.getContentResolver(), "statusbar_clock_style", 0);
+                    //If status bar height is small or medium, we don't need this fix
+                    if (reduceon != 0) {
+                        s.setChecked(false);
+                        s.setEnabled(false);
+                        Command c0 = new Command(0, "cmd overlay disable com.android.systemui.cclock_rfix");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (s.isChecked() & reduceon == 0 & cclockon == 1) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.systemui.cclock_rfix");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_rfix");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                break;
             case "CheckBoxPreference":
                 CheckBoxPreference cbp = (CheckBoxPreference) pf.findPreference(key);
                 cbp.setChecked(sharedPreferences.getBoolean(key, true));
@@ -843,7 +919,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_fix && cmd overlay enable-exclusive --category com.android.sb_height_small");
+                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.cclock_fix && cmd overlay disable com.android.systemui.cclock_rfix && cmd overlay enable-exclusive --category com.android.sb_height_small");
                                 try {
                                     RootTools.getShell(true).add(c1);
                                 } catch (IOException e) {
@@ -855,7 +931,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.cclock_fix && cmd overlay enable-exclusive --category com.android.sb_height_medium");
+                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.cclock_fix && cmd overlay disable com.android.systemui.cclock_rfix && cmd overlay enable-exclusive --category com.android.sb_height_medium");
                                 try {
                                     RootTools.getShell(true).add(c2);
                                 } catch (IOException e) {
@@ -892,9 +968,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             case 2:
                                 Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 2);
                                 break;
-                            case 3:
-                                Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 3);
-                                break;
                             default:
                                 Settings.Secure.putInt(c.getContentResolver(), "status_bar_quick_qs_pulldown", 0);
                                 break;
@@ -922,24 +995,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //Network Traffic specific options end
-                    //Battery bar specific options begin
-                    if (key.equals("statusbar_battery_bar_no_navbar_list")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 0);
-                                break;
-                            case 1:
-                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 1);
-                                break;
-                            case 2:
-                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 2);
-                                break;
-                            default:
-                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 0);
-                                break;
-                        }
-                    }
-                    //Battery bar specific options end
                     //Clock AM PM specific options begin
                     if (key.equals("statusbar_am_pm")){
                         switch(mValueIndex) {
@@ -998,426 +1053,6 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //Clock Date style specific options end
-                    //Lock Screen Clock style specific options begin
-                    if (key.equals("lockscreen_clock_style")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DefaultClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.AnalogClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.BinaryClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 3:
-                                Command c3 = new Command(3, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.BubbleClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c3);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 4:
-                                Command c4 = new Command(4, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DividedLinesClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c4);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 5:
-                                Command c5 = new Command(5, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.MNMLBoxClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c5);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 6:
-                                Command c6 = new Command(6, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.MNMLMinimalClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c6);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 7:
-                                Command c7 = new Command(7, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.SpectrumClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c7);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 8:
-                                Command c8 = new Command(8, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.SfunyClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c8);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 9:
-                                Command c9 = new Command(9, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.TypeClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c9);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 10:
-                                Command c10 = new Command(10, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.TypeClockAltController\"");
-                                try {
-                                    RootTools.getShell(true).add(c10);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 11:
-                                Command c11 = new Command(11, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.SamsungClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c11);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 12:
-                                Command c12 = new Command(12, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.SamsungHighlightClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c12);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 13:
-                                Command c13 = new Command(13, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.IDEClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c13);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 14:
-                                Command c14 = new Command(14, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.FluidClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(c14);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(15, "settings put secure lock_screen_custom_clock_face \"com.android.keyguard.clock.DefaultClockController\"");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //Lock Screen Clock style specific options end
-                    //QS Tiles Styles options begin
-                    if (key.equals("qs_tile_style")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.circletrim");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.dualtonecircletrim");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 3:
-                                Command c3 = new Command(3, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.squircletrim");
-                                try {
-                                    RootTools.getShell(true).add(c3);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 4:
-                                Command c4 = new Command(4, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.wavey");
-                                try {
-                                    RootTools.getShell(true).add(c4);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 5:
-                                Command c5 = new Command(5, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.pokesign");
-                                try {
-                                    RootTools.getShell(true).add(c5);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 6:
-                                Command c6 = new Command(6, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.ninja");
-                                try {
-                                    RootTools.getShell(true).add(c6);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 7:
-                                Command c7 = new Command(7, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.dottedcircle");
-                                try {
-                                    RootTools.getShell(true).add(c7);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 8:
-                                Command c8 = new Command(8, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.attemptmountain");
-                                try {
-                                    RootTools.getShell(true).add(c8);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 9:
-                                Command c9 = new Command(9, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.squaremedo");
-                                try {
-                                    RootTools.getShell(true).add(c9);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 10:
-                                Command c10 = new Command(10, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.inkdrop");
-                                try {
-                                    RootTools.getShell(true).add(c10);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 11:
-                                Command c11 = new Command(11, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.cookie");
-                                try {
-                                    RootTools.getShell(true).add(c11);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 12:
-                                Command c12 = new Command(12, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.android.systemui.qstile.circleoutline");
-                                try {
-                                    RootTools.getShell(true).add(c12);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 13:
-                                Command c13 = new Command(13, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.bootleggers.qstile.cosmos");
-                                try {
-                                    RootTools.getShell(true).add(c13);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 14:
-                                Command c14 = new Command(14, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.bootleggers.qstile.divided");
-                                try {
-                                    RootTools.getShell(true).add(c14);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 15:
-                                Command c15 = new Command(15, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.bootleggers.qstile.neonlike");
-                                try {
-                                    RootTools.getShell(true).add(c15);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 16:
-                                Command c16 = new Command(16, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop && cmd overlay enable com.bootleggers.qstile.triangles");
-                                try {
-                                    RootTools.getShell(true).add(c16);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(17, "cmd overlay disable com.android.systemui.qstile.cookie && cmd overlay disable com.bootleggers.qstile.triangles && cmd overlay disable com.bootleggers.qstile.divided && cmd overlay disable com.android.systemui.qstile.attemptmountain && cmd overlay disable com.android.systemui.qstile.squircletrim && cmd overlay disable com.android.systemui.qstile.ninja && cmd overlay disable com.android.systemui.qstile.wavey && cmd overlay disable com.android.systemui.qstile.squaremedo && cmd overlay disable com.android.systemui.qstile.dualtonecircletrim && cmd overlay disable com.android.systemui.qstile.circleoutline && cmd overlay disable com.android.systemui.qstile.pokesign && cmd overlay disable com.bootleggers.qstile.cosmos && cmd overlay disable com.bootleggers.qstile.neonlike && cmd overlay disable com.android.systemui.qstile.circletrim && cmd overlay disable com.android.systemui.qstile.dottedcircle && cmd overlay disable com.android.systemui.qstile.inkdrop");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //QS Tiles Styles options end
                     //QS battery percentage warning
                     if (key.equals("qs_show_battery_percent")){
                         AlertDialog.Builder mVibWarnBuilder = new AlertDialog.Builder(c);
@@ -1434,335 +1069,11 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         ok.setTextColor(typedValue.data);
                         mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
                     }
-                    //QS Footer Drag Handle options begin
-                    if (key.equals("qs_fdh")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.systemui.fdh.overlay && cmd overlay disable com.android.systemui.hfdh.overlay");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.hfdh.overlay && cmd overlay enable com.android.systemui.fdh.overlay");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.fdh.overlay && cmd overlay enable com.android.systemui.hfdh.overlay");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(3, "cmd overlay disable com.android.systemui.fdh.overlay && cmd overlay disable com.android.systemui.hfdh.overlay");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //QS Footer Drag Handle options end
-                    //Rounded corners options begin
-                    if (key.equals("rounded_corners")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.uirs && cmd overlay disable com.android.theme.uirsExt && cmd overlay disable com.android.theme.uirb && cmd overlay disable com.android.theme.uirbExt");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.theme.uirs && cmd overlay disable com.android.theme.uirsExt && cmd overlay disable com.android.theme.uirb && cmd overlay disable com.android.theme.uirbExt && cmd overlay enable com.android.theme.uirs && cmd overlay enable com.android.theme.uirsExt");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.theme.uirs && cmd overlay disable com.android.theme.uirsExt && cmd overlay disable com.android.theme.uirb && cmd overlay disable com.android.theme.uirbExt && cmd overlay enable com.android.theme.uirb && cmd overlay enable com.android.theme.uirbExt");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(3, "cmd overlay disable com.android.theme.uirs && cmd overlay disable com.android.theme.uirsExt && cmd overlay disable com.android.theme.uirb && cmd overlay disable com.android.theme.uirbExt");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //Rounded corners options end
-                    //QS Header styles options begin
-                    if (key.equals("qs_header_style")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark && cmd overlay enable com.android.systemui.qsheader.grey");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark && cmd overlay enable com.android.systemui.qsheader.lightgrey");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 3:
-                                Command c3 = new Command(3, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark && cmd overlay enable com.android.systemui.qsheader.accent");
-                                try {
-                                    RootTools.getShell(true).add(c3);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 4:
-                                Command c4 = new Command(4, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark && cmd overlay enable com.android.systemui.qsheader.followdark");
-                                try {
-                                    RootTools.getShell(true).add(c4);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(6, "cmd overlay disable com.android.systemui.qsheader.grey && cmd overlay disable com.android.systemui.qsheader.lightgrey && cmd overlay disable com.android.systemui.qsheader.accent && cmd overlay disable com.android.systemui.qsheader.followdark");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //QS Header styles options end
-                    //Dark Theme styles options begin
-                    if (key.equals("dt_style")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.bakedgreen && cmd overlay enable com.android.dark.bakedgreenExt");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.chocox && cmd overlay enable com.android.dark.chocoxExt");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 3:
-                                Command c3 = new Command(3, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.darkaubergine && cmd overlay enable com.android.dark.darkaubergineExt");
-                                try {
-                                    RootTools.getShell(true).add(c3);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 4:
-                                Command c4 = new Command(4, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.style && cmd overlay enable com.android.dark.styleExt");
-                                try {
-                                    RootTools.getShell(true).add(c4);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 5:
-                                Command c5 = new Command(5, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.darkgray && cmd overlay enable com.android.dark.darkgrayExt");
-                                try {
-                                    RootTools.getShell(true).add(c5);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 6:
-                                Command c6 = new Command(6, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.materialocean && cmd overlay enable com.android.dark.materialoceanExt");
-                                try {
-                                    RootTools.getShell(true).add(c6);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 7:
-                                Command c7 = new Command(7, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.night && cmd overlay enable com.android.dark.nightExt");
-                                try {
-                                    RootTools.getShell(true).add(c7);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 8:
-                                Command c8 = new Command(8, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt && cmd overlay enable com.android.dark.solarizeddark && cmd overlay enable com.android.dark.solarizeddarkExt");
-                                try {
-                                    RootTools.getShell(true).add(c8);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 9:
-                                Command c9 = new Command(9, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay enable com.android.dark.clearspring && cmd overlay enable com.android.dark.clearspringExt");
-                                try {
-                                    RootTools.getShell(true).add(c9);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(10, "cmd overlay disable com.android.dark.bakedgreen && cmd overlay disable com.android.dark.bakedgreenExt && cmd overlay disable com.android.dark.chocox && cmd overlay disable com.android.dark.chocoxExt && cmd overlay disable com.android.dark.darkaubergine && cmd overlay disable com.android.dark.darkaubergineExt && cmd overlay disable com.android.dark.style && cmd overlay disable com.android.dark.styleExt && cmd overlay disable com.android.dark.darkgray && cmd overlay disable com.android.dark.darkgrayExt && cmd overlay disable com.android.dark.materialocean && cmd overlay disable com.android.dark.materialoceanExt && cmd overlay disable com.android.dark.night && cmd overlay disable com.android.dark.nightExt && cmd overlay disable com.android.dark.solarizeddark && cmd overlay disable com.android.dark.solarizeddarkExt && cmd overlay disable com.android.dark.clearspring && cmd overlay disable com.android.dark.clearspringExt");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //Dark Theme styles options end
                     //System fonts options begin
                     if (key.equals("font_style")){
                         switch(mValueIndex) {
                             case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor");
+                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable org.protonaosp.theme.font.recursive_casual && cmd overlay disable org.protonaosp.theme.font.recursive_linear && cmd overlay disable org.protonaosp.theme.font.source_sans && cmd overlay disable org.protonaosp.theme.font.roboto && cmd overlay disable org.protonaosp.theme.font.manrope && cmd overlay disable org.protonaosp.theme.font.noto_sans && cmd overlay disable org.protonaosp.theme.font.source_serif");
                                 try {
                                     RootTools.getShell(true).add(c0);
                                 } catch (IOException e) {
@@ -1774,7 +1085,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 1:
-                                Command c1 = new Command(1, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.aclonicasource");
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.manrope");
                                 try {
                                     RootTools.getShell(true).add(c1);
                                 } catch (IOException e) {
@@ -1786,7 +1097,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 2:
-                                Command c2 = new Command(2, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.aileron");
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.noto_sans");
                                 try {
                                     RootTools.getShell(true).add(c2);
                                 } catch (IOException e) {
@@ -1798,7 +1109,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 3:
-                                Command c3 = new Command(3, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.amarantesource");
+                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.theme.font.notoserifsource");
                                 try {
                                     RootTools.getShell(true).add(c3);
                                 } catch (IOException e) {
@@ -1810,7 +1121,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 4:
-                                Command c4 = new Command(4, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.anaheim");
+                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.recursive_casual");
                                 try {
                                     RootTools.getShell(true).add(c4);
                                 } catch (IOException e) {
@@ -1822,7 +1133,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 5:
-                                Command c5 = new Command(5, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.arbutussource");
+                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.recursive_linear");
                                 try {
                                     RootTools.getShell(true).add(c5);
                                 } catch (IOException e) {
@@ -1834,7 +1145,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 6:
-                                Command c6 = new Command(6, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.arvolato");
+                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.roboto");
                                 try {
                                     RootTools.getShell(true).add(c6);
                                 } catch (IOException e) {
@@ -1846,7 +1157,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 7:
-                                Command c7 = new Command(7, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.bariolsource");
+                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.source_sans");
                                 try {
                                     RootTools.getShell(true).add(c7);
                                 } catch (IOException e) {
@@ -1858,7 +1169,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 8:
-                                Command c8 = new Command(8, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.cagliostrosource");
+                                Command c8 = new Command(8, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.source_serif");
                                 try {
                                     RootTools.getShell(true).add(c8);
                                 } catch (IOException e) {
@@ -1869,236 +1180,8 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                     e.printStackTrace();
                                 }
                                 break;
-                            case 9:
-                                Command c9 = new Command(9, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.circularstd");
-                                try {
-                                    RootTools.getShell(true).add(c9);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 10:
-                                Command c10 = new Command(10, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.comicsans");
-                                try {
-                                    RootTools.getShell(true).add(c10);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 11:
-                                Command c11 = new Command(11, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.coolstorysource");
-                                try {
-                                    RootTools.getShell(true).add(c11);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 12:
-                                Command c12 = new Command(12, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.googlesans");
-                                try {
-                                    RootTools.getShell(true).add(c12);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 13:
-                                Command c13 = new Command(13, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.inter");
-                                try {
-                                    RootTools.getShell(true).add(c13);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 14:
-                                Command c14 = new Command(14, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.kai");
-                                try {
-                                    RootTools.getShell(true).add(c14);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 15:
-                                Command c15 = new Command(15, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.lgsmartgothicsource");
-                                try {
-                                    RootTools.getShell(true).add(c15);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 16:
-                                Command c16 = new Command(16, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.linotte");
-                                try {
-                                    RootTools.getShell(true).add(c16);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 17:
-                                Command c17 = new Command(17, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.notoserifsource");
-                                try {
-                                    RootTools.getShell(true).add(c17);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 18:
-                                Command c18 = new Command(18, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.rosemarysource");
-                                try {
-                                    RootTools.getShell(true).add(c18);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 19:
-                                Command c19 = new Command(19, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.rubikrubik");
-                                try {
-                                    RootTools.getShell(true).add(c19);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 20:
-                                Command c20 = new Command(20, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.sam");
-                                try {
-                                    RootTools.getShell(true).add(c20);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 21:
-                                Command c21 = new Command(21, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.samsungone");
-                                try {
-                                    RootTools.getShell(true).add(c21);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 22:
-                                Command c22 = new Command(22, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.slateforoneplus");
-                                try {
-                                    RootTools.getShell(true).add(c22);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 23:
-                                Command c23 = new Command(23, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.sonysketchsource");
-                                try {
-                                    RootTools.getShell(true).add(c23);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 24:
-                                Command c24 = new Command(24, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.surfersource");
-                                try {
-                                    RootTools.getShell(true).add(c24);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 25:
-                                Command c25 = new Command(25, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.tinkerbell");
-                                try {
-                                    RootTools.getShell(true).add(c25);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 26:
-                                Command c26 = new Command(26, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.urbanist");
-                                try {
-                                    RootTools.getShell(true).add(c26);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 27:
-                                Command c27 = new Command(27, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor && cmd overlay enable com.android.theme.font.victor");
-                                try {
-                                    RootTools.getShell(true).add(c27);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
                             default:
-                                Command cd = new Command(28, "cmd overlay disable com.android.theme.font.aclonicasource && cmd overlay disable com.android.theme.font.aileron && cmd overlay disable com.android.theme.font.amarantesource && cmd overlay disable com.android.theme.font.anaheim && cmd overlay disable com.android.theme.font.arbutussource && cmd overlay disable com.android.theme.font.arvolato && cmd overlay disable com.android.theme.font.bariolsource && cmd overlay disable com.android.theme.font.cagliostrosource && cmd overlay disable com.android.theme.font.circularstd && cmd overlay disable com.android.theme.font.comicsans && cmd overlay disable com.android.theme.font.coolstorysource && cmd overlay disable com.android.theme.font.googlesans && cmd overlay disable com.android.theme.font.inter && cmd overlay disable com.android.theme.font.kai && cmd overlay disable com.android.theme.font.lgsmartgothicsource && cmd overlay disable com.android.theme.font.linotte && cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable com.android.theme.font.rosemarysource && cmd overlay disable com.android.theme.font.rubikrubik && cmd overlay disable com.android.theme.font.sam && cmd overlay disable com.android.theme.font.samsungone && cmd overlay disable com.android.theme.font.slateforoneplus && cmd overlay disable com.android.theme.font.sonysketchsource && cmd overlay disable com.android.theme.font.surfersource && cmd overlay disable com.android.theme.font.tinkerbell && cmd overlay disable com.android.theme.font.urbanist && cmd overlay disable com.android.theme.font.victor");
+                                Command cd = new Command(9, "cmd overlay disable com.android.theme.font.notoserifsource && cmd overlay disable org.protonaosp.theme.font.recursive_casual && cmd overlay disable org.protonaosp.theme.font.recursive_linear && cmd overlay disable org.protonaosp.theme.font.source_sans && cmd overlay disable org.protonaosp.theme.font.roboto && cmd overlay disable org.protonaosp.theme.font.manrope && cmd overlay disable org.protonaosp.theme.font.noto_sans && cmd overlay disable org.protonaosp.theme.font.source_serif");
                                 try {
                                     RootTools.getShell(true).add(cd);
                                 } catch (IOException e) {
@@ -2112,24 +1195,11 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //System fonts options end
-                    //Blur maximum radius level  begin
-                    if (key.equals("blur_max_radius")){
-                        AlertDialog.Builder mVibWarnBuilder = new AlertDialog.Builder(c);
-                        mVibWarnBuilder.setTitle(R.string.attention);
-                        mVibWarnBuilder.setMessage(R.string.restartui_required);
-                        mVibWarnBuilder.setPositiveButton(android.R.string.ok,null);
-                        mVibWarnBuilder.create();
-                        AlertDialog mNibWarn = mVibWarnBuilder.create();
-                        mNibWarn.show();
-                        TypedValue typedValue = new TypedValue();
-                        Resources.Theme theme = c.getTheme();
-                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-                        Button ok = mNibWarn.getButton(AlertDialog.BUTTON_POSITIVE);
-                        ok.setTextColor(typedValue.data);
-                        mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                    //Icons style options begin
+                    if (key.equals("icons_style")){
                         switch(mValueIndex) {
                             case 0:
-                                Command c0 = new Command(0, "cmd overlay enable-exclusive --category com.android.systemui.blur.a");
+                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.icon_pack.rounded.android && cmd overlay disable com.android.theme.icon_pack.sam.android && cmd overlay disable com.android.theme.icon_pack.filled.android && cmd overlay disable com.android.theme.icon_pack.kai.android && cmd overlay disable com.android.theme.icon_pack.victor.android && cmd overlay disable com.android.theme.icon_pack.circular.android && cmd overlay disable com.android.theme.icon_pack.rounded.launcher && cmd overlay disable com.android.theme.icon_pack.victor.launcher && cmd overlay disable com.android.theme.icon_pack.kai.launcher && cmd overlay disable com.android.theme.icon_pack.sam.launcher && cmd overlay disable com.android.theme.icon_pack.filled.launcher && cmd overlay disable com.android.theme.icon_pack.circular.launcher && cmd overlay disable com.android.theme.icon_pack.victor.settings && cmd overlay disable com.android.theme.icon_pack.kai.settings && cmd overlay disable com.android.theme.icon_pack.sam.settings && cmd overlay disable com.android.theme.icon_pack.filled.settings && cmd overlay disable com.android.theme.icon_pack.circular.settings && cmd overlay disable com.android.theme.icon_pack.rounded.settings && cmd overlay disable com.android.theme.icon_pack.circular.themepicker && cmd overlay disable com.android.theme.icon_pack.kai.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.themepicker && cmd overlay disable com.android.theme.icon_pack.filled.themepicker && cmd overlay disable com.android.theme.icon_pack.victor.themepicker && cmd overlay disable com.android.theme.icon_pack.sam.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.systemui && cmd overlay disable com.android.theme.icon_pack.victor.systemui && cmd overlay disable com.android.theme.icon_pack.kai.systemui && cmd overlay disable com.android.theme.icon_pack.sam.systemui && cmd overlay disable com.android.theme.icon_pack.filled.systemui && cmd overlay disable com.android.theme.icon_pack.circular.systemui");
                                 try {
                                     RootTools.getShell(true).add(c0);
                                 } catch (IOException e) {
@@ -2141,7 +1211,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 1:
-                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.systemui.blur.b");
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.theme.icon_pack.circular.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.circular.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.circular.settings && cmd overlay enable-exclusive --category com.android.theme.icon_pack.circular.launcher && cmd overlay enable-exclusive --category com.android.theme.icon_pack.circular.themepicker");
                                 try {
                                     RootTools.getShell(true).add(c1);
                                 } catch (IOException e) {
@@ -2153,7 +1223,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 2:
-                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.systemui.blur.c");
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.theme.icon_pack.filled.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.filled.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.filled.settings && cmd overlay enable-exclusive --category com.android.theme.icon_pack.filled.launcher && cmd overlay enable-exclusive --category com.android.theme.icon_pack.filled.themepicker");
                                 try {
                                     RootTools.getShell(true).add(c2);
                                 } catch (IOException e) {
@@ -2165,121 +1235,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 3:
-                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.systemui.blur.d");
-                                try {
-                                    RootTools.getShell(true).add(c3);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-							case 4:
-                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.systemui.blur.e");
-                                try {
-                                    RootTools.getShell(true).add(c4);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 5:
-                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.systemui.blur.a && cmd overlay disable com.android.systemui.blur.a");
-                                try {
-                                    RootTools.getShell(true).add(c5);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 6:
-                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category com.android.systemui.blur.f");
-                                try {
-                                    RootTools.getShell(true).add(c6);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 7:
-                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category com.android.systemui.blur.g");
-                                try {
-                                    RootTools.getShell(true).add(c7);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            default:
-                                Command cd = new Command(8, "cmd overlay enable-exclusive --category com.android.systemui.blur.a && cmd overlay disable com.android.systemui.blur.a");
-                                try {
-                                    RootTools.getShell(true).add(cd);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                        }
-                    }
-                    //Blur maximum radius level options end
-                    //Blur maximum radius level  begin
-                    if (key.equals("switch_style")){
-                        switch(mValueIndex) {
-                            case 0:
-                                Command c0 = new Command(0, "cmd overlay disable com.android.system.switch.contained && cmd overlay disable com.android.system.switch.telegram && cmd overlay disable com.android.system.switch.md2 && cmd overlay disable com.android.system.switch.retro && cmd overlay disable com.android.system.switch.oos");
-                                try {
-                                    RootTools.getShell(true).add(c0);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 1:
-                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.system.switch.contained");
-                                try {
-                                    RootTools.getShell(true).add(c1);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 2:
-                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.system.switch.telegram");
-                                try {
-                                    RootTools.getShell(true).add(c2);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                } catch (TimeoutException e) {
-                                    e.printStackTrace();
-                                } catch (RootDeniedException e) {
-                                    e.printStackTrace();
-                                }
-                                break;
-                            case 3:
-                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.system.switch.md2");
+                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.theme.icon_pack.kai.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.kai.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.kai.settings && cmd overlay enable-exclusive --category com.android.theme.icon_pack.kai.launcher && cmd overlay enable-exclusive --category com.android.theme.icon_pack.kai.themepicker");
                                 try {
                                     RootTools.getShell(true).add(c3);
                                 } catch (IOException e) {
@@ -2291,7 +1247,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 4:
-                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.system.switch.retro");
+                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.theme.icon_pack.rounded.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.rounded.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.rounded.settings && cmd overlay enable-exclusive --category com.android.theme.icon_pack.rounded.launcher && cmd overlay enable-exclusive --category com.android.theme.icon_pack.rounded.themepicker");
                                 try {
                                     RootTools.getShell(true).add(c4);
                                 } catch (IOException e) {
@@ -2303,7 +1259,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 5:
-                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.system.switch.oos");
+                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.theme.icon_pack.sam.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.sam.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.sam.settings && cmd overlay enable-exclusive --category com.android.theme.icon_pack.sam.launcher && cmd overlay enable-exclusive --category com.android.theme.icon_pack.sam.themepicker");
                                 try {
                                     RootTools.getShell(true).add(c5);
                                 } catch (IOException e) {
@@ -2314,8 +1270,20 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                     e.printStackTrace();
                                 }
                                 break;
+                            case 6:
+                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category com.android.theme.icon_pack.victor.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.victor.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.victor.settings && cmd overlay enable-exclusive --category com.android.theme.icon_pack.victor.launcher && cmd overlay enable-exclusive --category com.android.theme.icon_pack.victor.themepicker");
+                                try {
+                                    RootTools.getShell(true).add(c6);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
                             default:
-                                Command cd = new Command(6, "cmd overlay disable com.android.system.switch.contained && cmd overlay disable com.android.system.switch.telegram && cmd overlay disable com.android.system.switch.md2 && cmd overlay disable com.android.system.switch.retro && cmd overlay disable com.android.system.switch.oos");
+                                Command cd = new Command(7, "cmd overlay disable com.android.theme.icon_pack.rounded.android && cmd overlay disable com.android.theme.icon_pack.sam.android && cmd overlay disable com.android.theme.icon_pack.filled.android && cmd overlay disable com.android.theme.icon_pack.kai.android && cmd overlay disable com.android.theme.icon_pack.victor.android && cmd overlay disable com.android.theme.icon_pack.circular.android && cmd overlay disable com.android.theme.icon_pack.rounded.launcher && cmd overlay disable com.android.theme.icon_pack.victor.launcher && cmd overlay disable com.android.theme.icon_pack.kai.launcher && cmd overlay disable com.android.theme.icon_pack.sam.launcher && cmd overlay disable com.android.theme.icon_pack.filled.launcher && cmd overlay disable com.android.theme.icon_pack.circular.launcher && cmd overlay disable com.android.theme.icon_pack.victor.settings && cmd overlay disable com.android.theme.icon_pack.kai.settings && cmd overlay disable com.android.theme.icon_pack.sam.settings && cmd overlay disable com.android.theme.icon_pack.filled.settings && cmd overlay disable com.android.theme.icon_pack.circular.settings && cmd overlay disable com.android.theme.icon_pack.rounded.settings && cmd overlay disable com.android.theme.icon_pack.circular.themepicker && cmd overlay disable com.android.theme.icon_pack.kai.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.themepicker && cmd overlay disable com.android.theme.icon_pack.filled.themepicker && cmd overlay disable com.android.theme.icon_pack.victor.themepicker && cmd overlay disable com.android.theme.icon_pack.sam.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.systemui && cmd overlay disable com.android.theme.icon_pack.victor.systemui && cmd overlay disable com.android.theme.icon_pack.kai.systemui && cmd overlay disable com.android.theme.icon_pack.sam.systemui && cmd overlay disable com.android.theme.icon_pack.filled.systemui && cmd overlay disable com.android.theme.icon_pack.circular.systemui");
                                 try {
                                     RootTools.getShell(true).add(cd);
                                 } catch (IOException e) {
@@ -2328,7 +1296,195 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 break;
                         }
                     }
-                    //Switch styles options end
+                    //Icons style options end
+                    //Icons shapes options begin
+                    if (key.equals("icon_shapes")){
+                        /*Guess this isn't needed
+                        AlertDialog.Builder mVibWarnBuilder = new AlertDialog.Builder(c);
+                        mVibWarnBuilder.setTitle(R.string.attention);
+                        mVibWarnBuilder.setMessage(R.string.icon_shapes_warning);
+                        mVibWarnBuilder.setPositiveButton(android.R.string.ok,null);
+                        mVibWarnBuilder.create();
+                        AlertDialog mNibWarn = mVibWarnBuilder.create();
+                        mNibWarn.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mNibWarn.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mNibWarn.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);*/
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.android.theme.icon.cylinder && cmd overlay disable com.android.theme.icon.heart && cmd overlay disable com.android.theme.icon.hexagon && cmd overlay disable com.android.theme.icon.mallow && cmd overlay disable com.android.theme.icon.pebble && cmd overlay disable com.android.theme.icon.roundedhexagon && cmd overlay disable com.android.theme.icon.roundedrect && cmd overlay disable com.android.theme.icon.square && cmd overlay disable com.android.theme.icon.squircle && cmd overlay disable com.android.theme.icon.taperedrect && cmd overlay disable com.android.theme.icon.teardrop && cmd overlay disable com.android.theme.icon.vessel");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.theme.icon.cylinder");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.theme.icon.heart");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category com.android.theme.icon.hexagon");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 4:
+                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category com.android.theme.icon.mallow");
+                                try {
+                                    RootTools.getShell(true).add(c4);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 5:
+                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category com.android.theme.icon.pebble");
+                                try {
+                                    RootTools.getShell(true).add(c5);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 6:
+                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category com.android.theme.icon.roundedhexagon");
+                                try {
+                                    RootTools.getShell(true).add(c6);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 7:
+                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category com.android.theme.icon.roundedrect");
+                                try {
+                                    RootTools.getShell(true).add(c7);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 8:
+                                Command c8 = new Command(8, "cmd overlay enable-exclusive --category com.android.theme.icon.square");
+                                try {
+                                    RootTools.getShell(true).add(c8);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 9:
+                                Command c9 = new Command(9, "cmd overlay enable-exclusive --category com.android.theme.icon.squircle");
+                                try {
+                                    RootTools.getShell(true).add(c9);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 10:
+                                Command c10 = new Command(10, "cmd overlay enable-exclusive --category com.android.theme.icon.taperedrect");
+                                try {
+                                    RootTools.getShell(true).add(c10);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 11:
+                                Command c11 = new Command(11, "cmd overlay enable-exclusive --category com.android.theme.icon.teardrop");
+                                try {
+                                    RootTools.getShell(true).add(c11);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 12:
+                                Command c12 = new Command(12, "cmd overlay enable-exclusive --category com.android.theme.icon.vessel");
+                                try {
+                                    RootTools.getShell(true).add(c12);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(13, "cmd overlay disable com.android.theme.icon.cylinder && cmd overlay disable com.android.theme.icon.heart && cmd overlay disable com.android.theme.icon.hexagon && cmd overlay disable com.android.theme.icon.mallow && cmd overlay disable com.android.theme.icon.pebble && cmd overlay disable com.android.theme.icon.roundedhexagon && cmd overlay disable com.android.theme.icon.roundedrect && cmd overlay disable com.android.theme.icon.square && cmd overlay disable com.android.theme.icon.squircle && cmd overlay disable com.android.theme.icon.taperedrect && cmd overlay disable com.android.theme.icon.teardrop && cmd overlay disable com.android.theme.icon.vessel");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //Icon shapes options end
                 } else {
                     l.setSummary("");
                 }

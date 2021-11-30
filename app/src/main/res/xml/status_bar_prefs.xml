@@ -11,6 +11,13 @@
             android:key="status_bar_battery_style"
             android:title="@string/status_bar_battery_style_title" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dual_tone_battery"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/dual_tone_battery_on_summary"
+            android:title="@string/dual_tone_battery_title" />
+
         <!-- Status bar battery percentage Modes -->
         <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
@@ -19,13 +26,13 @@
             android:key="status_bar_show_battery_percent_vm"
             android:title="@string/battery_percent_title" />
 
-        <!-- Charging battery percentage Mode -->
+        <!-- Combined signals Android 12 -->
         <SwitchPreference
-            android:defaultValue="true"
-            android:key="status_bar_battery_text_charging"
-            android:summaryOff="@string/status_bar_battery_text_charging_summary"
-            android:summaryOn="@string/status_bar_battery_text_charging_summary"
-            android:title="@string/status_bar_battery_text_charging_title" />
+            android:defaultValue="false"
+            android:key="combine_signal_icons"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/combine_signal_icons_title" />
         <PreferenceScreen
             android:title="@string/status_bar_clock_title">
             <PreferenceCategory android:title="@string/status_bar_clock_title">
@@ -44,6 +51,11 @@
                     android:defaultValue="false"
                     android:key="center_clock_fix"
                     android:title="@string/fix_center_clock_padding"
+                    android:dependency="statusbar_clock" />
+                <SwitchPreference
+                    android:defaultValue="false"
+                    android:key="center_clock_rfix"
+                    android:title="@string/fix_center_clock_padding_right"
                     android:dependency="statusbar_clock" />
                 <com.typhus.romcontrol.prefs.MyListPreference
                     android:defaultValue="0"
@@ -104,14 +116,6 @@
                 android:entryValues="@array/show_network_traffic_type_values"
                 android:key="network_traffic_type"
                 android:title="@string/network_traffic_type" />
-            <!--
-            <com.typhus.romcontrol.prefs.MyListPreference
-                android:defaultValue="0"
-                android:entries="@array/network_traffic_layout_entries"
-                android:entryValues="@array/network_traffic_layout_values"
-                android:key="network_traffic_layout"
-                android:title="@string/network_traffic_layout" />
-            -->
             <com.typhus.romcontrol.prefs.SeekBarPreference
                 min="0"
                 units="KiB/s"
@@ -121,7 +125,6 @@
                 android:max="10"
                 android:title="@string/network_traffic_autohide_threshold_title"
                 />
-            <!--
             <com.typhus.romcontrol.prefs.SeekBarPreference
                 min="1"
                 units="sec"
@@ -131,158 +134,41 @@
                 android:title="@string/network_traffic_refresh_interval_title"
                 android:max="10"
                 />
-            -->
+            <com.typhus.romcontrol.prefs.SeekBarPreference
+                min="26"
+                units="dp"
+                android:defaultValue="36"
+                android:icon="@null"
+                android:key="network_traffic_font_size"
+                android:title="@string/nettraf_font_size"
+                android:max="46"
+                />
             <SwitchPreference
                 android:defaultValue="true"
                 android:key="network_traffic_arrow"
                 android:summaryOff="@string/network_traffic_hidearrow_summary"
                 android:summaryOn="@string/network_traffic_hidearrow_summary"
                 android:title="@string/network_traffic_hidearrow" />
-
             </PreferenceCategory>
         </PreferenceScreen>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="more_notif"
-            android:summaryOff="@string/lockscreen_charging_animation_off"
-            android:summaryOn="@string/switch_bar_on"
-            android:title="@string/more_notif_title" />
         <PreferenceCategory android:title="@string/lockscreen_show_status_bar_title">
-            <PreferenceScreen
-                android:title="@string/sb_battery_bar_title">
-                <PreferenceCategory android:title="@string/sb_battery_bar_title">
-                    <com.typhus.romcontrol.prefs.MyListPreference
-                        android:defaultValue="0"
-                        android:entries="@array/battery_bar_no_navbar_entries"
-                        android:entryValues="@array/battery_bar_no_navbar_values"
-                        android:key="statusbar_battery_bar_no_navbar_list"
-                        android:title="@string/battery_bar_no_navbar" />
-                    <!--#ffffffff-->
-                    <!-- -16711936 -->
-                    <com.typhus.romcontrol.prefs.ColorPickerPreference
-                        alphaSlider="false"
-                        hexValue="true"
-                        android:defaultValue="0xffffffff"
-                        android:key="statusbar_battery_bar_color"
-                        android:title="@string/battery_bar_color" />
-                    <!--#ffff6600-->
-                    <!-- -39424 -->
-                    <com.typhus.romcontrol.prefs.ColorPickerPreference
-                        alphaSlider="false"
-                        hexValue="true"
-                        android:defaultValue="0xffff6600"
-                        android:key="statusbar_battery_bar_battery_low_color"
-                        android:title="@string/battery_bar_battery_low_color" />
-                    <SwitchPreference
-                        android:defaultValue="true"
-                        android:key="statusbar_battery_bar_enable_charging_color"
-                        android:title="@string/battery_bar_use_charging_color" />
-                    <!--#ff00ff00-->
-                    <!-- -16711936 -->
-                    <com.typhus.romcontrol.prefs.ColorPickerPreference
-                        alphaSlider="false"
-                        hexValue="true"
-                        android:defaultValue="0xff00ff00"
-                        android:key="statusbar_battery_bar_charging_color"
-                        android:title="@string/battery_bar_charging_color"
-                        android:dependency="statusbar_battery_bar_enable_charging_color" />
-                    <SwitchPreference
-                        android:defaultValue="false"
-                        android:key="statusbar_battery_bar_blend_color"
-                        android:summaryOff="@string/battery_bar_blend_color_summary"
-                        android:summaryOn="@string/battery_bar_blend_color_summary"
-                        android:title="@string/battery_bar_blend_color_title" />
-                    <SwitchPreference
-                        android:defaultValue="false"
-                        android:key="statusbar_battery_bar_blend_color_reverse"
-                        android:summaryOff="@string/battery_bar_blend_color_reverse_summary_off"
-                        android:summaryOn="@string/battery_bar_blend_color_reverse_summary_on"
-                        android:title="@string/battery_bar_blend_color_reverse_title"
-                        android:dependency="statusbar_battery_bar_blend_color" />
-                    <com.typhus.romcontrol.prefs.MyListPreference
-                        android:defaultValue="0"
-                        android:entries="@array/battery_bar_style_entries"
-                        android:entryValues="@array/battery_bar_style_values"
-                        android:key="statusbar_battery_bar_style"
-                        android:title="@string/battery_bar_style_title" />
-                    <com.typhus.romcontrol.prefs.SeekBarPreference
-                        min="1"
-                        units="dp"
-                        android:defaultValue="1"
-                        android:icon="@null"
-                        android:key="statusbar_battery_bar_thickness"
-                        android:max="4"
-                        android:title="@string/battery_bar_thickness_title" />
-                    <SwitchPreference
-                        android:defaultValue="false"
-                        android:key="statusbar_battery_bar_animate"
-                        android:title="@string/battery_bar_animate_title" />
-                </PreferenceCategory>
-            </PreferenceScreen>
-            <com.typhus.romcontrol.prefs.MyListPreference
-                android:defaultValue="0"
-                android:entries="@array/status_bar_height_entries"
-                android:entryValues="@array/status_bar_height_values"
-                android:key="status_bar_height"
-                android:title="@string/status_bar_height" />
-            <SwitchPreference
+             <SwitchPreference
                 android:defaultValue="false"
-                android:key="fix_sb_left_paddding"
+                android:key="show_unread_messages_number"
                 android:summaryOff="@string/lockscreen_charging_animation_off"
                 android:summaryOn="@string/switch_bar_on"
-                android:title="@string/fix_status_bar_padding" />
+                android:title="@string/unread_messages_title" />
+             <com.typhus.romcontrol.prefs.MyListPreference
+                    android:defaultValue="0"
+                    android:entries="@array/status_bar_height_entries"
+                    android:entryValues="@array/status_bar_height_values"
+                    android:key="status_bar_height"
+                    android:title="@string/status_bar_height" />
+             <SwitchPreference
+                    android:defaultValue="false"
+                    android:key="fix_sb_left_paddding"
+                    android:summaryOff="@string/lockscreen_charging_animation_off"
+                    android:summaryOn="@string/switch_bar_on"
+                    android:title="@string/fix_status_bar_padding" />
         </PreferenceCategory>
-<!--
-<typhusromcontrol.prefs.ColorPickerPreference
-alphaSlider="true"
-android:defaultValue="#ffff0000"
-android:key="clock_color"
-android:title="Choose Clock Color" />
-<PreferenceScreen
-android:key="script#test"
-android:summary="Click see what happens"
-android:title="New Preference Screen" />
-<typhusromcontrol.prefs.SeekBarPreference
-min="0"
-unitsRight="Kb/s"
-android:defaultValue="10"
-android:icon="@null"
-android:key="network_traffic_autohide_threshold"
-android:max="100"
-android:title="Autohide Threshold" />
-<PreferenceScreen
-
-android:summary="New Preference screen"
-android:title="New Preference Screen">
-<PreferenceCategory android:title="new category" />
-<CheckBoxPreference
-    android:key="text_checkbox"
-    android:title="Checkbox" />
-<SwitchPreference
-    android:key="test_switch"
-    android:title="Switch" />
-</PreferenceScreen>
-<typhusromcontrol.prefs.IntentDialogPreference
-includeSearch="true"
-setSeparatorString="\##"
-android:key="choosen_app_gear"
-android:title="Choose App" />
-<typhusromcontrol.prefs.FilePreference
-android:key="testfile"
-android:summaryOff="File doesn't exist"
-android:summaryOn="File exists"
-android:title="Test File Preference" />
-<SwitchPreference
-android:defaultValue="true"
-android:key="clock_visibility"
-android:summaryOff="Clock is hidden"
-android:summaryOn="Clock is visible"
-android:title="Set Clock Visibility" />
-<CheckBoxPreference
-android:defaultValue="false"
-android:key="brightness_visibility"
-android:summaryOff="Brightness slider hidden"
-android:summaryOn="Brightness slider is visible"
-android:title="Notification Brightness Visibility" />
--->
 </PreferenceScreen>

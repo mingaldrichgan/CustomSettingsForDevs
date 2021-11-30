@@ -163,7 +163,8 @@
     <string name="traffic_category_summary">Indicador de velocidade de rede</string>
     <string name="traffic_disabled">Desativado</string>
     <string name="traffic_expanded_statusbar">Apenas na barra de status expandida</string>
-    <string name="traffic_statusbar">Barra de status e barra expandida</string>
+    <string name="traffic_statusbar">Barra de status e na barra de status expandida</string>
+    <string name="nettraf_font_size">Tamanho da fonte</string>
     <!-- Buttons backlight timeout -->
     <string name="backlight_timeout_title">Tempo de iluminação dos botões</string>
     <string name="backlight_timeout_on">Sempre ativo</string>
@@ -653,6 +654,7 @@
     <string name="status_bar_battery_style_text">Texto</string>
     <string name="status_bar_battery_style_hidden">Oculto</string>
     <string name="status_bar_battery_style_big_circle">Círculo grande</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Círculo grande (pontilhado)</string>
     <string name="status_bar_battery_style_filled_circle">Círculo (preenchido)</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Porcentagem da bateria</string>
@@ -1205,6 +1207,8 @@
     <string name="ambient_visualizer_summary">Mostrar barras de visualização de cor branca na visualização ambiente se não definir uma cor personalizada</string>
     <string name="ambient_visualizer_title">Visualizador de música ambiente</string>
 
+    <string name="customize_visualizer">Customizar o visualizador</string>
+
     <!-- Dark theme styles -->
     <string name="dt_styles">Estilo do tema escuro</string>
     <string name="dt_bakedgreen">Verde</string>
@@ -1351,10 +1355,56 @@
     <string name="qs_fdh_hidden">Escondida</string>
 
     <!-- Fix center clock padding -->
-    <string name="fix_center_clock_padding">Corrigir a posição do relógio ao centro</string>
+    <string name="fix_center_clock_padding">Ajustar relógio central para a esquerda</string>
+    <string name="fix_center_clock_padding_right">Ajustar relógio central para a direita</string>
 
     <!-- Switch styles -->
     <string name="switch_style_title">Estilo dos botões de switch</string>
     <string name="switch_contained">Contido</string>
+
+    <string-array name="theme_items">
+        <item>Tema escuro</item>
+        <item>Tema claro</item>
+        <item>Automático</item>
+    </string-array>
+
+    <!-- Custom themed icons -->
+    <string name="custom_themed_icons_title">Ícones temáticos customizados</string>
+    <string name="custom_themed_icons_off">Ícones customizados desativados</string>
+    <string name="custom_themed_icons_on">Ícones customizados ativados</string>
+    <string name="custom_themed_icons">Ativar mais ícones temáticos</string>
+    <string name="custom_themed_icons_warning">Precisa de desativar e ativar novamente a opção dos ícones temáticas de sistema na app dos Wallpappers</string>
+
+    <!-- Icon Styles -->
+    <string name="icons_style_title">Estilo dos Ícones</string>
+
+    <!-- Icon Shapes -->
+    <string name="icon_shapes_title">Forma dos Ícones</string>
+
+    <string name="icon_shapes_warning">Precisa de desativar a opção dos ícones temáticas de sistema na app dos Wallpappers. Depois de mudar algo aqui, pode voltar a ativar.</string>
+
+    <!-- Wifi, cell tiles -->
+    <string name="wifi_cell_title">Atalho da Internet</string>
+    <string name="wifi_cell_on">Usar Wifi e Dados separados</string>
+    <string name="wifi_cell_off">Usar apenas o atalho Internet</string>
+
+    <!-- Google Sans system wide override option -->
+    <string name="gsans_override_title">Forçar Google Sans por todo o sistema</string>
+
+    <!-- Combined signal icons option -->
+    <string name="combine_signal_icons_title">Ativar ícones de sinal combinados</string>
+
+    <!-- Dual tone battery colors -->
+    <string name="dual_tone_battery_title">Ativar ícone de dons tons</string>
+    <string name="dual_tone_battery_on_summary">Ativado (apenas para o ícone em retrato)</string>
+
+    <!-- Unread messages number -->
+    <string name="unread_messages_title">Mostrar nr. de mensagens não lidas</string>
+
+    <!-- Lock screen left shortcut -->
+    <string name="show_left_shortcut">Mostrar atalho do lado esquerdo</string>
+
+    <!-- Game overlay -->
+    <string name="game_overlay_title">Ativar o Game overlay</string>
 
 </resources>
