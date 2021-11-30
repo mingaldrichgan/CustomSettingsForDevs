@@ -66,7 +66,7 @@ I'm assuming you know what to do with this. Things are already made easy so I'm 
 
 8. Recompile the fully modified framework-res.apk and SystemUIGoogle.apk or SystemUI.apk (Tickle My Android)
 
-9. Take res folder, resources.arsc and all classes.dex from recompiled framework-res.apk and SystemUIGoogle.apk or SystemUI.apk and store them inside SystemUIGoogle.apk VR Theme zip folder. If you're using a SystemUI.apk, rename the folder inside the zip to SystemUI.apk.
+9. Take res folder, resources.arsc and all classes.dex from recompiled framework-res.apk and SystemUIGoogle.apk or SystemUI.apk and store them inside framewrok-res.apk and SystemUIGoogle.apk VR Theme zip folders. If you're using a SystemUI.apk, rename the SystemUIGoogle folder, inside the zip, to SystemUI.apk.
 
 10. Flash VR Theme zip through Magisk
 
