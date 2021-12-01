@@ -416,6 +416,32 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                 }
+                /*Disable Light QS Header*/
+                if (key.equals("disable_light_qs_header")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.android.darkqs && cmd overlay enable com.android.systemui.darkqs");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.android.darkqs && cmd overlay disable com.android.systemui.darkqs");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 /*Enable/Disable combined signal icons*/
                 if (key.equals("combine_signal_icons")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);

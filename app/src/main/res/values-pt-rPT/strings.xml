@@ -1407,4 +1407,7 @@
     <!-- Game overlay -->
     <string name="game_overlay_title">Ativar a funcionalidade Game overlay</string>
 
+    <!-- Disable Light QS Header -->
+    <string name="disable_light_qs_header_title">Forçar modo escuro nas definições rápidas</string>
+
 </resources>
