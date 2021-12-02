@@ -3007,12 +3007,20 @@
 
     <string-array name="fonts_entries" translatable="false">
         <item>@string/default_string</item>
+        <item>Blender Pro</item>
+        <item>Euclid Circular</item>
+        <item>Madee Sans</item>
         <item>Manrope</item>
+        <item>MiLan Pro</item>
         <item>Noto Sans</item>
         <item>Noto Serif / Source Sans Pro</item>
+        <item>One Plus Sans</item>
+        <item>One Plus Slate</item>
+        <item>Poppins</item>
         <item>Recursive Casual</item>
         <item>Recursive Linear</item>
         <item>Roboto</item>
+        <item>Rosemary</item>
         <item>Source Sans</item>
         <item>Source Serif</item>
     </string-array>
@@ -3027,6 +3035,14 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
     </string-array>
 
     <!-- Adaptive Sound -->

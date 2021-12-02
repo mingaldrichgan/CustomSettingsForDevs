@@ -12,7 +12,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="SystemUI Tuner">
         <SwitchPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="sysui_tuner"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
@@ -28,7 +28,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/game_overlay_title">
         <SwitchPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="game_overlay"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"

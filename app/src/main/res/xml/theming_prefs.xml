@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory android:title="@string/theme_customization_font_title">
         <SwitchPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="gsans_override"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
