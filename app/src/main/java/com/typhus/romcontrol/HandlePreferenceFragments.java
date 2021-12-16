@@ -1048,15 +1048,55 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         switch(mValueIndex) {
                             case 0:
                                 Settings.System.putInt(c.getContentResolver(), "statusbar_clock_date_display", 0);
+                                Command c0 = new Command(0, "cmd overlay disable com.android.systemui.hide.date");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
                                 break;
                             case 1:
                                 Settings.System.putInt(c.getContentResolver(), "statusbar_clock_date_display", 1);
+                                Command c1 = new Command(1, "cmd overlay enable-exclusive --category com.android.systemui.hide.date");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
                                 break;
                             case 2:
                                 Settings.System.putInt(c.getContentResolver(), "statusbar_clock_date_display", 2);
+                                Command c2 = new Command(2, "cmd overlay enable-exclusive --category com.android.systemui.hide.date");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
                                 break;
                             default:
                                 Settings.System.putInt(c.getContentResolver(), "statusbar_clock_date_display", 0);
+                                Command cd = new Command(3, "cmd overlay disable com.android.systemui.hide.date");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
                                 break;
                         }
                     }
