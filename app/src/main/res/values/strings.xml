@@ -221,8 +221,8 @@
     <string name="qs_footer_title">Footer</string>
     <string name="qs_footer_settings_title">Settings icon</string>
     <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
-    <string name="qs_footer_services_title">Running Services icon</string>
-    <string name="qs_footer_services_summary">Display Running Services icon in quick settings footer</string>
+    <string name="qs_footer_services_title">Developer Settings icon</string>
+    <string name="qs_footer_services_summary">Display Developer Settings icon in quick settings footer</string>
     <string name="qs_footer_user_title">User switcher icon</string>
     <string name="qs_footer_user_summary">Display Multi-user switcher icon in quick settings footer</string>
     <string name="qs_footer_edit_title">Edit icon</string>
@@ -1437,18 +1437,14 @@
         <item>@string/quick_pulldown_off</item>
         <item>@string/quick_pulldown_right</item>
         <item>@string/quick_pulldown_left</item>
-        <!--
         <item>@string/quick_pulldown_always</item>
-        -->
     </string-array>
 
     <string-array name="quick_pulldown_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <!--
         <item>3</item>
-        -->
     </string-array>
 
 <!--- Buttons backlight timeout -->
@@ -3009,6 +3005,9 @@
         <item>@string/default_string</item>
         <item>Blender Pro</item>
         <item>Euclid Circular</item>
+        <item>Harmony</item>
+        <item>Inter</item>
+        <item>Linotte</item>
         <item>Madee Sans</item>
         <item>Manrope</item>
         <item>MiLan Pro</item>
@@ -3043,6 +3042,9 @@
         <item>14</item>
         <item>15</item>
         <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
     </string-array>
 
     <!-- Adaptive Sound -->
@@ -3322,5 +3324,33 @@
 
     <!-- Disable Light QS Header -->
     <string name="disable_light_qs_header_title">Force QS Header to be always dark</string>
+
+    <!-- Disable Screenshot shutter sound -->
+    <string name="disable_screenshot_shutter_sound_title">Disable screenshot shutter sound</string>
+
+    <!-- Gestures are enabled warning -->
+    <string name="gesturesareenabled">Navigation gestures are enabled!</string>
+    <string name="disablegesturessummary">This option only works on 2 or 3 button navigation modes. Please disable gestures navigation mode on system settings.</string>
+
+    <!-- Back gesture height -->
+    <string-array name="back_gesture_height_entries" translatable="false">
+        <item>@string/full_height</item>
+        <item>@string/half_of_the_screen</item>
+        <item>@string/lower_third_of_the_screen</item>
+        <item>@string/lower_sixth_of_the_screen</item>
+    </string-array>
+
+    <string-array name="back_gesture_height_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string name="back_gesture_height_title">Back gesture height configuration</string>
+    <string name="full_height">Full height</string>
+    <string name="half_of_the_screen">Half of the screen</string>
+    <string name="lower_third_of_the_screen">Lower third of the screen</string>
+    <string name="lower_sixth_of_the_screen">Lower sixth of the screen</string>
 
 </resources>

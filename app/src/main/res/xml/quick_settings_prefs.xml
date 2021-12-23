@@ -35,4 +35,20 @@
             android:summaryOn="@string/battery_estimate_summary"
             android:title="@string/battery_estimate_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/qs_footer_title">
+        <!-- Disable Edit icon -->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="qs_edit_toggle"
+            android:summaryOff="@string/qs_footer_edit_summary"
+            android:summaryOn="@string/qs_footer_edit_summary"
+            android:title="@string/qs_footer_edit_title" />
+        <!-- Enable running services icon -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="qs_running_services_toggle"
+            android:summaryOff="@string/qs_footer_services_summary"
+            android:summaryOn="@string/qs_footer_services_summary"
+            android:title="@string/qs_footer_services_title" />
+    </PreferenceCategory>
 </PreferenceScreen>

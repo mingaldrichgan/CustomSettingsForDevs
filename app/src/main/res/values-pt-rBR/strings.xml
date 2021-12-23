@@ -125,8 +125,8 @@
     <string name="qs_footer_title">Rodapé</string>
     <string name="qs_footer_settings_title">Ícone de configurações</string>
     <string name="qs_footer_settings_summary">Mostrar ícone de configurações no rodapé das configurações rápidas</string>
-    <string name="qs_footer_services_title">Ícone de serviços em execução</string>
-    <string name="qs_footer_services_summary">Mostrar o ícone de serviços em execução no rodapé das configurações rápidas</string>
+    <string name="qs_footer_services_title">Ícone das opções do desenvolvedor</string>
+    <string name="qs_footer_services_summary">Mostrar o ícone das opções do desenvolvedor no rodapé das configurações rápidas</string>
     <string name="qs_footer_user_title">Ícone da troca de usuários</string>
     <string name="qs_footer_user_summary">Exibir ícone da troca de multi-usuários no rodapé das configurações rápidas</string>
     <string name="qs_footer_edit_title">Ícone de edição</string>
@@ -1409,5 +1409,19 @@
 
     <!-- Disable Light QS Header -->
     <string name="disable_light_qs_header_title">Forçar modo escuro nas definições rápidas</string>
+
+    <!-- Disable Screenshot shutter sound -->
+    <string name="disable_screenshot_shutter_sound_title">Desativar som ao capturar a tela</string>
+
+    <!-- Gestures are enabled warning -->
+    <string name="gesturesareenabled">Navegação por gestos está ativa!</string>
+    <string name="disablegesturessummary">Esta opção apenas funciona nos modos de navegação com 2 ou 3 botões. Por favor desative a navegação por gestos no sistema.</string>
+
+    <!-- Back gesture height -->
+    <string name="back_gesture_height_title">Configurar a altura do gesto voltar</string>
+    <string name="full_height">Tela inteira</string>
+    <string name="half_of_the_screen">Metade inferior da tela</string>
+    <string name="lower_third_of_the_screen">Terço inferior da tela</string>
+    <string name="lower_sixth_of_the_screen">Parte inferior da tela</string>
 
 </resources>

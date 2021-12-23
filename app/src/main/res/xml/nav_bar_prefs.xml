@@ -15,5 +15,17 @@
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/reducekeyboard" />
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/back_gesture_height_entries"
+            android:entryValues="@array/back_gesture_height_values"
+            android:key="back_gesture_height"
+            android:title="@string/back_gesture_height_title" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="nav_bar_inverse"
+            android:summaryOff="@string/navigation_bar_invert_layout_summary"
+            android:summaryOn="@string/navigation_bar_invert_layout_summary"
+            android:title="@string/navigation_bar_invert_layout_title" />
     </PreferenceCategory>
 </PreferenceScreen>

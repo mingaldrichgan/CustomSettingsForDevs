@@ -301,6 +301,86 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                //Invert navigation bar layout sound on/off
+                if (key.equals("nav_bar_inverse")){
+                    int gestureson = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
+                    if (gestureson == 2){
+                        AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
+                        mNoGesturesBuilder.setTitle(R.string.gesturesareenabled);
+                        mNoGesturesBuilder.setMessage(R.string.disablegesturessummary);
+                        mNoGesturesBuilder.setPositiveButton(android.R.string.ok, null);
+                        mNoGesturesBuilder.create();
+                        AlertDialog mNoGestures = mNoGesturesBuilder.create();
+                        mNoGestures.show();
+                        TypedValue typedValue = new TypedValue();
+                        Resources.Theme theme = c.getTheme();
+                        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                        Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
+                        ok.setTextColor(typedValue.data);
+                        mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        s.setChecked(false);
+                        s.setEnabled(false);
+                        Command c3 = new Command(3, "settings put secure sysui_nav_bar_inverse 0");
+                        try {
+                            RootTools.getShell(true).add(c3);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (s.isChecked() & gestureson !=2) {
+                        Command c0 = new Command(0, "settings put secure sysui_nav_bar_inverse 1");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "settings put secure sysui_nav_bar_inverse 0");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Screenshot shutter sound on/off
+                if (key.equals("screenshot_sound")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "settings put system screenshot_shutter_sound 0");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "settings put system screenshot_shutter_sound 1");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 //Game overlay on/off
                 if (key.equals("game_overlay")){
                     AlertDialog.Builder mSysUIWarnBuilder = new AlertDialog.Builder(c);
@@ -929,6 +1009,25 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     int mValueIndex = l.findIndexOfValue(lValue);
                     l.setSummary(mEntries[mValueIndex]);
                     l.setSummary(mEntries[l.findIndexOfValue(lValue)]);
+                    //Back gestures height warning
+                    if (key.equals("back_gesture_height")) {
+                        int gest_on = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
+                        if (gest_on != 2) {
+                            AlertDialog.Builder mNoGesturesBuilder = new AlertDialog.Builder(c);
+                            mNoGesturesBuilder.setTitle(R.string.requiresgestures);
+                            mNoGesturesBuilder.setMessage(R.string.requiresgesturessummary);
+                            mNoGesturesBuilder.setPositiveButton(android.R.string.ok, null);
+                            mNoGesturesBuilder.create();
+                            AlertDialog mNoGestures = mNoGesturesBuilder.create();
+                            mNoGestures.show();
+                            TypedValue typedValue = new TypedValue();
+                            Resources.Theme theme = c.getTheme();
+                            theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
+                            Button ok = mNoGestures.getButton(AlertDialog.BUTTON_POSITIVE);
+                            ok.setTextColor(typedValue.data);
+                            mNoGestures.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bg);
+                        }
+                    }
                     //Status bar height options
                     if (key.equals("status_bar_height")){
                         switch(mValueIndex) {
@@ -1175,7 +1274,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 3:
-                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.madeesans");
+                                Command c3 = new Command(3, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.harmonysans");
                                 try {
                                     RootTools.getShell(true).add(c3);
                                 } catch (IOException e) {
@@ -1187,7 +1286,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 4:
-                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.manrope");
+                                Command c4 = new Command(4, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.googlesans.inter");
                                 try {
                                     RootTools.getShell(true).add(c4);
                                 } catch (IOException e) {
@@ -1199,7 +1298,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 5:
-                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.milanpro");
+                                Command c5 = new Command(5, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.linottesource");
                                 try {
                                     RootTools.getShell(true).add(c5);
                                 } catch (IOException e) {
@@ -1211,7 +1310,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 6:
-                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.noto_sans");
+                                Command c6 = new Command(6, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.madeesans");
                                 try {
                                     RootTools.getShell(true).add(c6);
                                 } catch (IOException e) {
@@ -1223,7 +1322,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 7:
-                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category com.android.theme.font.notoserifsource");
+                                Command c7 = new Command(7, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.manrope");
                                 try {
                                     RootTools.getShell(true).add(c7);
                                 } catch (IOException e) {
@@ -1235,7 +1334,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 8:
-                                Command c8 = new Command(8, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.oneplussans");
+                                Command c8 = new Command(8, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.milanpro");
                                 try {
                                     RootTools.getShell(true).add(c8);
                                 } catch (IOException e) {
@@ -1247,7 +1346,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 9:
-                                Command c9 = new Command(9, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.oneplusslate");
+                                Command c9 = new Command(9, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.noto_sans");
                                 try {
                                     RootTools.getShell(true).add(c9);
                                 } catch (IOException e) {
@@ -1259,7 +1358,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 10:
-                                Command c10 = new Command(10, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.poppins");
+                                Command c10 = new Command(10, "cmd overlay enable-exclusive --category com.android.theme.font.notoserifsource");
                                 try {
                                     RootTools.getShell(true).add(c10);
                                 } catch (IOException e) {
@@ -1271,7 +1370,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 11:
-                                Command c11 = new Command(11, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.recursive_casual");
+                                Command c11 = new Command(11, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.oneplussans");
                                 try {
                                     RootTools.getShell(true).add(c11);
                                 } catch (IOException e) {
@@ -1283,7 +1382,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 12:
-                                Command c12 = new Command(12, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.recursive_linear");
+                                Command c12 = new Command(12, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.oneplusslate");
                                 try {
                                     RootTools.getShell(true).add(c12);
                                 } catch (IOException e) {
@@ -1295,7 +1394,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 13:
-                                Command c13 = new Command(13, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.roboto");
+                                Command c13 = new Command(13, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.poppins");
                                 try {
                                     RootTools.getShell(true).add(c13);
                                 } catch (IOException e) {
@@ -1307,7 +1406,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 14:
-                                Command c14 = new Command(14, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.rosemary");
+                                Command c14 = new Command(14, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.recursive_casual");
                                 try {
                                     RootTools.getShell(true).add(c14);
                                 } catch (IOException e) {
@@ -1319,7 +1418,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 15:
-                                Command c15 = new Command(15, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.source_sans");
+                                Command c15 = new Command(15, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.recursive_linear");
                                 try {
                                     RootTools.getShell(true).add(c15);
                                 } catch (IOException e) {
@@ -1331,7 +1430,7 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 }
                                 break;
                             case 16:
-                                Command c16 = new Command(16, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.source_serif");
+                                Command c16 = new Command(16, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.roboto");
                                 try {
                                     RootTools.getShell(true).add(c16);
                                 } catch (IOException e) {
@@ -1342,8 +1441,44 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                     e.printStackTrace();
                                 }
                                 break;
+                            case 17:
+                                Command c17 = new Command(17, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.rosemary");
+                                try {
+                                    RootTools.getShell(true).add(c17);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 18:
+                                Command c18 = new Command(18, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.source_sans");
+                                try {
+                                    RootTools.getShell(true).add(c18);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 19:
+                                Command c19 = new Command(19, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.source_serif");
+                                try {
+                                    RootTools.getShell(true).add(c19);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
                             default:
-                                Command cd = new Command(17, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.blenderpro && cmd overlay disable org.protonaosp.theme.font.blenderpro");
+                                Command cd = new Command(20, "cmd overlay enable-exclusive --category org.protonaosp.theme.font.blenderpro && cmd overlay disable org.protonaosp.theme.font.blenderpro");
                                 try {
                                     RootTools.getShell(true).add(cd);
                                 } catch (IOException e) {
