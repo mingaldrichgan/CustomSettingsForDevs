@@ -1605,17 +1605,28 @@
         <item>yyyy-dd-MM</item>
         <item>dd-MM-yyyy</item>
         <item>MM-dd-yyyy</item>
+        <item>MMM d</item>
         <item>MMM dd</item>
+        <item>MMM d, yyyy</item>
         <item>MMM dd, yyyy</item>
+        <item>MMMM d, yyyy</item>
         <item>MMMM dd, yyyy</item>
         <item>EEE</item>
+        <item>EEE d</item>
         <item>EEE dd</item>
+        <item>EEE d/M</item>
         <item>EEE dd/MM</item>
+        <item>EEE M/d</item>
         <item>EEE MM/dd</item>
+        <item>EEE d MMM</item>
         <item>EEE dd MMM</item>
+        <item>EEE MMM d</item>
         <item>EEE MMM dd</item>
+        <item>EEE MMMM d</item>
         <item>EEE MMMM dd</item>
+        <item>EEEE d/M</item>
         <item>EEEE dd/MM</item>
+        <item>EEEE M/d</item>
         <item>EEEE MM/dd</item>
     </string-array>
 
