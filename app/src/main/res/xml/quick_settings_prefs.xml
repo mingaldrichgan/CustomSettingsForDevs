@@ -25,6 +25,36 @@
             android:summaryOff="@string/wifi_cell_off"
             android:summaryOn="@string/wifi_cell_on"
             android:title="@string/wifi_cell_title" />
+        <!-- Vibrate options -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="quick_settings_vibrate"
+            android:summaryOff="@string/quick_settings_vibrate_summary"
+            android:summaryOn="@string/quick_settings_vibrate_summary"
+            android:title="@string/quick_settings_vibrate_title" />
+        <PreferenceScreen
+            android:title="@string/qs_tile_animation_title">
+            <PreferenceCategory android:title="@string/qs_tile_animation_title">
+                <com.typhus.romcontrol.prefs.MyListPreference
+                    android:defaultValue="0"
+                    android:entries="@array/qs_tile_animation_style_entries"
+                    android:entryValues="@array/qs_tile_animation_style_values"
+                    android:key="anim_tile_style"
+                    android:title="@string/qs_tile_animation_style_title" />
+                <com.typhus.romcontrol.prefs.MyListPreference
+                    android:defaultValue="2"
+                    android:entries="@array/qs_tile_animation_duration_entries"
+                    android:entryValues="@array/qs_tile_animation_duration_values"
+                    android:key="anim_tile_duration"
+                    android:title="@string/qs_tile_animation_duration_title" />
+                <com.typhus.romcontrol.prefs.MyListPreference
+                    android:defaultValue="7"
+                    android:entries="@array/qs_tile_animation_interpolator_entries"
+                    android:entryValues="@array/qs_tile_animation_interpolator_values"
+                    android:key="anim_tile_interpolator"
+                    android:title="@string/qs_tile_animation_interpolator_title" />
+            </PreferenceCategory>
+        </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/battery_estimate_title">
         <!-- QS battery estimate option -->

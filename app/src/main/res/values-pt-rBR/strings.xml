@@ -649,6 +649,8 @@
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_title">Estilo do ícone da bateria</string>
     <string name="status_bar_battery_style_q">Ícone em retrato (padrão)</string>
+    <string name="status_bar_battery_style_icon_rlandscape">Ícone deitado (Direita)</string>
+    <string name="status_bar_battery_style_icon_landscape">Ícone deitado (Esquerda)</string>
     <string name="status_bar_battery_style_dotted_circle">Círculo (pontilhado)</string>
     <string name="status_bar_battery_style_circle">Círculo</string>
     <string name="status_bar_battery_style_text">Texto</string>
@@ -656,6 +658,8 @@
     <string name="status_bar_battery_style_big_circle">Círculo grande</string>
     <string name="status_bar_battery_style_big_dotted_circle">Círculo grande (pontilhado)</string>
     <string name="status_bar_battery_style_filled_circle">Círculo (preenchido)</string>
+    <string name="left_battery_text_title">Texto à esquerda</string>
+    <string name="left_battery_text_summary">Colocar o texto da percentagem à esquerda do ícone</string>
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Porcentagem da bateria</string>
     <string name="status_bar_battery_percentage_default">Oculto (padrão)</string>
@@ -1423,5 +1427,11 @@
     <string name="half_of_the_screen">Metade inferior da tela</string>
     <string name="lower_third_of_the_screen">Terço inferior da tela</string>
     <string name="lower_sixth_of_the_screen">Parte inferior da tela</string>
+
+    <!-- Signal Icons Themes -->
+    <string name="signal_icons_theme_title">Tema dos ícones de sinal</string>
+
+    <!-- Tiles animation style  -->
+    <string name="qs_tile_animation_title">Animações</string>
 
 </resources>

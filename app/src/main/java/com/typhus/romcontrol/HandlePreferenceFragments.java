@@ -301,6 +301,32 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                //QS Tile vibration options
+                if (key.equals("quick_settings_vibrate")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "settings put secure quick_settings_vibrate 1");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "settings put secure quick_settings_vibrate 0");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 //Invert navigation bar layout sound on/off
                 if (key.equals("nav_bar_inverse")){
                     int gestureson = Settings.Secure.getInt(c.getContentResolver(), "navigation_mode", 0);
@@ -1782,6 +1808,132 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //Icon shapes options end
+                    //Signal Icons theme options begin
+                    if (key.equals("signal_icons_theme")){
+                        switch(mValueIndex) {
+                            case 0:
+                                Command c0 = new Command(0, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h");
+                                try {
+                                    RootTools.getShell(true).add(c0);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 1:
+                                Command c1 = new Command(1, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_a && cmd overlay enable com.tenx.systemui.wifibar_a");
+                                try {
+                                    RootTools.getShell(true).add(c1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 2:
+                                Command c2 = new Command(2, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_b && cmd overlay enable com.tenx.systemui.wifibar_b");
+                                try {
+                                    RootTools.getShell(true).add(c2);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 3:
+                                Command c3 = new Command(3, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_c && cmd overlay enable com.tenx.systemui.wifibar_c");
+                                try {
+                                    RootTools.getShell(true).add(c3);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 4:
+                                Command c4 = new Command(4, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_d && cmd overlay enable com.tenx.systemui.wifibar_d");
+                                try {
+                                    RootTools.getShell(true).add(c4);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 5:
+                                Command c5 = new Command(5, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_e && cmd overlay enable com.tenx.systemui.wifibar_e");
+                                try {
+                                    RootTools.getShell(true).add(c5);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 6:
+                                Command c6 = new Command(6, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_f && cmd overlay enable com.tenx.systemui.wifibar_f");
+                                try {
+                                    RootTools.getShell(true).add(c6);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 7:
+                                Command c7 = new Command(7, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_g && cmd overlay enable com.tenx.systemui.wifibar_g");
+                                try {
+                                    RootTools.getShell(true).add(c7);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            case 8:
+                                Command c8 = new Command(8, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h && cmd overlay enable com.tenx.systemui.signalbar_h && cmd overlay enable com.tenx.systemui.wifibar_h");
+                                try {
+                                    RootTools.getShell(true).add(c8);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                            default:
+                                Command cd = new Command(10, "cmd overlay disable com.tenx.systemui.signalbar_a && cmd overlay disable com.tenx.systemui.wifibar_a && cmd overlay disable com.tenx.systemui.signalbar_b && cmd overlay disable com.tenx.systemui.wifibar_b && cmd overlay disable com.tenx.systemui.signalbar_c && cmd overlay disable com.tenx.systemui.wifibar_c && cmd overlay disable com.tenx.systemui.signalbar_d && cmd overlay disable com.tenx.systemui.wifibar_d && cmd overlay disable com.tenx.systemui.signalbar_e && cmd overlay disable com.tenx.systemui.wifibar_e && cmd overlay disable com.tenx.systemui.signalbar_f && cmd overlay disable com.tenx.systemui.wifibar_f && cmd overlay disable com.tenx.systemui.signalbar_g && cmd overlay disable com.tenx.systemui.wifibar_g && cmd overlay disable com.tenx.systemui.signalbar_h && cmd overlay disable com.tenx.systemui.wifibar_h");
+                                try {
+                                    RootTools.getShell(true).add(cd);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (TimeoutException e) {
+                                    e.printStackTrace();
+                                } catch (RootDeniedException e) {
+                                    e.printStackTrace();
+                                }
+                                break;
+                        }
+                    }
+                    //Signal Icons theme options end
                 } else {
                     l.setSummary("");
                 }

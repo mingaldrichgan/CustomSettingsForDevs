@@ -32,4 +32,12 @@
             android:key="icon_shapes"
             android:title="@string/icon_shapes_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/signal_icons_theme_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/signal_icons_theme_entries"
+            android:entryValues="@array/signal_icons_theme_values"
+            android:key="signal_icons_theme"
+            android:title="@string/signal_icons_theme_title" />
+    </PreferenceCategory>
 </PreferenceScreen>

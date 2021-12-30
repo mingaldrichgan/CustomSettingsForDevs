@@ -11,13 +11,6 @@
             android:key="status_bar_battery_style"
             android:title="@string/status_bar_battery_style_title" />
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="dual_tone_battery"
-            android:summaryOff="@string/lockscreen_charging_animation_off"
-            android:summaryOn="@string/dual_tone_battery_on_summary"
-            android:title="@string/dual_tone_battery_title" />
-
         <!-- Status bar battery percentage Modes -->
         <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
@@ -25,6 +18,20 @@
             android:entryValues="@array/battery_percent_values"
             android:key="status_bar_show_battery_percent_vm"
             android:title="@string/battery_percent_title" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="do_left_battery_text"
+            android:summaryOff="@string/left_battery_text_summary"
+            android:summaryOn="@string/left_battery_text_summary"
+            android:title="@string/left_battery_text_title" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dual_tone_battery"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/dual_tone_battery_on_summary"
+            android:title="@string/dual_tone_battery_title" />
 
         <!-- Combined signals Android 12 -->
         <SwitchPreference

@@ -104,4 +104,12 @@
                 android:summaryOn="@string/switch_bar_on"
                 android:title="@string/show_left_shortcut" />
         </PreferenceCategory>
+        <PreferenceCategory android:title="@string/carrier_label_category_title">
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="status_bar_show_carrier"
+                android:summaryOff="@string/show_carrier_disabled"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/show_carrier_title" />
+        </PreferenceCategory>
 </PreferenceScreen>

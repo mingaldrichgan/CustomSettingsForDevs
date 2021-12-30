@@ -3,6 +3,7 @@
     <string name="drawer_open" tools:ignore="MissingTranslation">Menu opened</string>
     <string name="drawer_close" tools:ignore="MissingTranslation">Menu closed</string>
     <string name="action_settings" tools:ignore="MissingTranslation">Settings</string>
+    <string name="typhus_pixel_mods" tools:ignore="MissingTranslation">Typhus_ Pixel Mods</string>
     <string-array name="nav_drawer_items">
         <item>@string/statusbar_title</item>
         <item>@string/quicksettings_title</item>
@@ -693,29 +694,6 @@
     <string name="disable_transition_animations_title">Disable transition animations</string>
     <string name="disable_transition_animations_summary">Force disable all transition animations</string>
 
-    <!-- Tiles animation style  -->
-    <string name="qs_tile_animation_category">QS tile</string>
-    <string name="qs_tile_animation_style_title">Style</string>
-    <string name="qs_tile_animation_duration_title">Duration</string>
-    <string name="qs_tile_animation_interpolator_title">Interpolator</string>
-    <string name="qs_tile_animation_style_off">None</string>
-    <string name="qs_tile_animation_style_flip">Flip</string>
-    <string name="qs_tile_animation_style_rotate">Rotate</string>
-    <string name="qs_tile_animation_duration_low">Low</string>
-    <string name="qs_tile_animation_duration_default">Default</string>
-    <string name="qs_tile_animation_duration_fast">Fast</string>
-    <string name="qs_tile_animation_interpolator_linearInterpolator">Linear</string>
-    <string name="qs_tile_animation_interpolator_accelerateInterpolator">Accelerate</string>
-    <string name="qs_tile_animation_interpolator_decelerateInterpolator">Decelerate</string>
-    <string name="qs_tile_animation_interpolator_accelerateDecelerateInterpolator">Accelerate decelerate</string>
-    <string name="qs_tile_animation_interpolator_bounceInterpolator">Bounce</string>
-    <string name="qs_tile_animation_interpolator_overshootInterpolator">Overshoot</string>
-    <string name="qs_tile_animation_interpolator_anticipateInterpolator">Anticipate</string>
-    <string name="qs_tile_animation_interpolator_anticipateOvershootInterpolator">Anticipate overshoot</string>
-    <string name="qs_set_animation_style">%1$s</string>
-    <string name="qs_set_animation_duration">%1$s</string>
-    <string name="qs_set_animation_interpolator">%1$s</string>
-
     <!-- QuickSettings haptic feedback -->
     <string name="quick_settings_vibrate_title">Vibrate on touch</string>
     <string name="quick_settings_vibrate_summary">Vibrate when QS tiles are pressed</string>
@@ -810,13 +788,17 @@
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_title">Battery style</string>
     <string name="status_bar_battery_style_q">Icon portrait (default)</string>
-    <string name="status_bar_battery_style_dotted_circle">Circle (Dotted)</string>
+    <string name="status_bar_battery_style_icon_rlandscape">Icon landscape (Right)</string>
+    <string name="status_bar_battery_style_icon_landscape">Icon landscape (Left)</string>
     <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_dotted_circle">Circle (Dotted)</string>
+    <string name="status_bar_battery_style_filled_circle">Circle (Filled)</string>
+    <string name="status_bar_battery_style_big_circle">Big circle</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Big dotted circle</string>
     <string name="status_bar_battery_style_text">Text</string>
     <string name="status_bar_battery_style_hidden">Hidden</string>
-    <string name="status_bar_battery_style_big_circle">Big circle</string>
-    <string name="status_bar_battery_style_big_dotted_circle">Big (Dotted) circle</string>
-    <string name="status_bar_battery_style_filled_circle">Circle (Filled)</string>
+    <string name="left_battery_text_title">Left battery text</string>
+    <string name="left_battery_text_summary">Put the battery text on left of battery icon</string>
 
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Battery percentage</string>
@@ -1749,52 +1731,6 @@
         <item>50</item>
     </string-array>
 
-    <!-- Tiles animation style -->
-    <string-array name="qs_tile_animation_style_entries" translatable="false">
-        <item>@string/qs_tile_animation_style_off</item>
-        <item>@string/qs_tile_animation_style_flip</item>
-        <item>@string/qs_tile_animation_style_rotate</item>
-    </string-array>
-    <string-array name="qs_tile_animation_style_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
-    <!-- Tiles animation duration -->
-    <string-array name="qs_tile_animation_duration_entries" translatable="false">
-        <item>@string/qs_tile_animation_duration_low</item>
-        <item>@string/qs_tile_animation_duration_default</item>
-        <item>@string/qs_tile_animation_duration_fast</item>
-    </string-array>
-    <string-array name="qs_tile_animation_duration_values" translatable="false">
-        <item>2500</item>
-        <item>2000</item>
-        <item>1500</item>
-    </string-array>
-
-    <!-- Tiles animation interpolator -->
-    <string-array name="qs_tile_animation_interpolator_entries" translatable="false">
-        <item>@string/qs_tile_animation_interpolator_linearInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_accelerateInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_decelerateInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_accelerateDecelerateInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_bounceInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_overshootInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_anticipateInterpolator</item>
-        <item>@string/qs_tile_animation_interpolator_anticipateOvershootInterpolator</item>
-    </string-array>
-    <string-array name="qs_tile_animation_interpolator_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-    </string-array>
-
     <!-- Gaming mode -->
     <string-array name="gaming_mode_headsup_toggle_entries">
         <item>@string/gaming_mode_headsup_allow</item>
@@ -1872,6 +1808,8 @@
         <item>@string/status_bar_battery_style_hidden</item>
         <item>@string/status_bar_battery_style_big_circle</item>
         <item>@string/status_bar_battery_style_big_dotted_circle</item>
+        <item>@string/status_bar_battery_style_icon_rlandscape</item>
+        <item>@string/status_bar_battery_style_icon_landscape</item>
     </string-array>
 
     <string-array name="status_bar_battery_style_values" translatable="false">
@@ -1883,6 +1821,8 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>8</item>
+        <item>9</item>
     </string-array>
 
     <!-- Battery mode -->
@@ -3363,5 +3303,104 @@
     <string name="half_of_the_screen">Half of the screen</string>
     <string name="lower_third_of_the_screen">Lower third of the screen</string>
     <string name="lower_sixth_of_the_screen">Lower sixth of the screen</string>
+
+    <!-- Signal Icons Themes -->
+    <string name="signal_icons_theme_title">Signal Icons Theme</string>
+
+    <string-array name="signal_icons_theme_entries" translatable="false">
+        <item>@string/switch_default</item>
+        <item>Stroke</item>
+        <item>Sneaky</item>
+        <item>Xperia</item>
+        <item>Zig-Zag</item>
+        <item>Wavy</item>
+        <item>Round</item>
+        <item>Inside</item>
+        <item>Bars</item>
+    </string-array>
+
+    <string-array name="signal_icons_theme_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <!-- Tiles animation style  -->
+    <string name="qs_tile_animation_category">QS Tiles</string>
+    <string name="qs_tile_animation_title">Animations</string>
+    <string name="qs_tile_animation_style_title">Animation style</string>
+    <string name="qs_tile_animation_duration_title">Animation duration</string>
+    <string name="qs_tile_animation_interpolator_title">Tiles animation interpolator</string>
+    <string name="qs_tile_animation_style_off">No animation</string>
+    <string name="qs_tile_animation_style_flip">Flip</string>
+    <string name="qs_tile_animation_style_rotate">Rotate</string>
+    <string name="qs_tile_animation_duration_low">Low</string>
+    <string name="qs_tile_animation_duration_fast">Fast</string>
+    <string name="qs_tile_animation_interpolator_linearInterpolator">Linear</string>
+    <string name="qs_tile_animation_interpolator_accelerateInterpolator">Accelerate</string>
+    <string name="qs_tile_animation_interpolator_decelerateInterpolator">Decelerate</string>
+    <string name="qs_tile_animation_interpolator_accelerateDecelerateInterpolator">Accelerate decelerate</string>
+    <string name="qs_tile_animation_interpolator_bounceInterpolator">Bounce</string>
+    <string name="qs_tile_animation_interpolator_overshootInterpolator">Overshoot</string>
+    <string name="qs_tile_animation_interpolator_anticipateInterpolator">Anticipate</string>
+    <string name="qs_tile_animation_interpolator_anticipateOvershootInterpolator">Anticipate overshoot</string>
+    <string name="qs_set_animation_style">%1$s</string>
+    <string name="qs_set_animation_duration">%1$s</string>
+    <string name="qs_set_animation_interpolator">%1$s</string>
+
+    <!-- Tiles animation style -->
+    <string-array name="qs_tile_animation_style_entries" translatable="false">
+        <item>@string/qs_tile_animation_style_off</item>
+        <item>@string/qs_tile_animation_style_flip</item>
+        <item>@string/qs_tile_animation_style_rotate</item>
+    </string-array>
+
+    <string-array name="qs_tile_animation_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Tiles animation duration -->
+    <string-array name="qs_tile_animation_duration_entries" translatable="false">
+        <item>@string/qs_tile_animation_duration_low</item>
+        <item>@string/default_string</item>
+        <item>@string/qs_tile_animation_duration_fast</item>
+    </string-array>
+
+    <string-array name="qs_tile_animation_duration_values" translatable="false">
+        <item>2500</item>
+        <item>2000</item>
+        <item>1500</item>
+    </string-array>
+
+    <!-- Tiles animation interpolator -->
+    <string-array name="qs_tile_animation_interpolator_entries" translatable="false">
+        <item>@string/qs_tile_animation_interpolator_linearInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_accelerateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_decelerateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_accelerateDecelerateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_bounceInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_overshootInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_anticipateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_anticipateOvershootInterpolator</item>
+    </string-array>
+
+    <string-array name="qs_tile_animation_interpolator_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
 
 </resources>
