@@ -2,6 +2,14 @@
 <PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+        <PreferenceCategory android:title="@string/dtts_category_title">
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="double_tap_sleep_lockscreen"
+                android:summaryOff="@string/double_tap_to_sleep_lockscreen_summary"
+                android:summaryOn="@string/double_tap_to_sleep_lockscreen_summary"
+                android:title="@string/double_tap_to_sleep_lockscreen_title" />
+        </PreferenceCategory>
         <PreferenceCategory android:title="@string/lockscreen_media_category">
             <SwitchPreference
                 android:defaultValue="true"

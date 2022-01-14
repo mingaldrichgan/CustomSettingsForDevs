@@ -40,4 +40,12 @@
             android:key="signal_icons_theme"
             android:title="@string/signal_icons_theme_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/dt_styles">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/dt_style_entries"
+            android:entryValues="@array/dt_style_values"
+            android:key="dt_style"
+            android:title="@string/dt_styles" />
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -158,8 +158,10 @@
 
     <!-- Quick Settings brightness slider -->
     <string name="qs_brightness_category_title">Brightness slider options</string>
-    <string name="qs_show_brightness_title">Brightness slider</string>
-    <string name="qs_show_brightness_summary">Show a brightness slider in the quick settings panel</string>
+    <string name="qs_show_brightness_title">QS Brightness slider</string>
+    <string name="qs_show_brightness_summary">Show the brightness slider in the QS panel</string>
+    <string name="qqs_show_brightness_title">QQS Brightness slider</string>
+    <string name="qqs_show_brightness_summary">Show the brightness slider in the QQS panel</string>
     <string name="qs_brightness_position_bottom_title">Brightness slider on bottom</string>
     <string name="qs_brightness_position_bottom_summary">Show a brightness slider on bottom quick settings</string>
 
@@ -392,8 +394,8 @@
     <string name="enable_fc_notifications_summary">Show a dialog when an application crashes</string>
 
     <!-- Show LTE/4G switch -->
-    <string name="show_lte_fourgee_title">4G/LTE network icon</string>
-    <string name="show_lte_fourgee_summary">Display the 4G or LTE network icon when available in the statusbar</string>
+    <string name="show_lte_fourgee_title">Show 4G instead of LTE</string>
+    <string name="show_lte_fourgee_summary">Replace LTE indicator with 4G</string>
 
     <!-- Show VoWiFi icon on statusbar -->
     <string name="vowifi_icon_title">VoWiFi icon</string>
@@ -811,7 +813,7 @@
     <!-- Battery mode -->
     <string name="qs_hide_battery_title">Hide battery icon</string>
     <string name="qs_hide_battery_summary">Hides the battery icon from the QS header</string>
-    <string name="battery_percentage_title">Battery percentage</string>
+    <string name="battery_percentage_title">Battery percentage options</string>
     <string name="battery_percentage_off">Disabled</string>
     <string name="battery_percentage_next">Enabled</string>
     <string name="battery_percentage_inside">Enabled (inside icon)</string>
@@ -901,7 +903,7 @@
     <string name="awake_time">Awake</string>
     <string name="deep_sleep_time">Deep sleep</string>
     <string name="no_kernel_wakelock_file_found">No kernel wakelock stats file /proc/wakelocks or /sys/kernel/debug/wakeup_sources found.</string>
-    <string name="more_line_text">more\u2026</string>
+    <string name="more_line_text">show more options\u2026</string>
     <string name="state_core_mode">Cores</string>
     <string name="kernel_wakelock_time">Kernel wakelocks</string>
     <string name="user_wakelock_time">Partial wakelocks</string>
@@ -2853,28 +2855,31 @@
 
     <!-- Dark theme styles -->
     <string name="dt_styles">Dark theme style</string>
-    <string name="dt_black">@string/default_string</string>
+    <string name="dt_black">Pitch black</string>
     <string name="dt_bakedgreen">Baked Green</string>
     <string name="dt_chocox">Choco X</string>
     <string name="dt_darkaubergine">Dark Aubergine</string>
     <string name="dt_style">Dark Blue</string>
-    <string name="dt_darkgray">Dark Gray</string>
+    <string name="dt_darkgray">Dark Grey</string>
     <string name="dt_materialocean">Material Ocean</string>
     <string name="dt_night">Night</string>
     <string name="dt_solarizeddark">Solarized Dark</string>
     <string name="dt_clearspring">@string/lockscreen_date_selection_str_gradient</string>
 
     <string-array name="dt_style_entries" translatable="false">
-        <item>@string/dt_black</item>
+        <item>@string/default_string</item>
         <item>@string/dt_bakedgreen</item>
         <item>@string/dt_chocox</item>
-        <item>@string/dt_darkaubergine</item>
-        <item>@string/dt_style</item>
         <item>@string/dt_darkgray</item>
         <item>@string/dt_materialocean</item>
-        <item>@string/dt_night</item>
+        <item>@string/dt_black</item>
         <item>@string/dt_solarizeddark</item>
+        <item>@string/dt_darkaubergine</item>
+        <item>@string/dt_style</item>
+        <!--
         <item>@string/dt_clearspring</item>
+        -->
+
     </string-array>
 
     <string-array name="dt_style_values" translatable="false">
@@ -2887,7 +2892,9 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <!--
         <item>9</item>
+        -->
     </string-array>
 
     <!-- QS rows and columns -->
@@ -2929,6 +2936,23 @@
 
     <!-- Restart SystemUI required -->
     <string name="restartui_required">Requires SystemUI restart</string>
+    <string name="restartui_forced_required">To avoid visual color glitches, SystemUI has to be restarted. Do you want to continue?</string>
+    <string name="dt_implement_method_choice">"The dark themes can be applied in 2 ways:
+
+1-Compatible
+2-Forced
+
+Compatible requiers a SystemUI restart, keeps "Monet" colors and, because of that, not every color will be themed. Bummer...
+
+Forced disables Monet colors, as well as, gestures navigation, gets reset upon reboot or SystemUI restart (since Monet will kick in again) BUT everything will be themed accordingly. It sucks but it's like this on stock Android 12.
+
+The best alternative is to use Repainter app by kdrag0n...
+
+Anyway, even if you choose Forced, you may enable gestures afterwards as well as get back all Monet colors, as explained. The choice is yours.
+
+So, what will it be, Compatible or Forced?"</string>
+    <string name="compatible_method">Compatible</string>
+    <string name="forced_method">Forced</string>
 
     <!-- Rounded corners options -->
 
@@ -2947,10 +2971,13 @@
     </string-array>
 
     <string name="hidepill">Hide gestures pill</string>
+    <string name="colorpill">Accent colored gestures pill</string>
     <string name="reducekeyboard">Reduce gestures keyboard space</string>
     <string name="requiresgestures">Requires gestures navigation</string>
     <string name="requiresgesturessummary">Please enable gestures navigation on system settings</string>
     <string name="novibrate">Please have in mind that, by disabling this option, all vibrations will be disabled on the device!</string>
+    <string name="disable_color_pill_required">Please, disable colored pill option first and restart the app.</string>
+    <string name="disable_hide_pill_required">Please, disable hide pill option first and restart the app.</string>
 
     <string-array name="fonts_entries" translatable="false">
         <item>@string/default_string</item>
@@ -3196,6 +3223,7 @@
         <item>Circular</item>
         <item>Filled</item>
         <item>Kai</item>
+        <item>OxigenOS</item>
         <item>Rounded</item>
         <item>Sam</item>
         <item>Victor</item>
@@ -3209,6 +3237,7 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+        <item>7</item>
     </string-array>
 
 
@@ -3220,6 +3249,7 @@
     <string-array name="icon_shapes_entries" translatable="false">
         <item>@string/switch_default</item>
         <item>Cylinder</item>
+        <item>Leaf</item>
         <item>Heart</item>
         <item>Hexagon</item>
         <item>Mallow</item>
@@ -3247,6 +3277,7 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>13</item>
     </string-array>
 
     <!-- Wifi, cell tiles -->
@@ -3306,6 +3337,7 @@
 
     <!-- Signal Icons Themes -->
     <string name="signal_icons_theme_title">Signal Icons Theme</string>
+    <string name="signal_icons">Signal Icons Options</string>
 
     <string-array name="signal_icons_theme_entries" translatable="false">
         <item>@string/switch_default</item>
@@ -3402,5 +3434,27 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+
+    <!-- Gestures navbar lenght -->
+    <string name="gesture_navbar_lenght_title">Navbar Pill length</string>
+    <string name="nav_bar_length_big">Long</string>
+    <string-array name="gesture_navbar_lenght_entries" translatable="false">
+        <item>@string/default_string</item>
+        <item>@string/status_bar_height_medium</item>
+        <item>@string/nav_bar_length_big</item>
+    </string-array>
+
+    <string-array name="gesture_navbar_lenght_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Menu Fab Strings -->
+    <string name="fab_reboot">Reboot</string>
+    <string name="fab_reboot_hotboot">Hot Boot</string>
+    <string name="fab_reboot_recovery">Recovery</string>
+    <string name="fab_reboot_bl">Bootloader</string>
+    <string name="fab_reboot_systemUI">Restart UI</string>
 
 </resources>

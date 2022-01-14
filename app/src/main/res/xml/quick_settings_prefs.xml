@@ -11,6 +11,13 @@
             android:title="@string/status_bar_quick_qs_pulldown" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/qs_tile_animation_category">
+        <!-- QS Tiles Gradient options -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="qs_gradient"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/sb_battery_bar_use_gradient_color" />
         <!-- Disable Light QS Header -->
         <SwitchPreference
             android:defaultValue="false"
@@ -56,29 +63,57 @@
             </PreferenceCategory>
         </PreferenceScreen>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/battery_estimate_title">
-        <!-- QS battery estimate option -->
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="qs_show_battery_estimate"
-            android:summaryOff="@string/battery_estimate_summary"
-            android:summaryOn="@string/battery_estimate_summary"
-            android:title="@string/battery_estimate_title" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/qs_footer_title">
-        <!-- Disable Edit icon -->
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="qs_edit_toggle"
-            android:summaryOff="@string/qs_footer_edit_summary"
-            android:summaryOn="@string/qs_footer_edit_summary"
-            android:title="@string/qs_footer_edit_title" />
-        <!-- Enable running services icon -->
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="qs_running_services_toggle"
-            android:summaryOff="@string/qs_footer_services_summary"
-            android:summaryOn="@string/qs_footer_services_summary"
-            android:title="@string/qs_footer_services_title" />
-    </PreferenceCategory>
+    <PreferenceScreen android:title="@string/more_line_text">
+        <PreferenceCategory android:title="@string/battery_estimate_title">
+            <!-- QS battery estimate option -->
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="qs_show_battery_estimate"
+                android:summaryOff="@string/battery_estimate_summary"
+                android:summaryOn="@string/battery_estimate_summary"
+                android:title="@string/battery_estimate_title" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/qs_footer_title">
+            <!-- Disable Edit icon -->
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="qs_edit_toggle"
+                android:summaryOff="@string/qs_footer_edit_summary"
+                android:summaryOn="@string/qs_footer_edit_summary"
+                android:title="@string/qs_footer_edit_title" />
+            <!-- Enable running services icon -->
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="qs_running_services_toggle"
+                android:summaryOff="@string/qs_footer_services_summary"
+                android:summaryOn="@string/qs_footer_services_summary"
+                android:title="@string/qs_footer_services_title" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/qs_brightness_category_title">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="qqs_show_brightness"
+                android:summaryOff="@string/qqs_show_brightness_summary"
+                android:summaryOn="@string/qqs_show_brightness_summary"
+                android:title="@string/qqs_show_brightness_title" />
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="qs_show_brightness"
+                android:summaryOff="@string/qs_show_brightness_summary"
+                android:summaryOn="@string/qs_show_brightness_summary"
+                android:title="@string/qs_show_brightness_title" />
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="qs_show_auto_brightness_button"
+                android:summaryOff="@string/brightness_icon_summary"
+                android:summaryOn="@string/brightness_icon_summary"
+                android:title="@string/brightness_icon_title" />
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="qs_brightness_position_bottom"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/qs_brightness_position_bottom_title" />
+        </PreferenceCategory>
+    </PreferenceScreen>
 </PreferenceScreen>

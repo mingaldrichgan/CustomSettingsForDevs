@@ -71,12 +71,6 @@
     <string name="seekbar_default_string">Padrão</string>
     <!-- Lockscreen information -->
     <string name="lockscreen_info_category_title">Elementos das informações da tela de bloqueio</string>
-    <!-- Quick Settings brightness slider -->
-    <string name="qs_brightness_category_title">Opções do controle de brilho</string>
-    <string name="qs_show_brightness_title">Controle de brilho</string>
-    <string name="qs_show_brightness_summary">Mostrar o controle de brilho nas configurações rápidas</string>
-    <string name="qs_brightness_position_bottom_title">Controle de brilho na parte inferior</string>
-    <string name="qs_brightness_position_bottom_summary">Mostrar o controle de brilho na parte inferior das configurações rápidas</string>
     <!-- Double Tap gestures -->
     <string name="dtts_category_title">Toque duplo para desligar a tela</string>
     <!-- Double tap-to-sleep -->
@@ -270,8 +264,8 @@
     <string name="enable_fc_notifications_title">Forçar o fechamento das notificações</string>
     <string name="enable_fc_notifications_summary">Mostrar uma caixa de diálogo quando um aplicativo parar de funcionar</string>
     <!-- Show LTE/4G switch -->
-    <string name="show_lte_fourgee_title">Ícone de rede 4G/LTE</string>
-    <string name="show_lte_fourgee_summary">Exibe o ícone de rede 4G ou LTE quando disponível na barra de status</string>
+    <string name="show_lte_fourgee_title">Ícone de rede 4G em vez de LTE</string>
+    <string name="show_lte_fourgee_summary">Exibe o ícone de rede 4G em vez de LTE na barra de status</string>
     <!-- Show VoWiFi icon on statusbar -->
     <string name="vowifi_icon_title">Ícone VoWiFi</string>
     <string name="vowifi_icon_summary">Exibir ícone de VoWiFi (desative o estilo móvel antigo para corrigir quaisquer sobreposições)</string>
@@ -670,7 +664,7 @@
     <!-- Battery mode -->
     <string name="qs_hide_battery_title">Ocultar o ícone de bateria</string>
     <string name="qs_hide_battery_summary">Oculta o ícone da bateria das configurações rápidas</string>
-    <string name="battery_percentage_title">Porcentagem da bateria</string>
+    <string name="battery_percentage_title">Opções da porcentagem de bateria</string>
     <string name="battery_percentage_off">Desativado</string>
     <string name="battery_percentage_next">Ativada</string>
     <string name="battery_percentage_inside">Ativado (dentro do ícone)</string>
@@ -758,7 +752,7 @@
     <string name="awake_time">Ativo</string>
     <string name="deep_sleep_time">Sono profundo</string>
     <string name="no_kernel_wakelock_file_found">Nenhum status do kernel wakelock foi encontrado /proc/wakelocks ou /sys/kernel/debug/wakeup_sources.</string>
-    <string name="more_line_text">mais\u2026</string>
+    <string name="more_line_text">Mais configurações\u2026</string>
     <string name="state_core_mode">Núcleos</string>
     <string name="kernel_wakelock_time">Wakelocks do kernel</string>
     <string name="user_wakelock_time">Wakelocks parciais</string>
@@ -1215,6 +1209,7 @@
 
     <!-- Dark theme styles -->
     <string name="dt_styles">Estilo do tema escuro</string>
+    <string name="dt_black">Preto</string>
     <string name="dt_bakedgreen">Verde</string>
     <string name="dt_chocox">Choco X</string>
     <string name="dt_darkaubergine">Beringela</string>
@@ -1233,6 +1228,23 @@
 
     <!-- Restart SystemUI required -->
     <string name="restartui_required">Requer reiniciar a IU do Sistema</string>
+    <string name="restartui_forced_required">Para evitar falhas visuais nas cores, a IU do sistema tem de ser reiniciada. Pretende continuar?</string>
+    <string name="dt_implement_method_choice">"Os temas escuros podem ser aplicados de 2 maneiras:
+
+1-Compatível
+2-Forçado
+
+O modo compatível requer reiniciar a IU do sistema e mantém as cores "Monet", o que força algumas cores a não serem alternadas. Raios...
+
+O modo forçado desativa as cores Monet, desativa também, a navegação por gestos, volta ao modo compatível após um reinício, ou se reiniciar a IU do sistema, MAS todas as cores serão aplicadas de forma correta. É uma bosta mas é assim que funciona no Android 12.
+
+A melhor alternativa é mesmo usar o app Repainter do kdrag0n em vez destes temas.
+
+Seja como for, mesmo usando o modo Forçado, é possível voltar a reativar a navegação por gestos bem como voltar a ter as cores Monet (com um reinicar, por exemplo). A escolha é sua.
+
+Portanto, como fazemos? Compatível ou Forçado?"</string>
+    <string name="compatible_method">Compatível</string>
+    <string name="forced_method">Forçado</string>
 
     <string name="big">Grandes</string>
 	
@@ -1267,18 +1279,27 @@
     <string name="status_bar_date_title">Definições da data</string>
 
     <string name="hidepill">Esconder barra dos gestos</string>
+    <string name="colorpill">Colorir a barra dos gestos</string>
     <string name="reducekeyboard">Reduzir o espaço dos gestos no teclado</string>
     <string name="requiresgestures">Navegação por gestos necessária</string>
     <string name="requiresgesturessummary">Por favor ative a navegação por gestos nas configurações do sistema</string>
     <string name="novibrate">Se desativar esta opção, todas as vibrações do celular ficarão inativas!</string>
+    <string name="disable_color_pill_required">Por favor, desative a opção de colorir a barra e reinicie a app.</string>
+    <string name="disable_hide_pill_required">Por favor, desative a opção de esconder a barra e reinicie a app.</string>
 
     <!-- QS rows and columns -->
     <string name="qs_columns_rows_category_title">Colunas e linhas das configurações rápidas</string>
 
     <!-- Quick Settings brightness slider -->
-
-    <string name="qs_show_brightness_slider_title">Ajustar brilho</string>
-    <string name="qs_show_brightness_slider_summary">Mostrar controlo do brilho no painel das configurações rápidas</string>
+    <string name="qs_brightness_category_title">Opções do controle de brilho</string>
+    <string name="qs_show_brightness_title">Controlo no painel QS</string>
+    <string name="qs_show_brightness_summary">Controlo deslizante nas configurações rápidas expandidas</string>
+    <string name="qs_brightness_position_bottom_title">Controle de brilho na parte inferior</string>
+    <string name="qs_brightness_position_bottom_summary">Mostrar o controle de brilho na parte inferior das configurações rápidas</string>
+    <string name="qs_show_brightness_slider_title">Ajuste deslizante do brilho</string>
+    <string name="qs_show_brightness_slider_summary">Controlo deslizante nas configurações rápidas expandidas</string>
+    <string name="qqs_show_brightness_title">Controlo no painel QQS</string>
+    <string name="qqs_show_brightness_summary">Controlo deslizante no painel das configurações rápidas</string>
     <string name="qs_show_auto_brightness_title">Brilho adaptativo</string>
     <string name="qs_show_auto_brightness_summary">Mostrar ícone do brilho adaptativo</string>
     <string name="qs_show_brightness_slider_show_never">Nunca mostrar</string>
@@ -1429,9 +1450,22 @@
     <string name="lower_sixth_of_the_screen">Parte inferior da tela</string>
 
     <!-- Signal Icons Themes -->
-    <string name="signal_icons_theme_title">Tema dos ícones de sinal</string>
+    <string name="signal_icons_theme_title">Tema dos ícones de rede</string>
+    <string name="signal_icons">Opções dos ícones de rede</string>
 
     <!-- Tiles animation style  -->
     <string name="qs_tile_animation_title">Animações</string>
+
+    <!-- Gestures navbar lenght -->
+    <string name="gesture_navbar_lenght_title">Tamanho da barra dos gestos</string>
+    <string name="nav_bar_length_big">Grande</string>
+
+
+    <!-- Menu Fab Strings -->
+    <string name="fab_reboot">Reiniciar</string>
+    <string name="fab_reboot_hotboot">Reiniciar rápdio</string>
+    <string name="fab_reboot_recovery">Recuperação</string>
+    <string name="fab_reboot_bl">Bootloader</string>
+    <string name="fab_reboot_systemUI">Reiniciar a IU</string>
 
 </resources>

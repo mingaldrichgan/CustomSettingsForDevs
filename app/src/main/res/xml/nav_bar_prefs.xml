@@ -15,6 +15,24 @@
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/reducekeyboard" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="gestures_hide_pill"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/hidepill" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="gestures_color_pill"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/colorpill" />
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/gesture_navbar_lenght_entries"
+            android:entryValues="@array/gesture_navbar_lenght_values"
+            android:key="gesture_navbar_length"
+            android:title="@string/gesture_navbar_lenght_title" />
         <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
             android:entries="@array/back_gesture_height_entries"

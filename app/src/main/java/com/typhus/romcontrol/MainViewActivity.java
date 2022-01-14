@@ -14,6 +14,7 @@ package com.typhus.romcontrol;
         You should have received a copy of the GNU General Public License
         along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 
+import android.animation.Animator;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -33,13 +34,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.software.shell.fab.ActionButton;
 import com.stericson.RootShell.exceptions.RootDeniedException;
 import com.stericson.RootShell.execution.Command;
@@ -60,8 +65,8 @@ public class MainViewActivity extends AppCompatActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
     int[] ids;
-    ActionButton[] rebootFabs;
-    ActionButton reboot, hotboot, recovery, bl, ui;
+    ExtendedFloatingActionButton[] rebootFabs;
+    ExtendedFloatingActionButton reboot, hotboot, recovery, bl, ui;
     View overlay;
     AssetManager am;
     HandleScripts hs;
@@ -80,6 +85,8 @@ public class MainViewActivity extends AppCompatActivity
         // populate the navigation drawer
 
     }
+
+
 
     //Creates a list of NavItem objects to retrieve elements for the Navigation Drawer list of choices
     public List<NavItem> getMenu() {
@@ -194,12 +201,13 @@ public class MainViewActivity extends AppCompatActivity
         int id = v.getId();
         switch (id) {
             /*Handles the onClick event for the semi transparent white overlay
-            * Once clicked, we consider it a click outside the Reboot Menu and it invokes methos showHideRebootMenu()*/
+            * Once clicked, we consider it a click outside the Reboot Menu and it invokes methods showHideRebootMenu()*/
             case R.id.overlay:
+                refreshMe();
                 showHideRebootMenu();
                 break;
             case R.id.action_reboot:
-                getRebootAction("reboot");
+                getRebootAction("am start -a android.intent.action.REBOOT");
                 break;
             case R.id.action_reboot_hotboot:
                 getRebootAction("killall surfaceflinger");
@@ -211,11 +219,18 @@ public class MainViewActivity extends AppCompatActivity
                 getRebootAction("reboot bootloader");
                 break;
             case R.id.action_reboot_systemUI:
+                refreshMe();
                 getRebootAction("killall com.android.systemui");
                 break;
         }
+    }
 
-
+    //"Refreshes" the app...finishes and starts it again to be accurate...
+    public void refreshMe(){
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 
     //Gets string for shell command to activate reboot menu items, using stericson RootTools lib
@@ -234,31 +249,29 @@ public class MainViewActivity extends AppCompatActivity
 
     //Initializes the reboot menu as arrray of views, finds by id and sets animations and onClickListener to each in a loop
     private void initRebootMenu() {
-        ids = new int[]{R.id.action_reboot, R.id.action_reboot_hotboot, R.id.action_reboot_recovery, R.id.action_reboot_bl, R.id.action_reboot_systemUI};
-        rebootFabs = new ActionButton[]{reboot, hotboot, recovery, bl, ui};
         overlay = findViewById(R.id.overlay);
+        rebootFabs = new ExtendedFloatingActionButton[]{reboot, hotboot, recovery, bl, ui};
+        ids = new int[]{R.id.action_reboot, R.id.action_reboot_hotboot, R.id.action_reboot_recovery, R.id.action_reboot_bl, R.id.action_reboot_systemUI};
         int l = ids.length;
         for (int i = 0; i < l; i++) {
-            rebootFabs[i] = (ActionButton) findViewById(ids[i]);
-            rebootFabs[i].hide();
-            rebootFabs[i].setHideAnimation(ActionButton.Animations.ROLL_TO_RIGHT);
-            rebootFabs[i].setShowAnimation(ActionButton.Animations.ROLL_FROM_RIGHT);
-
-
+            rebootFabs[i] = (ExtendedFloatingActionButton) findViewById(ids[i]);
+            rebootFabs[i].setVisibility(View.GONE);
+            rebootFabs[i].shrink();
         }
     }
 
     //Show/Hide reboot menu with animation depending on the view's visibility
     public void showHideRebootMenu() {
 
-        for (int i = 0; i < rebootFabs.length; i++) {
+        for (int i = 0; i < ids.length; i++) {
             if (rebootFabs[i].isShown()) {
                 overlay.setVisibility(View.GONE);
+                rebootFabs[i].shrink();
                 rebootFabs[i].hide();
             } else {
                 overlay.setVisibility(View.VISIBLE);
                 rebootFabs[i].show();
-
+                rebootFabs[i].extend();
             }
         }
     }

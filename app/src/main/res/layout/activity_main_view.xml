@@ -35,7 +35,7 @@
             android:onClick="onClick"
             android:visibility="gone" >
 
-            <com.software.shell.fab.ActionButton
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/action_reboot_systemUI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,16 +45,18 @@
                 android:layout_marginEnd="16dp"
                 android:elevation="6dp"
                 android:onClick="onClick"
-                app:button_color="?attr/colorPrimary"
-                app:button_colorRipple="?attr/colorAccent"
-                app:image="@drawable/ic_reboot_ui"
-                app:image_size="27dp"
-                app:rippleEffect_enabled="true"
-                app:shadow_radius="0dp"
-                app:stroke_color="?attr/colorAccent"
-                app:stroke_width="1.5dp" />
+                android:text="@string/fab_reboot_systemUI"
+                android:textColor="?attr/colorOnSecondary"
+                app:shapeAppearance="@style/FabShape"
+                app:backgroundTint="?attr/colorPrimary"
+                app:rippleColor="?attr/colorAccent"
+                app:icon="@drawable/ic_reboot_ui"
+                app:iconTint="?attr/colorOnSecondary"
+                app:iconSize="27dp"
+                app:strokeColor="?attr/colorAccent"
+                app:strokeWidth="2.5dp" />
 
-            <com.software.shell.fab.ActionButton
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/action_reboot_bl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,16 +66,18 @@
                 android:layout_marginEnd="16dp"
                 android:elevation="6dp"
                 android:onClick="onClick"
-                app:button_color="?attr/colorAccent"
-                app:button_colorRipple="?attr/colorPrimary"
-                app:image="@drawable/ic_reboot_bl"
-                app:image_size="27dp"
-                app:rippleEffect_enabled="true"
-                app:shadow_radius="0dp"
-                app:stroke_color="?attr/colorPrimary"
-                app:stroke_width="1.5dp" />
+                android:text="@string/fab_reboot_bl"
+                android:textColor="?attr/colorOnSecondary"
+                app:shapeAppearance="@style/FabShape"
+                app:backgroundTint="?attr/colorAccent"
+                app:rippleColor="?attr/colorPrimary"
+                app:icon="@drawable/ic_reboot_bl"
+                app:iconTint="?attr/colorOnSecondary"
+                app:iconSize="27dp"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="2.5dp" />
 
-            <com.software.shell.fab.ActionButton
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/action_reboot_recovery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,16 +87,18 @@
                 android:layout_marginEnd="16dp"
                 android:elevation="6dp"
                 android:onClick="onClick"
-                app:button_color="?attr/colorPrimary"
-                app:button_colorRipple="?attr/colorAccent"
-                app:image="@drawable/ic_reboot_recovery"
-                app:image_size="27dp"
-                app:rippleEffect_enabled="true"
-                app:shadow_radius="0dp"
-                app:stroke_color="?attr/colorAccent"
-                app:stroke_width="1.5dp" />
+                android:text="@string/fab_reboot_recovery"
+                android:textColor="?attr/colorOnSecondary"
+                app:shapeAppearance="@style/FabShape"
+                app:backgroundTint="?attr/colorPrimary"
+                app:rippleColor="?attr/colorAccent"
+                app:icon="@drawable/ic_reboot_recovery"
+                app:iconTint="?attr/colorOnSecondary"
+                app:iconSize="27dp"
+                app:strokeColor="?attr/colorAccent"
+                app:strokeWidth="2.5dp" />
 
-            <com.software.shell.fab.ActionButton
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/action_reboot_hotboot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,16 +108,18 @@
                 android:layout_marginEnd="16dp"
                 android:elevation="6dp"
                 android:onClick="onClick"
-                app:button_color="?attr/colorAccent"
-                app:button_colorRipple="?attr/colorPrimary"
-                app:image="@drawable/ic_hotboot"
-                app:image_size="27dp"
-                app:rippleEffect_enabled="true"
-                app:shadow_radius="0dp"
-                app:stroke_color="?attr/colorPrimary"
-                app:stroke_width="1.5dp" />
+                android:text="@string/fab_reboot_hotboot"
+                android:textColor="?attr/colorOnSecondary"
+                app:shapeAppearance="@style/FabShape"
+                app:backgroundTint="?attr/colorAccent"
+                app:rippleColor="?attr/colorPrimary"
+                app:icon="@drawable/ic_hotboot"
+                app:iconTint="?attr/colorOnSecondary"
+                app:iconSize="27dp"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="2.5dp" />
 
-            <com.software.shell.fab.ActionButton
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/action_reboot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,14 +129,16 @@
                 android:layout_marginEnd="16dp"
                 android:elevation="6dp"
                 android:onClick="onClick"
-                app:button_color="?attr/colorPrimary"
-                app:button_colorRipple="?attr/colorAccent"
-                app:image="@drawable/ic_reboot"
-                app:image_size="27dp"
-                app:rippleEffect_enabled="true"
-                app:shadow_radius="0dp"
-                app:stroke_color="?attr/colorAccent"
-                app:stroke_width="1.5dp" />
+                android:text="@string/fab_reboot"
+                android:textColor="?attr/colorOnSecondary"
+                app:shapeAppearance="@style/FabShape"
+                app:backgroundTint="?attr/colorPrimary"
+                app:rippleColor="?attr/colorAccent"
+                app:icon="@drawable/ic_reboot"
+                app:iconTint="?attr/colorOnSecondary"
+                app:iconSize="27dp"
+                app:strokeColor="?attr/colorAccent"
+                app:strokeWidth="2.5dp" />
         </RelativeLayout>
     </RelativeLayout>
     <!-- android:layout_marginTop="?android:attr/actionBarSize"-->
