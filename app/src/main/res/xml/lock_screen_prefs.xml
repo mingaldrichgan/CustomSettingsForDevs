@@ -98,26 +98,44 @@
                     </PreferenceCategory>
                 </PreferenceScreen>
             </PreferenceScreen>
-        <PreferenceCategory android:title="@string/lockscreen_tuner_title">
-            <SwitchPreference
-                android:defaultValue="false"
-                android:key="lockscreen_camera_shortcut"
-                android:summaryOff="@string/lockscreen_charging_animation_off"
-                android:summaryOn="@string/switch_bar_on"
-                android:title="@string/camera_launch_title" />
-            <SwitchPreference
-                android:defaultValue="false"
-                android:key="lockscreen_left_shortcut"
-                android:summaryOff="@string/lockscreen_charging_animation_off"
-                android:summaryOn="@string/switch_bar_on"
-                android:title="@string/show_left_shortcut" />
-        </PreferenceCategory>
-        <PreferenceCategory android:title="@string/carrier_label_category_title">
-            <SwitchPreference
-                android:defaultValue="true"
-                android:key="status_bar_show_carrier"
-                android:summaryOff="@string/show_carrier_disabled"
-                android:summaryOn="@string/switch_bar_on"
-                android:title="@string/show_carrier_title" />
-        </PreferenceCategory>
+            <PreferenceScreen android:title="@string/more_line_text">
+                <PreferenceCategory android:title="@string/lockscreen_tuner_title">
+                    <SwitchPreference
+                        android:defaultValue="false"
+                        android:key="lockscreen_camera_shortcut"
+                        android:summaryOff="@string/lockscreen_charging_animation_off"
+                        android:summaryOn="@string/switch_bar_on"
+                        android:title="@string/camera_launch_title" />
+                    <SwitchPreference
+                        android:defaultValue="false"
+                        android:key="lockscreen_left_shortcut"
+                        android:summaryOff="@string/lockscreen_charging_animation_off"
+                        android:summaryOn="@string/switch_bar_on"
+                        android:title="@string/show_left_shortcut" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="@string/carrier_label_category_title">
+                    <SwitchPreference
+                        android:defaultValue="true"
+                        android:key="status_bar_show_carrier"
+                        android:summaryOff="@string/lockscreen_charging_animation_off"
+                        android:summaryOn="@string/switch_bar_on"
+                        android:title="@string/show_carrier_title" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="@string/clock_options_title">
+                    <SwitchPreference
+                        android:defaultValue="true"
+                        android:key="lockscreen_use_double_line_clock"
+                        android:summaryOff="@string/lockscreen_double_line_clock_summary"
+                        android:summaryOn="@string/lockscreen_double_line_clock_summary"
+                        android:title="@string/lockscreen_double_line_clock_title" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="@string/disable_lockscreen_fp_icon_bg_cat">
+                    <SwitchPreference
+                        android:defaultValue="false"
+                        android:key="disable_lockscreen_fp_icon_bg"
+                        android:summaryOff="@string/lockscreen_charging_animation_off"
+                        android:summaryOn="@string/switch_bar_on"
+                        android:title="@string/disable_lockscreen_fp_icon_bg_title" />
+                </PreferenceCategory>
+            </PreferenceScreen>
 </PreferenceScreen>

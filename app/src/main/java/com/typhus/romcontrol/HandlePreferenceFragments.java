@@ -301,6 +301,58 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                //Lock Screen Fingerprint icon background options
+                if (key.equals("disable_lockscreen_fp_icon_bg")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "cmd overlay enable com.lsfpicon.nobkg");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "cmd overlay disable com.lsfpicon.nobkg");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                //Lock Screen Double Line Clock options
+                if (key.equals("lockscreen_use_double_line_clock")){
+                    if (s.isChecked()) {
+                        Command c0 = new Command(0, "settings put system lockscreen_small_clock 0");
+                        try {
+                            RootTools.getShell(true).add(c0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Command c1 = new Command(1, "settings put system lockscreen_small_clock 1");
+                        try {
+                            RootTools.getShell(true).add(c1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (TimeoutException e) {
+                            e.printStackTrace();
+                        } catch (RootDeniedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 /*Hide Gestures Pill*/
                 if (key.equals("gestures_hide_pill")){
                     int colorpillon = Settings.System.getInt(c.getContentResolver(), "gestures_color_pill", 0);

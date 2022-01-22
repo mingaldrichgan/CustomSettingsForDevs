@@ -3457,4 +3457,12 @@ So, what will it be, Compatible or Forced?"</string>
     <string name="fab_reboot_bl">Bootloader</string>
     <string name="fab_reboot_systemUI">Restart UI</string>
 
+    <!-- Lock Screen Double Line Clock -->
+    <string name="lockscreen_double_line_clock_title">Double-line clock</string>
+    <string name="lockscreen_double_line_clock_summary">Show double-line clock when available</string>
+
+    <!-- Lock Screen Fingerprint icon background -->
+    <string name="disable_lockscreen_fp_icon_bg_title">Disable fingerprint icon background</string>
+    <string name="disable_lockscreen_fp_icon_bg_cat">Fingerprint icon</string>
+
 </resources>
