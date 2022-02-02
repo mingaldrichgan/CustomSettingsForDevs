@@ -903,7 +903,7 @@
     <string name="awake_time">Awake</string>
     <string name="deep_sleep_time">Deep sleep</string>
     <string name="no_kernel_wakelock_file_found">No kernel wakelock stats file /proc/wakelocks or /sys/kernel/debug/wakeup_sources found.</string>
-    <string name="more_line_text">show more options\u2026</string>
+    <string name="more_line_text">Show more options\u2026</string>
     <string name="state_core_mode">Cores</string>
     <string name="kernel_wakelock_time">Kernel wakelocks</string>
     <string name="user_wakelock_time">Partial wakelocks</string>
@@ -1338,26 +1338,6 @@
     <!--Statusbar privacy indicators-->
     <string name="statusbar_privacy_indicators_title">Privacy indicators</string>
     <string name="statusbar_privacy_indicators_summary">Show privacy indicators on statusbar</string>
-
-    <!-- QS tile styles -->
-    <string name="qs_tile_style_title">QS tile style</string>
-    <string name="qstile_default">Default</string>
-    <string name="qstile_cookie">Cookie</string>
-    <string name="qstile_triangles">Triangle</string>
-    <string name="qstile_divided">Divided Circle</string>
-    <string name="qstile_attemptmountain">An attempt of a mountain</string>
-    <string name="qstile_squircle_trim">Squircle with trim</string>
-    <string name="qstile_ninja">Ninja</string>
-    <string name="qstile_wavey">Wavey</string>
-    <string name="qstile_squaremedo">The Squaremedo</string>
-    <string name="qstile_dual_tone_circle">Dual-toned circle</string>
-    <string name="qstile_circleoutline">Circle Outline</string>
-    <string name="qstile_pokesign">Pokesign</string>
-    <string name="qstile_cosmos">Shishu Cosmos</string>
-    <string name="qstile_neonlike">Neon Light</string>
-    <string name="qstile_circle_trim">Circle with trim</string>
-    <string name="qstile_dottedcircle">Dotted Circle</string>
-    <string name="qstile_inkdrop">Ink</string>
 
     <!-- Pulse -->
     <string name="pulse_help_policy_notice_summary">Pulse does not work with some audio sources when listening on device speaker</string>
@@ -2749,28 +2729,64 @@
         <item>8</item>
     </string-array>
 
-    <!-- QS tile styles -->
-    <string-array name="qs_selector_entries" translatable="false">
+    <!-- QS tile themes -->
+    <string name="quick_settings_tiles_themes_title">QS Tiles themes</string>
+    <string name="qs_tile_style_title">@string/quick_settings_tiles_themes_title</string> <!-- lazy as hell... -->
+    <string name="qstile_default">Default</string>
+    <string name="qstile_cookie">Cookie</string>
+    <string name="qstile_triangles">Triangle</string>
+    <string name="qstile_divided">Divided Circle</string>
+    <string name="qstile_attemptmountain">An attempt of a mountain</string>
+    <string name="qstile_squircle_trim">Squircle with trim</string>
+    <string name="qstile_ninja">Ninja</string>
+    <string name="qstile_wavey">Wavey</string>
+    <string name="qstile_squaremedo">The Squaremedo</string>
+    <string name="qstile_dual_tone_circle">Dual-toned circle</string>
+    <string name="qstile_circleoutline">Circle Outline</string>
+    <string name="qstile_pokesign">Pokesign</string>
+    <string name="qstile_cosmos">Shishu Cosmos</string>
+    <string name="qstile_neonlike">Neon Light</string>
+    <string name="qstile_circle_trim">Circle with trim</string>
+    <string name="qstile_dottedcircle">Dotted Circle</string>
+    <string name="qstile_inkdrop">Ink</string>
+
+    <string-array name="quick_settings_tiles_themes_entries">
         <item>@string/qstile_default</item>
-        <item>@string/qstile_circle_trim</item>
-        <item>@string/qstile_dual_tone_circle</item>
-        <item>@string/qstile_squircle_trim</item>
-        <item>@string/qstile_wavey</item>
-        <item>@string/qstile_pokesign</item>
-        <item>@string/qstile_ninja</item>
-        <item>@string/qstile_dottedcircle</item>
-        <item>@string/qstile_attemptmountain</item>
-        <item>@string/qstile_squaremedo</item>
-        <item>@string/qstile_inkdrop</item>
-        <item>@string/qstile_cookie</item>
+        <item>No34D</item>
         <item>@string/qstile_circleoutline</item>
+        <item>@string/qstile_dual_tone_circle</item>
+        <item>@string/qstile_cookie</item>
+        <item>O34D</item>
+        <item>@string/qstile_ninja</item>
         <item>@string/qstile_cosmos</item>
-        <item>@string/qstile_divided</item>
+        <item>@string/qstile_dottedcircle</item>
+        <item>@string/qstile_inkdrop</item>
+        <item>@string/qstile_wavey</item>
+        <item>@string/qstile_attemptmountain</item>
+        <item>@string/qstile_squircle_trim</item>
+        <item>@string/qstile_pokesign</item>
         <item>@string/qstile_neonlike</item>
+        <item>@string/qstile_squaremedo</item>
+        <item>@string/qstile_divided</item>
         <item>@string/qstile_triangles</item>
+        <item>@string/qstile_circle_trim</item>
+        <!-- These next QS Styles can't be used as agreed with their developer
+        <item>Circnout</item>
+        <item>Dnout</item>
+        <item>Dout</item>
+        <item>No24d</item>
+        <item>O24d</item>
+        <item>No24l</item>
+        <item>O24l</item>
+        <item>No34l</item>
+        <item>O34l</item>
+        <item>No44d</item>
+        <item>O44d</item>
+        <item>No44l</item>
+        <item>O44l</item> -->
     </string-array>
 
-    <string-array name="qs_selector_values" translatable="false">
+    <string-array name="quick_settings_tiles_themes_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -2788,6 +2804,21 @@
         <item>14</item>
         <item>15</item>
         <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <!-- These next QS Styles can't be used as agreed with their developer
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item> -->
     </string-array>
 
     <!-- Pulse -->
@@ -2932,11 +2963,17 @@
     <!-- CUSTOM APP STRINGS -->
 
     <!-- Restart required -->
-    <string name="restart_required">Requires restart</string>
+    <string name="restart_required">"This option requires you to restart your device.
+
+Would you like to do that now?"</string>
 
     <!-- Restart SystemUI required -->
-    <string name="restartui_required">Requires SystemUI restart</string>
-    <string name="restartui_forced_required">To avoid visual color glitches, SystemUI has to be restarted. Do you want to continue?</string>
+    <string name="restartui_required">"This option requires a SystemUI restart.
+
+Would you like to do that now?"</string>
+    <string name="restartui_forced_required">"To avoid visual color glitches, SystemUI has to be restarted.
+
+Do you want to continue?"</string>
     <string name="dt_implement_method_choice">"The dark themes can be applied in 2 ways:
 
 1-Compatible
@@ -2986,7 +3023,7 @@ So, what will it be, Compatible or Forced?"</string>
         <item>Harmony</item>
         <item>Inter</item>
         <item>Linotte</item>
-        <item>Madee Sans</item>
+        <item>Evolve Sans</item>
         <item>Manrope</item>
         <item>MiLan Pro</item>
         <item>Noto Sans</item>
@@ -3000,6 +3037,33 @@ So, what will it be, Compatible or Forced?"</string>
         <item>Rosemary</item>
         <item>Source Sans</item>
         <item>Source Serif</item>
+        <item>Storopia</item>
+        <item>Simple Day</item>
+        <item>LG Smart Gothic</item>
+        <item>Nokia Pure</item>
+        <item>Bariol</item>
+        <item>Comfortaa</item>
+        <item>Cool Story</item>
+        <item>Comic Sans</item>
+        <item>Sony Sketch</item>
+        <item>Amarante</item>
+        <item>Cocon</item>
+        <item>Fucek</item>
+        <item>Oduda</item>
+        <item>Lemon Milk</item>
+        <item>Aclonica</item>
+        <item>Fifa 2018</item>
+        <item>Reemkufi</item>
+        <item>Exo Two</item>
+        <item>Samsung One</item>
+        <item>Nunito</item>
+        <item>Quando</item>
+        <item>Ubuntu</item>
+        <item>Antipasto Pro</item>
+        <item>Surfer</item>
+        <item>Cagliostro</item>
+        <item>Grand Hotel</item>
+        <item>Redressed</item>
     </string-array>
 
     <string-array name="fonts_values" translatable="false">
@@ -3023,6 +3087,33 @@ So, what will it be, Compatible or Forced?"</string>
         <item>17</item>
         <item>18</item>
         <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
     </string-array>
 
     <!-- Adaptive Sound -->
@@ -3213,13 +3304,16 @@ So, what will it be, Compatible or Forced?"</string>
     <string name="custom_themed_icons_off">Custom icons disabled</string>
     <string name="custom_themed_icons_on">Custom icons enabled</string>
     <string name="custom_themed_icons">Enable more themed icons on launcher</string>
-    <string name="custom_themed_icons_warning">Requires that themed icons option is disabled and enabled again on Wallpaper &amp; style</string>
+    <string name="custom_themed_icons_warning">"Sometimes, this option requires that themed icons are disabled and enabled again on Wallpaper &amp; style.
+
+So, if you toggled this option and nothing changed, you now know what to do."</string>
 
     <!-- Icon Styles -->
     <string name="icons_style_title">Icons Style</string>
 
     <string-array name="icons_style_entries" translatable="false">
         <item>@string/switch_default</item>
+        <item>Acherus</item>
         <item>Circular</item>
         <item>Filled</item>
         <item>Kai</item>
@@ -3238,6 +3332,7 @@ So, what will it be, Compatible or Forced?"</string>
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>8</item>
     </string-array>
 
 
@@ -3464,5 +3559,73 @@ So, what will it be, Compatible or Forced?"</string>
     <!-- Lock Screen Fingerprint icon background -->
     <string name="disable_lockscreen_fp_icon_bg_title">Disable fingerprint icon background</string>
     <string name="disable_lockscreen_fp_icon_bg_cat">Fingerprint icon</string>
+
+    <!-- Ask the user which time format he wants -->
+    <string name="time_format_option">"Please choose the default time format on your location."</string>
+    <string name="time_format_option_12">12hrs</string>
+    <string name="time_format_option_24">24hrs</string>
+
+    <!-- QS Gradient Warning -->
+    <string name="qs_gradient_warning">"This option only works, as it should, if default QS Style option is enabled. On other styles, well...you'll see..."</string>
+
+    <!-- Brightness slider options -->
+    <string name="bs_thick_track">Use a thick track on brightness slider</string>
+    <string name="bs_more_padding">Have more padding between the slider and all the rest</string>
+
+    <!-- Edge Sense Plus app options -->
+    <string name="edge_sense_plus_title">Edge Sense Plus app</string>
+    <string name="edge_sense_plus_uninstall">Uninstall Edge Sense Plus app</string>
+    <string name="edge_sense_plus_install">Install Edge Sense Plus app</string>
+    <string-array name="edge_sense_plus_entries">
+        <item>@string/edge_sense_plus_uninstall</item>
+        <item>@string/edge_sense_plus_install</item>
+    </string-array>
+
+    <string-array name="edge_sense_plus_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string name="install_esp_dialogue">"Edge Sense Plus is an app built by @j to the 4n, back in 2019, that allows users to set other actions, rather than just opening Google Assistant, by squeezing the phone.
+
+This app required a Magisk module to be installed as well but, it has been a long time since the module has been updated to newest SystemUI builds.
+
+Well, now it has been, by yours truly, and it's already merged into Addon Features SystemUI module so, if your device has edge sensors (and only if it has) you now may enjoy Edge Sense Plus instead of default Active Edge by Google.
+
+Please notice that, it's possible that E.S.P. requires Google Assistant app installed through Play Store in order to use "Open Assistant" feature. And, even so, it's possible that you can't choose Assistant option, you would have to choose the option to open an app and choose Google Assistant app as the one you want to open. For more info about this, please just visit original XDA thread.
+
+If you choose to install the app, don't forget to press IGNORE on the first popup you'll see after opening the app on your drawer.
+
+So, do you want to install Edge Sense Plus app? If your device has this sensor, I bet you want..."</string>
+
+    <string name="uninstall_esp_dialogue">"This option will uninstall Edge Sense Plus app.
+
+Are you sure you want to do that?"</string>
+
+    <!-- Tap Tap app options -->
+    <string name="tap_tap_title">Tap Tap app</string>
+    <string name="tap_tap_uninstall">Uninstall Tap Tap app</string>
+    <string name="tap_tap_install">Install Tap Tap app</string>
+    <string-array name="tap_tap_entries">
+        <item>@string/tap_tap_uninstall</item>
+        <item>@string/tap_tap_install</item>
+    </string-array>
+
+    <string-array name="tap_tap_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string name="install_tap_tap_dialogue">"Tap Tap is an awesome app created by @Quinny899. It allows to use the tap gesture, on the back of the device, to trigger several different actions instead of the default ones by Google.
+
+This app is so cool that it works even on a device that doesn't have Quick Tap feature. I've downloaded the app from official GitHub and decided to include it here so more users could try it out.
+
+It's truly an amazing work so, if you decide to install the app, don't forget to thank Quinny899 for this and, if you want updates, just enable the Allow Internet permission on the app settings.
+
+Do you want to install Tap Tap? If you do, the app will appear on your app drawer."</string>
+
+    <string name="uninstall_tap_tap_dialogue">"This option will uninstall Tap Tap app.
+
+Are you sure you want to do that?"</string>
 
 </resources>

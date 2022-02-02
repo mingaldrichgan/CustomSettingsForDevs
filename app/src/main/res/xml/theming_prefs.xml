@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/theme_customization_font_title">
         <SwitchPreference
             android:defaultValue="true"
@@ -47,5 +45,13 @@
             android:entryValues="@array/dt_style_values"
             android:key="dt_style"
             android:title="@string/dt_styles" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/quick_settings_tiles_themes_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/quick_settings_tiles_themes_entries"
+            android:entryValues="@array/quick_settings_tiles_themes_values"
+            android:key="quick_settings_tiles_themes"
+            android:title="@string/quick_settings_tiles_themes_title" />
     </PreferenceCategory>
 </PreferenceScreen>

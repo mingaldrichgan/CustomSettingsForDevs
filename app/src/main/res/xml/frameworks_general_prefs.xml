@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/adaptive_sound_title">
         <SwitchPreference
             android:defaultValue="true"
@@ -41,5 +39,21 @@
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/disable_screenshot_shutter_sound_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/edge_sense_plus_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/edge_sense_plus_entries"
+            android:entryValues="@array/edge_sense_plus_values"
+            android:key="edge_sense_plus_app"
+            android:title="@string/edge_sense_plus_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/tap_tap_title">
+        <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="0"
+            android:entries="@array/tap_tap_entries"
+            android:entryValues="@array/tap_tap_values"
+            android:key="tap_tap_app"
+            android:title="@string/tap_tap_title" />
     </PreferenceCategory>
 </PreferenceScreen>

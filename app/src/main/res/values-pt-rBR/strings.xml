@@ -1108,7 +1108,7 @@
     <string name="statusbar_privacy_indicators_title">Indicadores de privacidade</string>
     <string name="statusbar_privacy_indicators_summary">Mostrar indicadores de privacidade na barra de status</string>
     <!-- QS tile styles -->
-    <string name="qs_tile_style_title">Estilo das Configurações Rápidas</string>
+    <string name="quick_settings_tiles_themes_title">Estilo das Configurações Rápidas</string>
     <string name="qstile_default">Padrão</string>
     <string name="qstile_circle_trim">Círculo com Gradiente</string>
     <string name="qstile_dual_tone_circle">Círculo de dois tons</string>
@@ -1224,11 +1224,17 @@
     <string name="clines">Cubo em linhas</string>
 
     <!-- Restart required -->
-    <string name="restart_required">É necessário reiniciar</string>
+    <string name="restart_required">"Esta opção requer um reiniciar do dispositivo.
+
+Quer reinicar agora?"</string>
 
     <!-- Restart SystemUI required -->
-    <string name="restartui_required">Requer reiniciar a IU do Sistema</string>
-    <string name="restartui_forced_required">Para evitar falhas visuais nas cores, a IU do sistema tem de ser reiniciada. Pretende continuar?</string>
+    <string name="restartui_required">"Esta opção requer que a interface do Sistema seja reiniciada.
+
+Quer fazer isso agora?"</string>
+    <string name="restartui_forced_required">"Para evitar falhas visuais nas cores, a IU do sistema tem de ser reiniciada.
+
+Pretende continuar?"</string>
     <string name="dt_implement_method_choice">"Os temas escuros podem ser aplicados de 2 maneiras:
 
 1-Compatível
@@ -1398,7 +1404,9 @@ Portanto, como fazemos? Compatível ou Forçado?"</string>
     <string name="custom_themed_icons_off">Ícones customizados desativados</string>
     <string name="custom_themed_icons_on">Ícones customizados ativados</string>
     <string name="custom_themed_icons">Ativar mais ícones temáticos</string>
-    <string name="custom_themed_icons_warning">Precisa de desativar e ativar novamente a opção dos ícones temáticas de sistema na app dos Wallpappers</string>
+    <string name="custom_themed_icons_warning">"Por vezes, esta opção requer o desativar, e ativar novamente, dos Ícones temáticos na aplicação Imagem fundo/estilo.
+
+Assim, caso a opção não tenha feito nada, já sabe o que fazer."</string>
 
     <!-- Icon Styles -->
     <string name="icons_style_title">Estilo dos Ícones</string>
@@ -1475,5 +1483,53 @@ Portanto, como fazemos? Compatível ou Forçado?"</string>
     <!-- Lock Screen Fingerprint icon background -->
     <string name="disable_lockscreen_fp_icon_bg_title">Desativar fundo no ícone da impressão digital</string>
     <string name="disable_lockscreen_fp_icon_bg_cat">Ícone da impressão digital</string>
+
+    <!-- Ask the user which time format he wants -->
+    <string name="time_format_option">Por favor, escolha o formato de hora por defeito no seu local.</string>
+    <string name="time_format_option_12">12hrs</string>
+    <string name="time_format_option_24">24hrs</string>
+
+    <!-- QS Gradient Warning -->
+    <string name="qs_gradient_warning">"Esta opção apenas funciona com o estilo padrão das configurações rápidas. Se outro estilo estiver ativo, provavelmente não irá gostar do resultado final."</string>
+
+    <!-- Brightness slider options -->
+    <string name="bs_thick_track">Trilho do controle de brilho espesso</string>
+    <string name="bs_more_padding">Aumentar o espaço entre o controlo de brilho e restantes elementos</string>
+
+    <!-- Edge Sense Plus app options -->
+    <string name="edge_sense_plus_uninstall">Desinstalar o ESP</string>
+    <string name="edge_sense_plus_install">Instalar o ESP</string>
+
+    <string name="install_esp_dialogue">"O Edge Sense Plus é um aplicativo criado por @j para o 4n, em 2019, que permite aos usuários definir outras ações, em vez de apenas abrir o Google Assistant, apertando o telefone.
+
+Este aplicativo também exigia a instalação de um módulo Magisk, mas já faz muito tempo desde que o módulo foi atualizado para as versões mais recentes do SystemUI.
+
+Bem, agora ele já está integrado ao módulo Addon Features SystemUI, portanto, se o seu dispositivo tiver sensores de borda (e somente se tiver), agora você poderá desfrutar do Edge Sense Plus em vez do Active Edge padrão do Google.
+
+Observe que é possível que o E.S.P. requer que o aplicativo Google Assistant seja instalado por meio da Play Store para usar o recurso Open Assistant. E, mesmo assim, é possível que você não consiga escolher a opção Assistente, você teria que optar por abrir um aplicativo e escolher o Google Assistente como o aplicativo que deseja abrir.
+
+Se optar por instalar o aplicativo, não se esqueça de pressionar IGNORE no primeiro pop-up que você verá após abrir o aplicativo, que irá aparecer na gaveta de aplicativos.
+
+Então, você deseja instalar o aplicativo Edge Sense Plus? Se o seu aparelho tem esse sensor, aposto que você quer..."</string>
+
+    <string name="uninstall_esp_dialogue">"Esta opção irá desinstalar o Edge Sense Plus.
+
+De certeza que quer desinstalar?"</string>
+
+    <!-- Tap Tap app options -->
+    <string name="tap_tap_uninstall">Desinstalar o Tap Tap</string>
+    <string name="tap_tap_install">Instalar o Tap Tap</string>
+
+    <string name="install_tap_tap_dialogue">"Tap Tap é um aplicativo incrível criado por @Quinny899. Ele permite usar o gesto de toque, na parte traseira do dispositivo, para acionar várias ações diferentes em vez das padrão do Google.
+
+Este aplicativo é tão legal que funciona mesmo em um dispositivo que não possui o recurso Quick Tap. Baixei o aplicativo do GitHub oficial e decidi incluí-lo aqui para que mais usuários pudessem experimentá-lo.
+
+É realmente um trabalho incrível, portanto, se você decidir instalar o aplicativo, não se esqueça de agradecer ao Quinny899 por isso e, se quiser atualizações, basta ativar a permissão Permitir Internet nas configurações do aplicativo.
+
+Deseja instalar o Tap Tap? Se sim, a mesma irá aparecer na gaveta de aplicativos"</string>
+
+    <string name="uninstall_tap_tap_dialogue">"Esta opção irá desinstalar o Tap Tap.
+
+De certeza que quer desinstalar?"</string>
 
 </resources>
