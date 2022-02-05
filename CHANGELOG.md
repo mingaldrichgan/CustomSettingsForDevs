@@ -133,7 +133,7 @@
 - Updated Rom Control app
 
 
-## Addon features for Pixel devices V5 (first public release):
+## Addon features for Pixel devices V5:
 
 - Added Android 11 Icon Styles and Icon Shapes overlays
 - Added ProtonAOSP Fonts overlays
@@ -141,3 +141,27 @@
 - Reduced screenshot overlay PIP time after taking a screenshot
 - Added more themed icons
 - Updated Rom Control app
+
+
+## Addon features for Pixel devices V4:
+
+- Added option to enable/disable more themed icons on Pixel Launcher
+- Added some Pixel Launcher hidden flags
+- Rom Control app updated to use dynamic colors
+
+
+## Addon features for Pixel devices V3:
+
+- Added battery styles
+- Added clock/date customization
+- Updated Rom Control app
+
+
+## Addon features for Pixel devices V2:
+
+- Fixed QS header light/dark switching at runtime
+
+
+## Addon features for Pixel devices V1:
+
+- Ported QS header light/dark themes from Proton AOSP ROM
