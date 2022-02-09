@@ -147,6 +147,7 @@
 
 - Added option to enable/disable more themed icons on Pixel Launcher
 - Added some Pixel Launcher hidden flags
+- Added Network traffic
 - Rom Control app updated to use dynamic colors
 
 
