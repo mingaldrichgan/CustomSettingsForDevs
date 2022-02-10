@@ -1,3 +1,15 @@
+## Addon features for Pixel devices V16:
+
+- Introduce "**One Zip To Rule Them All**" (many thanks to @siavash79)
+  - This means that, from now on, only one module zip is required for Addon Features on ALL Pixel devices (wallpapers mod not included)
+- Fixed Network Traffic not working on status bar for redfin, oriole and raven devices
+  - Yep, finally fixed this weirdness that existed since Android 11
+- Added Battery Bar
+- Added 2 more QS Tile Themes (thanks to @Liranazuz5)
+- Corrected QS Rows options not being applied, on ROM Control, for some users
+- Improved some QS Tiles Themes (thanks to @Liranazuz5)
+- Updated ROM Control app
+
 ## Addon features for Pixel devices V15:
 
 - Corrected QS Themes not being applied, on ROM Control, for some users
