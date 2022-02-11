@@ -38,20 +38,28 @@
             android:key="signal_icons_theme"
             android:title="@string/signal_icons_theme_title" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/dt_styles">
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/dt_style_entries"
-            android:entryValues="@array/dt_style_values"
-            android:key="dt_style"
-            android:title="@string/dt_styles" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/quick_settings_tiles_themes_title">
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/quick_settings_tiles_themes_entries"
-            android:entryValues="@array/quick_settings_tiles_themes_values"
-            android:key="quick_settings_tiles_themes"
-            android:title="@string/quick_settings_tiles_themes_title" />
-    </PreferenceCategory>
+    <PreferenceScreen android:title="@string/more_line_text" >
+        <PreferenceCategory android:title="@string/dt_styles">
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/dt_style_entries"
+                android:entryValues="@array/dt_style_values"
+                android:key="dt_style"
+                android:title="@string/dt_styles" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/quick_settings_tiles_themes_title">
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/quick_settings_tiles_themes_entries"
+                android:entryValues="@array/quick_settings_tiles_themes_values"
+                android:key="quick_settings_tiles_themes"
+                android:title="@string/quick_settings_tiles_themes_title" />
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/qs_rows_entries"
+                android:entryValues="@array/qs_rows_values"
+                android:key="qs_rows_number"
+                android:title="@string/qs_rows_title" />
+        </PreferenceCategory>
+    </PreferenceScreen>
 </PreferenceScreen>

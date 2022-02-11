@@ -9,42 +9,54 @@
             android:title="@string/status_bar_quick_qs_pulldown" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/qs_tile_animation_category">
-        <!-- QS Tiles Gradient options -->
         <SwitchPreference
             android:defaultValue="false"
             android:key="qs_gradient"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/sb_battery_bar_use_gradient_color" />
-        <!-- Disable Light QS Header -->
         <SwitchPreference
             android:defaultValue="false"
             android:key="disable_light_qs_header"
             android:summaryOff="@string/lockscreen_charging_animation_off"
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/disable_light_qs_header_title" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="wifi_cell"
+            android:summaryOff="@string/wifi_cell_off"
+            android:summaryOn="@string/wifi_cell_on"
+            android:title="@string/wifi_cell_title" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="quick_settings_vibrate"
+            android:summaryOff="@string/quick_settings_vibrate_summary"
+            android:summaryOn="@string/quick_settings_vibrate_summary"
+            android:title="@string/quick_settings_vibrate_title" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/qs_tile_animation_title">
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="0"
-            android:entries="@array/qs_tile_animation_style_entries"
-            android:entryValues="@array/qs_tile_animation_style_values"
-            android:key="anim_tile_style"
-            android:title="@string/qs_tile_animation_style_title" />
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="2"
-            android:entries="@array/qs_tile_animation_duration_entries"
-            android:entryValues="@array/qs_tile_animation_duration_values"
-            android:key="anim_tile_duration"
-            android:title="@string/qs_tile_animation_duration_title" />
-        <com.typhus.romcontrol.prefs.MyListPreference
-            android:defaultValue="7"
-            android:entries="@array/qs_tile_animation_interpolator_entries"
-            android:entryValues="@array/qs_tile_animation_interpolator_values"
-            android:key="anim_tile_interpolator"
-            android:title="@string/qs_tile_animation_interpolator_title" />
-    </PreferenceCategory>
-    <PreferenceScreen android:title="@string/more_line_text">
+    <PreferenceScreen android:title="@string/qs_tile_animation_title">
+        <PreferenceCategory android:title="@string/qs_tile_animation_title">
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/qs_tile_animation_style_entries"
+                android:entryValues="@array/qs_tile_animation_style_values"
+                android:key="anim_tile_style"
+                android:title="@string/qs_tile_animation_style_title" />
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/qs_tile_animation_duration_entries"
+                android:entryValues="@array/qs_tile_animation_duration_values"
+                android:key="anim_tile_duration"
+                android:title="@string/qs_tile_animation_duration_title" />
+            <com.typhus.romcontrol.prefs.MyListPreference
+                android:defaultValue="0"
+                android:entries="@array/qs_tile_animation_interpolator_entries"
+                android:entryValues="@array/qs_tile_animation_interpolator_values"
+                android:key="anim_tile_interpolator"
+                android:title="@string/qs_tile_animation_interpolator_title" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/qs_brightness_category_title">
         <PreferenceCategory android:title="@string/qs_brightness_category_title">
             <SwitchPreference
                 android:defaultValue="false"
@@ -83,23 +95,8 @@
                 android:summaryOn="@string/switch_bar_on"
                 android:title="@string/bs_more_padding" />
         </PreferenceCategory>
-        <PreferenceCategory android:title="@string/qs_tile_animation_category">
-            <!-- Wifi and Cell tiles option -->
-            <SwitchPreference
-                android:defaultValue="false"
-                android:key="wifi_cell"
-                android:summaryOff="@string/wifi_cell_off"
-                android:summaryOn="@string/wifi_cell_on"
-                android:title="@string/wifi_cell_title" />
-            <!-- Vibrate options -->
-            <SwitchPreference
-                android:defaultValue="false"
-                android:key="quick_settings_vibrate"
-                android:summaryOff="@string/quick_settings_vibrate_summary"
-                android:summaryOn="@string/quick_settings_vibrate_summary"
-                android:title="@string/quick_settings_vibrate_title" />
-            <!-- QS battery estimate option -->
-        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/more_line_text">
         <PreferenceCategory android:title="@string/battery_percentage_title">
             <SwitchPreference
                 android:defaultValue="true"
@@ -109,14 +106,12 @@
                 android:title="@string/battery_estimate_title" />
         </PreferenceCategory>
         <PreferenceCategory android:title="@string/qs_footer_title">
-            <!-- Disable Edit icon -->
             <SwitchPreference
                 android:defaultValue="true"
                 android:key="qs_edit_toggle"
                 android:summaryOff="@string/qs_footer_edit_summary"
                 android:summaryOn="@string/qs_footer_edit_summary"
                 android:title="@string/qs_footer_edit_title" />
-            <!-- Enable running services icon -->
             <SwitchPreference
                 android:defaultValue="false"
                 android:key="qs_running_services_toggle"

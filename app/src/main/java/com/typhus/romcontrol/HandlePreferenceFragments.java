@@ -784,9 +784,9 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 //Enable/Disable Tuner
                 if (key.equals("sysui_tuner")){
                     if (s.isChecked()) {
-                        runCommandAction("pm enable com.android.systemui/.tuner.TunerActivity && sed -re 's/pm disable/pm enable/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
+                        runCommandAction("pm enable com.android.systemui/.tuner.TunerActivity");
                     } else {
-                        runCommandAction("pm disable com.android.systemui/.tuner.TunerActivity && sed -re 's/pm enable/pm disable/g' /data/adb/modules/AddonFeaturesForPixel/service.sh > /data/adb/modules/AddonFeaturesForPixel/new_service.sh && mv /data/adb/modules/AddonFeaturesForPixel/new_service.sh /data/adb/modules/AddonFeaturesForPixel/service.sh");
+                        runCommandAction("pm disable com.android.systemui/.tuner.TunerActivity");
                     }
                 }
                 /*QS Estiamtes warning*/
@@ -1373,44 +1373,50 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             case 18:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circletrim.overlay");
                                 break;
-                            /* These next QS Styles can't be used as agreed with their developer
                             case 19:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circnout.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circle.overlay");
                                 break;
                             case 20:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dnout.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch.overlay");
                                 break;
+                            /* These next QS Styles can't be used as agreed with their developer
                             case 21:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dout.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circnout.overlay");
                                 break;
                             case 22:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dnout.overlay");
                                 break;
                             case 23:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dout.overlay");
                                 break;
                             case 24:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24d.overlay");
                                 break;
                             case 25:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24d.overlay");
                                 break;
                             case 26:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no34l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24l.overlay");
                                 break;
                             case 27:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o34l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24l.overlay");
                                 break;
                             case 28:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no34l.overlay");
                                 break;
                             case 29:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o34l.overlay");
                                 break;
                             case 30:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44d.overlay");
                                 break;
                             case 31:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44d.overlay");
+                                break;
+                            case 32:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44l.overlay");
+                                break;
+                            case 33:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44l.overlay");
                                 break;
                              */
@@ -1420,6 +1426,20 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //QS Style options end
+                    //Battery bar options begin
+                    if (key.equals("statusbar_battery_bar_no_navbar_list")){
+                        switch(mValueIndex) {
+                            case 1:
+                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 1);
+                                break;
+                            case 2:
+                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 2);
+                                break;
+                            default:
+                                Settings.System.putInt(c.getContentResolver(), "statusbar_battery_bar", 0);
+                                break;
+                        }
+                    }
                     //System fonts options begin
                     if (key.equals("font_style")){
                         switch(mValueIndex) {
@@ -1679,6 +1699,26 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                         }
                     }
                     //Signal Icons theme options end
+                    //QS Rows options
+                    if (key.equals("qs_rows_number")){
+                        switch(mValueIndex) {
+                            case 1:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstiles2r");
+                                break;
+                            case 2:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstiles3r");
+                                break;
+                            case 3:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstiles4r");
+                                break;
+                            case 4:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstiles5r");
+                                break;
+                            default:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstiles2r && cmd overlay disable com.android.systemui.qstiles2r");
+                                break;
+                        }
+                    }
                 } else {
                     l.setSummary("");
                 }

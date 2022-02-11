@@ -1127,6 +1127,7 @@
     <string name="qstile_neonlike">Luz Neon</string>
     <string name="qstile_oos">Oxygen</string>
     <string name="qstile_triangles">Triângulo</string>
+    <string name="qstile_circle">Círculo</string>
     <!-- Pulse -->
     <string name="pulse_help_policy_notice_summary">O Pulse não funciona com algumas fontes de áudio ao ouvir no alto-falante do dispositivo</string>
     <string name="pulse_settings">Pulse</string>
@@ -1496,6 +1497,9 @@ Assim, caso a opção não tenha feito nada, já sabe o que fazer."</string>
     <string name="bs_thick_track">Trilho do controle de brilho espesso</string>
     <string name="bs_more_padding">Aumentar o espaço entre o controlo de brilho e restantes elementos</string>
 
+    <!-- Install external apps sub preference -->
+    <string name="install_optional_apps_title">Instalar apps opcionais</string>
+
     <!-- Edge Sense Plus app options -->
     <string name="edge_sense_plus_uninstall">Desinstalar o ESP</string>
     <string name="edge_sense_plus_install">Instalar o ESP</string>
@@ -1531,5 +1535,13 @@ Deseja instalar o Tap Tap? Se sim, a mesma irá aparecer na gaveta de aplicativo
     <string name="uninstall_tap_tap_dialogue">"Esta opção irá desinstalar o Tap Tap.
 
 De certeza que quer desinstalar?"</string>
+
+    <!-- QS Rows options -->
+    <string name="qs_rows_title">Número de linhas nas configurações rápidas</string>
+    <string name="theme_default">Usar os valores padrão do estilo em uso</string>
+    <string name="qs2_rows">Forçar 2 linhas</string>
+    <string name="qs3_rows">Forçar 3 linhas</string>
+    <string name="qs4_rows">Forçar 4 linhas</string>
+    <string name="qs5_rows">Forçar 5 linhas</string>
 
 </resources>

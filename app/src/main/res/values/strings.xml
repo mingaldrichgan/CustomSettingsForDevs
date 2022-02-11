@@ -1238,53 +1238,6 @@
     <string name="lockscreen_battery_info_title">Charging info</string>
     <string name="lockscreen_battery_info_summary">Display charger max current, voltage and battery temperature while charging</string>
 
-    <!-- Battery bar -->
-    <string name="sb_battery_bar_title">Battery bar</string>
-    <string name="sb_battery_bar_summary">Display and customize battery bar near status bar or navigation bar</string>
-    <string name="sb_battery_bar_location">Battery bar location</string>
-    <string name="sb_battery_bar_color">Battery bar color</string>
-    <string name="sb_battery_bar_style_title">Battery bar style</string>
-    <string name="sb_battery_bar_thickness_title">Battery bar thickness</string>
-    <string name="sb_battery_bar_animate_title">Charging animation</string>
-    <string name="sb_battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
-    <string name="sb_battery_bar_hide">Hide</string>
-    <string name="sb_battery_bar_statusbar">Statusbar</string>
-    <string name="sb_battery_bar_topnav">Top of navbar</string>
-    <string name="sb_battery_bar_bottomnav">Bottom of navbar</string>
-    <string name="sb_battery_bar_reg">Regular</string>
-    <string name="sb_battery_bar_center">Center-mirrored</string>
-    <string name="sb_battery_bar_charging_color">Battery bar charging color</string>
-    <string name="sb_battery_bar_battery_low_color">Battery bar low battery color</string>
-    <string name="sb_battery_bar_reversed">Reversed</string>
-    <string name="sb_battery_bar_use_gradient_color">Use gradient color</string>
-    <string name="sb_battery_bar_gradient_color_summary">Use gradient color as a scale for the battery level</string>
-    <string name="sb_battery_bar_high_color">High level color"</string>
-    <string name="sb_battery_bar_low_color">Low level color"</string>
-
-    <!-- Battery Bar Android 11-->
-    <string name="battery_bar_title">Battery bar</string>
-    <string name="battery_bar_summary">Display and customize battery bar near status bar or navigation bar</string>
-    <string name="battery_bar_no_navbar">Battery bar location</string>
-    <string name="battery_bar_location_hide">Hide</string>
-    <string name="battery_bar_statusbar_top">Statusbar Top</string>
-    <string name="battery_bar_statusbar_bot">Statusbar bottom</string>
-    <string name="battery_bar_color">Battery bar color</string>
-    <string name="battery_bar_charging_color">Battery bar charging color</string>
-    <string name="battery_bar_battery_low_color">Battery bar low battery color</string>
-    <string name="battery_bar_cat">Battery bar style</string>
-    <string name="battery_bar_style_title">Battery bar alignment</string>
-    <string name="battery_bar_thickness_title">Battery bar thickness</string>
-    <string name="battery_bar_animate_title">Charging animation</string>
-    <string name="battery_bar_style_regular">Regular</string>
-    <string name="battery_bar_style_center_mirrored">Center-mirrored</string>
-    <string name="battery_bar_style_reversed">Reversed</string>
-    <string name="battery_bar_use_charging_color">Custom charging color</string>
-    <string name="battery_bar_blend_color_title">Blend colors</string>
-    <string name="battery_bar_blend_color_summary">Blend full/empty colors corresponding to battery percentage</string>
-    <string name="battery_bar_blend_color_reverse_title">Reverse color direction</string>
-    <string name="battery_bar_blend_color_reverse_summary_off">Full &#8594; empty: red &#8592; green &#8592; blue &#8592; red</string>
-    <string name="battery_bar_blend_color_reverse_summary_on">Full &#8594; empty: red &#8594; green &#8594; blue &#8594; red</string>
-
     <!-- Statusbar Clock Android 11-->
     <string name="status_bar_clock_date_title">Clock and date</string>
     <string name="status_bar_clock_date_summary">Customize your statusbar clock and date</string>
@@ -2117,19 +2070,19 @@
 
     <!-- Network Traffic Type -->
     <string-array name="show_network_traffic_type_entries" translatable="false">
-        <item>@string/show_network_traffic_combined</item>
-        <item>@string/show_network_traffic_dynamic</item>
         <item>@string/show_network_traffic_all</item>
         <item>@string/show_network_traffic_up</item>
         <item>@string/show_network_traffic_down</item>
+        <item>@string/show_network_traffic_combined</item>
+        <item>@string/show_network_traffic_dynamic</item>
     </string-array>
 
     <string-array name="show_network_traffic_type_values" translatable="false">
-        <item>3</item>
-        <item>4</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 
     <!-- Network traffic location -->
@@ -2644,46 +2597,6 @@
         <item>3</item>
     </string-array>
 
-    <!-- Battery bar -->
-    <string-array name="battery_bar_entries" translatable="false">
-        <item>@string/traffic_disabled</item>
-        <item>@string/sb_battery_bar_statusbar</item>
-        <item>@string/sb_battery_bar_topnav</item>
-        <item>@string/sb_battery_bar_bottomnav</item>
-    </string-array>
-
-    <string-array name="battery_bar_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="battery_bar_style_entries" translatable="false">
-        <item>@string/sb_battery_bar_reg</item>
-        <item>@string/sb_battery_bar_center</item>
-        <item>@string/sb_battery_bar_reversed</item>
-    </string-array>
-
-    <string-array name="battery_bar_style_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
-    <!-- Battery bar Android 11-->
-    <string-array name="battery_bar_no_navbar_entries">
-        <item>@string/battery_bar_location_hide</item>
-        <item>@string/battery_bar_statusbar_top</item>
-        <item>@string/battery_bar_statusbar_bot</item>
-    </string-array>
-
-    <string-array name="battery_bar_no_navbar_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <!-- Smart Pixels -->
     <string-array name="smart_pixels_percent_strings" translatable="false">
         <item>12</item>
@@ -2749,6 +2662,7 @@
     <string name="qstile_circle_trim">Circle with trim</string>
     <string name="qstile_dottedcircle">Dotted Circle</string>
     <string name="qstile_inkdrop">Ink</string>
+    <string name="qstile_circle">Circle</string>
 
     <string-array name="quick_settings_tiles_themes_entries">
         <item>@string/qstile_default</item>
@@ -2770,6 +2684,8 @@
         <item>@string/qstile_divided</item>
         <item>@string/qstile_triangles</item>
         <item>@string/qstile_circle_trim</item>
+        <item>@string/qstile_circle</item>
+        <item>LiArch</item>
         <!-- These next QS Styles can't be used as agreed with their developer
         <item>Circnout</item>
         <item>Dnout</item>
@@ -2806,8 +2722,9 @@
         <item>16</item>
         <item>17</item>
         <item>18</item>
-        <!-- These next QS Styles can't be used as agreed with their developer
+        <item>19</item>
         <item>20</item>
+        <!-- These next QS Styles can't be used as agreed with their developer
         <item>21</item>
         <item>22</item>
         <item>23</item>
@@ -2818,7 +2735,9 @@
         <item>28</item>
         <item>29</item>
         <item>30</item>
-        <item>31</item> -->
+        <item>31</item>
+        <item>32</item>
+        <item>33</item> -->
     </string-array>
 
     <!-- Pulse -->
@@ -3147,78 +3066,6 @@ So, what will it be, Compatible or Forced?"</string>
         <item>0</item>
         <item>1</item>
         <item>2</item>
-    </string-array>
-
-    <!-- Privacy indicators and dashboard -->
-    <string name="privacy_indicators_title">Privacy dashboard</string>
-
-    <!-- QS Rows x Columns based on overlays -->
-    <string-array name="qs_colrow_entries" translatable="false">
-        <item>2 x 3</item>
-        <item>2 x 4</item>
-        <item>2 x 5</item>
-        <item>2 x 6</item>
-        <item>2 x 7</item>
-        <item>2 x 8</item>
-        <item>3 x 3</item>
-        <item>3 x 4</item>
-        <item>3 x 5</item>
-        <item>3 x 6</item>
-        <item>3 x 7</item>
-        <item>3 x 8</item>
-        <item>4 x 3</item>
-        <item>4 x 4</item>
-        <item>4 x 5</item>
-        <item>4 x 6</item>
-        <item>4 x 7</item>
-        <item>4 x 8</item>
-    </string-array>
-
-    <string-array name="qs_colrow_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-    </string-array>
-
-    <!-- More notification icons -->
-    <string name="more_notif_title">Show more notification icons</string>
-
-    <!-- Blur maximum radius level based on overlays -->
-    <string-array name="blur_max_radius_entries" translatable="false">
-        <item>25</item>
-		<item>50</item>
-        <item>75</item>
-        <item>100</item>
-        <item>125</item>
-        <item>150</item>
-        <item>175</item>
-        <item>200</item>
-    </string-array>
-
-    <string-array name="blur_max_radius_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-		<item>7</item>
     </string-array>
 
     <!-- Reduce Status Bar Height -->
@@ -3572,6 +3419,9 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
     <string name="bs_thick_track">Use a thick track on brightness slider</string>
     <string name="bs_more_padding">Have more padding between the slider and all the rest</string>
 
+    <!-- Install external apps sub preference -->
+    <string name="install_optional_apps_title">Install external apps</string>
+
     <!-- Edge Sense Plus app options -->
     <string name="edge_sense_plus_title">Edge Sense Plus app</string>
     <string name="edge_sense_plus_uninstall">Uninstall Edge Sense Plus app</string>
@@ -3627,5 +3477,79 @@ Do you want to install Tap Tap? If you do, the app will appear on your app drawe
     <string name="uninstall_tap_tap_dialogue">"This option will uninstall Tap Tap app.
 
 Are you sure you want to do that?"</string>
+
+    <!-- QS Rows options -->
+    <string name="qs_rows_title">QS Rows Number</string>
+    <string name="theme_default">Use QS Theme defaults</string>
+    <string name="qs2_rows">Force 2 QS rows</string>
+    <string name="qs3_rows">Force 3 QS rows</string>
+    <string name="qs4_rows">Force 4 QS rows</string>
+    <string name="qs5_rows">Force 5 QS rows</string>
+    <string-array name="qs_rows_entries">
+        <item>@string/theme_default</item>
+        <item>@string/qs2_rows</item>
+        <item>@string/qs3_rows</item>
+        <item>@string/qs4_rows</item>
+        <item>@string/qs5_rows</item>
+    </string-array>
+    <string-array name="qs_rows_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Battery bar -->
+    <string name="battery_bar_title">Battery bar</string>
+    <string name="battery_bar_summary">Display and customize battery bar near status bar or navigation bar</string>
+    <string name="battery_bar_no_navbar">Battery bar location</string>
+    <string name="battery_bar_location_hide">Hide</string>
+    <string name="battery_bar_statusbar_top">Statusbar Top</string>
+    <string name="battery_bar_statusbar_bot">Statusbar bottom</string>
+    <string name="battery_bar_color">Battery bar color</string>
+    <string name="battery_bar_charging_color">Battery bar charging color</string>
+    <string name="battery_bar_battery_low_color">Battery bar low battery color</string>
+    <string name="battery_bar_cat">Battery bar style</string>
+    <string name="battery_bar_style_title">Battery bar alignment</string>
+    <string name="battery_bar_thickness_title">Battery bar thickness</string>
+    <string name="battery_bar_animate_title">Charging animation</string>
+    <string name="battery_bar_style_regular">Regular</string>
+    <string name="battery_bar_style_center_mirrored">Center-mirrored</string>
+    <string name="battery_bar_style_reversed">Reversed</string>
+    <string name="battery_bar_use_charging_color">Custom charging color</string>
+    <string name="battery_bar_blend_color_title">Blend colors</string>
+    <string name="battery_bar_blend_color_summary">Blend full/empty colors corresponding to battery percentage</string>
+    <string name="battery_bar_blend_color_reverse_title">Reverse color direction</string>
+    <string name="battery_bar_blend_color_reverse_summary_off">Full &#8594; empty: red &#8592; green &#8592; blue &#8592; red</string>
+    <string name="battery_bar_blend_color_reverse_summary_on">Full &#8594; empty: red &#8594; green &#8594; blue &#8594; red</string>
+    <string name="sb_battery_bar_use_gradient_color">Use gradient color</string>
+    <string name="sb_battery_bar_reg">Regular</string>
+    <string name="sb_battery_bar_center">Center-mirrored</string>
+    <string name="sb_battery_bar_reversed">Reversed</string>
+
+    <string-array name="battery_bar_no_navbar_entries">
+        <item>@string/battery_bar_location_hide</item>
+        <item>@string/battery_bar_statusbar_top</item>
+        <item>@string/battery_bar_statusbar_bot</item>
+    </string-array>
+
+    <string-array name="battery_bar_no_navbar_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="battery_bar_style_entries" translatable="false">
+        <item>@string/sb_battery_bar_reg</item>
+        <item>@string/sb_battery_bar_center</item>
+        <item>@string/sb_battery_bar_reversed</item>
+    </string-array>
+
+    <string-array name="battery_bar_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 
 </resources>
