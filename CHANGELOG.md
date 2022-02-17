@@ -1,3 +1,15 @@
+## Addon features for Pixel devices V17:
+
+- Introduce "**Avoid boot loops script**" (many thanks to @siavash79 and @HuskyDG)
+	- This means that, from now on, if the device fails to boot after flashing the module, the device restarts itself with a mod "Lite" version 
+	- It also means that Addon Features can now be flashed on Android 12 L and Android 13 ("exclusive features" won't be available though)
+	- In theory, the module can now be flashed on any device running an AOSP, or close to it, Android 12+ ROM
+	- Either way, it's only FULLY compatible with Pixel devices running stock Android 12 Pixel ROM (December build, or later, required)
+	- Other devices and/or ROMs will only get the "Lite" version (mostly overlays that can be enabled/disabled using ROM Control)
+- Added 4 more, and improved some, QS Tile Themes (thanks to @Liranazuz5)
+- Added 2 more fonts
+- Updated ROM Control app
+
 ## Addon features for Pixel devices V16:
 
 - Introduce "**One Zip To Rule Them All**" (many thanks to @siavash79)
