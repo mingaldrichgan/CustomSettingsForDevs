@@ -597,6 +597,16 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
             case "SwitchPreference":
                 SwitchPreference s = (SwitchPreference) pf.findPreference(key);
                 s.setChecked(sharedPreferences.getBoolean(key, true));
+                //Exclusive features options
+                if (key.equals("exclusive_features_off")){
+                    if (s.isChecked()) {
+                        runCommandAction("mv /data/adb/modules/AddonFeaturesForPixel/system/framework/ /data/adb/modules/AddonFeaturesForPixel/data/systemz/framework/ && mv /data/adb/modules/AddonFeaturesForPixel/system/system_ext/ /data/adb/modules/AddonFeaturesForPixel/data/systemz/system_ext/ && mv /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlFull/RomControl.apk.FULL && mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlLite/RomControl.apk.LITE /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk");
+                        restartRequiredWarning();
+                    } else {
+                        runCommandAction("mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/framework/ /data/adb/modules/AddonFeaturesForPixel/system/framework/ && mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/system_ext/ /data/adb/modules/AddonFeaturesForPixel/system/system_ext/ && mv /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlLite/RomControl.apk.LITE && mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlFull/RomControl.apk.FULL /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk");
+                        restartRequiredWarning();
+                    }
+                }
                 //Brightness slider thick track options
                 if (key.equals("qs_brightness_thick_track")){
                     if (s.isChecked()) {
@@ -1379,44 +1389,56 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             case 20:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch.overlay");
                                 break;
-                            /* These next QS Styles can't be used as agreed with their developer
                             case 21:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circnout.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch2.overlay");
                                 break;
                             case 22:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dnout.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch3.overlay");
                                 break;
                             case 23:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dout.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch4.overlay");
                                 break;
                             case 24:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch5.overlay");
                                 break;
+                            /* These next QS Styles can't be used as agreed with their developer
                             case 25:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circnout.overlay");
                                 break;
                             case 26:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dnout.overlay");
                                 break;
                             case 27:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dout.overlay");
                                 break;
                             case 28:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no34l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24d.overlay");
                                 break;
                             case 29:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o34l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24d.overlay");
                                 break;
                             case 30:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24l.overlay");
                                 break;
                             case 31:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44d.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24l.overlay");
                                 break;
                             case 32:
-                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44l.overlay");
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no34l.overlay");
                                 break;
                             case 33:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o34l.overlay");
+                                break;
+                            case 34:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44d.overlay");
+                                break;
+                            case 35:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44d.overlay");
+                                break;
+                            case 36:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44l.overlay");
+                                break;
+                            case 37:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44l.overlay");
                                 break;
                              */
@@ -1580,6 +1602,12 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                                 break;
                             case 46:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.theme.font.redressed");
+                                break;
+                            case 47:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.theme.font.jbmono");
+                                break;
+                            case 48:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.theme.font.rbserif");
                                 break;
                             default:
                                 runCommandAction("cmd overlay enable-exclusive --category org.protonaosp.theme.font.blenderpro && sleep 1 && cmd overlay disable org.protonaosp.theme.font.blenderpro");

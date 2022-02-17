@@ -40,6 +40,14 @@
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/disable_screenshot_shutter_sound_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/exclusive_features_options">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="exclusive_features_off"
+            android:summaryOff="@string/lockscreen_charging_animation_off"
+            android:summaryOn="@string/switch_bar_on"
+            android:title="@string/exclusive_features_title" />
+    </PreferenceCategory>
     <PreferenceScreen android:title="@string/install_optional_apps_title" >
         <PreferenceCategory android:title="@string/edge_sense_plus_title">
             <com.typhus.romcontrol.prefs.MyListPreference

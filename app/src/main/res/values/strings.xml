@@ -2686,6 +2686,10 @@
         <item>@string/qstile_circle_trim</item>
         <item>@string/qstile_circle</item>
         <item>LiArch</item>
+        <item>LiArch2</item>
+        <item>LiArch3</item>
+        <item>LiArch4</item>
+        <item>LiArch5</item>
         <!-- These next QS Styles can't be used as agreed with their developer
         <item>Circnout</item>
         <item>Dnout</item>
@@ -2724,11 +2728,11 @@
         <item>18</item>
         <item>19</item>
         <item>20</item>
-        <!-- These next QS Styles can't be used as agreed with their developer
         <item>21</item>
         <item>22</item>
         <item>23</item>
         <item>24</item>
+        <!-- These next QS Styles can't be used as agreed with their developer
         <item>25</item>
         <item>26</item>
         <item>27</item>
@@ -2737,7 +2741,11 @@
         <item>30</item>
         <item>31</item>
         <item>32</item>
-        <item>33</item> -->
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item> -->
     </string-array>
 
     <!-- Pulse -->
@@ -2983,6 +2991,8 @@ So, what will it be, Compatible or Forced?"</string>
         <item>Cagliostro</item>
         <item>Grand Hotel</item>
         <item>Redressed</item>
+        <item>JetBrains Mono</item>
+        <item>Roboto Serif</item>
     </string-array>
 
     <string-array name="fonts_values" translatable="false">
@@ -3033,6 +3043,8 @@ So, what will it be, Compatible or Forced?"</string>
         <item>44</item>
         <item>45</item>
         <item>46</item>
+        <item>47</item>
+        <item>48</item>
     </string-array>
 
     <!-- Adaptive Sound -->
@@ -3551,5 +3563,9 @@ Are you sure you want to do that?"</string>
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <!-- Exclusive features options -->
+    <string name="exclusive_features_options">Exclusive features</string>
+    <string name="exclusive_features_title">Remove exclusive features mods</string>
 
 </resources>

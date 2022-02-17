@@ -1363,7 +1363,6 @@ Portanto, como fazemos? Compatível ou Forçado?"</string>
     <string name="privacy_indicators_title">Painel de controle de privacidade</string>
 
     <!-- More notification icons -->
-    <string name="more_notif_title">Mostrar mais ícones de notificação</string>
 
     <!-- Reduce Status Bar Height -->
     <string name="status_bar_height">Altura da barra de estado</string>
@@ -1543,5 +1542,9 @@ De certeza que quer desinstalar?"</string>
     <string name="qs3_rows">Forçar 3 linhas</string>
     <string name="qs4_rows">Forçar 4 linhas</string>
     <string name="qs5_rows">Forçar 5 linhas</string>
+
+    <!-- Exclusive features options -->
+    <string name="exclusive_features_options">Funcionalidades exclusivas</string>
+    <string name="exclusive_features_title">Remover os recursos das funcionalidades exclusivas</string>
 
 </resources>
