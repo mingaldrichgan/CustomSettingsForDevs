@@ -1,3 +1,11 @@
+## Addon features for Pixel devices V18:
+
+- Added 3 more icon shapes
+- Added 1 more icon pack
+- Fix circle battery QS tinting (finally...)
+- Updated ROM Control app
+
+
 ## Addon features for Pixel devices V17:
 
 - Introduce "**Avoid boot loops script**" (many thanks to @siavash79 and @HuskyDG)
