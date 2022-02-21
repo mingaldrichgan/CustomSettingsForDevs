@@ -3180,6 +3180,7 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
         <item>Rounded</item>
         <item>Sam</item>
         <item>Victor</item>
+        <item>Outline</item>
     </string-array>
 
     <string-array name="icons_style_values" translatable="false">
@@ -3192,6 +3193,7 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
 
 
@@ -3215,6 +3217,9 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
         <item>Taperedrect</item>
         <item>Teardrop</item>
         <item>Vessel</item>
+        <item>Cloudy</item>
+        <item>Flower</item>
+        <item>Stretched</item>
     </string-array>
 
     <string-array name="icon_shapes_values" translatable="false">
@@ -3232,6 +3237,9 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
         <item>11</item>
         <item>12</item>
         <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
     </string-array>
 
     <!-- Wifi, cell tiles -->
