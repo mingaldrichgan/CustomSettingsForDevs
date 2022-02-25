@@ -1,10 +1,19 @@
+## Addon features for Pixel devices V19:
+(If already using V18 LITE version, don't update through Magisk, instead download LITE zip from GitHub and manually install it)
+
+- Enhanced Google Dialer (to enable stuff like Call Recording and etc.)
+- Enhanced Smart Space (to enable stuff like Flashlight, Earthquakes options, etc.) 
+- Added some newer Pixel features to older Pixel devices (things like Live Translate, Haptic feedback settings, etc.)
+- Added 2 more QS Tile Themes (thanks to @Liranazuz5)
+- Added option to reduce QS Tiles text size (works better on some QS Tiles themes)
+- Updated ROM Control app
+
 ## Addon features for Pixel devices V18:
 
 - Added 3 more icon shapes
 - Added 1 more icon pack
 - Fix circle battery QS tinting (finally...)
 - Updated ROM Control app
-
 
 ## Addon features for Pixel devices V17:
 
