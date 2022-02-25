@@ -61,5 +61,13 @@
                 android:key="qs_rows_number"
                 android:title="@string/qs_rows_title" />
         </PreferenceCategory>
+        <PreferenceCategory android:title="@string/qs_text_size_title">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="qs_small_text_size"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/qs_text_size" />
+        </PreferenceCategory>
     </PreferenceScreen>
 </PreferenceScreen>

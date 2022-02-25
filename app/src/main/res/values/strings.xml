@@ -2690,6 +2690,8 @@
         <item>LiArch3</item>
         <item>LiArch4</item>
         <item>LiArch5</item>
+		<item>LiArch6</item>
+		<item>LiArch7</item>
         <!-- These next QS Styles can't be used as agreed with their developer
         <item>Circnout</item>
         <item>Dnout</item>
@@ -2732,9 +2734,9 @@
         <item>22</item>
         <item>23</item>
         <item>24</item>
-        <!-- These next QS Styles can't be used as agreed with their developer
         <item>25</item>
         <item>26</item>
+		<!-- These next QS Styles can't be used as agreed with their developer
         <item>27</item>
         <item>28</item>
         <item>29</item>
@@ -2745,7 +2747,9 @@
         <item>34</item>
         <item>35</item>
         <item>36</item>
-        <item>37</item> -->
+        <item>37</item> 
+		<item>38</item> 
+		<item>39</item> -->
     </string-array>
 
     <!-- Pulse -->
@@ -3575,5 +3579,9 @@ Are you sure you want to do that?"</string>
     <!-- Exclusive features options -->
     <string name="exclusive_features_options">Exclusive features</string>
     <string name="exclusive_features_title">Remove exclusive features mods</string>
+
+    <!-- QS Tile text size option -->
+    <string name="qs_text_size_title">QS Tiles text size</string>
+    <string name="qs_text_size">Reduce QS Tiles text size</string>
 
 </resources>

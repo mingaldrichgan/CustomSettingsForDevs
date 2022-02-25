@@ -1547,4 +1547,8 @@ De certeza que quer desinstalar?"</string>
     <string name="exclusive_features_options">Funcionalidades exclusivas</string>
     <string name="exclusive_features_title">Remover os recursos das funcionalidades exclusivas</string>
 
+    <!-- QS Tile text size option -->
+    <string name="qs_text_size_title">Tamanho do texto nos atalhos das configurações rápidas</string>
+    <string name="qs_text_size">Reduzir o tamanho do texto</string>
+
 </resources>
