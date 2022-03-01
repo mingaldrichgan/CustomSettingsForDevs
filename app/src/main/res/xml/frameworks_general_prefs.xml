@@ -40,24 +40,30 @@
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/disable_screenshot_shutter_sound_title" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/exclusive_features_options">
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="exclusive_features_off"
-            android:summaryOff="@string/lockscreen_charging_animation_off"
-            android:summaryOn="@string/switch_bar_on"
-            android:title="@string/exclusive_features_title" />
-    </PreferenceCategory>
-    <PreferenceScreen android:title="@string/install_optional_apps_title" >
-        <PreferenceCategory android:title="@string/edge_sense_plus_title">
+    <PreferenceScreen android:title="@string/more_line_text" >
+        <PreferenceCategory android:title="@string/exclusive_features_options">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="exclusive_features_off"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/exclusive_features_title" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/pixel_features_options">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="pixel_features_off"
+                android:summaryOff="@string/lockscreen_charging_animation_off"
+                android:summaryOn="@string/switch_bar_on"
+                android:title="@string/pixel_features_title" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/install_optional_apps_title">
             <com.typhus.romcontrol.prefs.MyListPreference
                 android:defaultValue="0"
                 android:entries="@array/edge_sense_plus_entries"
                 android:entryValues="@array/edge_sense_plus_values"
                 android:key="edge_sense_plus_app"
                 android:title="@string/edge_sense_plus_title" />
-        </PreferenceCategory>
-        <PreferenceCategory android:title="@string/tap_tap_title">
             <com.typhus.romcontrol.prefs.MyListPreference
                 android:defaultValue="0"
                 android:entries="@array/tap_tap_entries"

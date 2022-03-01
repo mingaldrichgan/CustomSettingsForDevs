@@ -9,7 +9,7 @@ android {
         minSdkVersion 31
         targetSdkVersion 31
         versionCode 3
-        versionName "3.19"
+        versionName "3.20"
     }
     buildTypes {
         release {
@@ -23,7 +23,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0-alpha02'
+    implementation 'com.google.android.material:material:1.6.0-alpha03'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.github.shell-software:fab:1.1.2'
     implementation files('libs/RootTools.jar')

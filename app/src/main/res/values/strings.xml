@@ -2692,6 +2692,7 @@
         <item>LiArch5</item>
 		<item>LiArch6</item>
 		<item>LiArch7</item>
+        <item>LiArch8</item>
         <!-- These next QS Styles can't be used as agreed with their developer
         <item>Circnout</item>
         <item>Dnout</item>
@@ -2736,8 +2737,8 @@
         <item>24</item>
         <item>25</item>
         <item>26</item>
-		<!-- These next QS Styles can't be used as agreed with their developer
         <item>27</item>
+        <!-- These next QS Styles can't be used as agreed with their developer
         <item>28</item>
         <item>29</item>
         <item>30</item>
@@ -2749,7 +2750,8 @@
         <item>36</item>
         <item>37</item> 
 		<item>38</item> 
-		<item>39</item> -->
+		<item>39</item>
+        <item>40</item> -->
     </string-array>
 
     <!-- Pulse -->
@@ -3185,6 +3187,7 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
         <item>Sam</item>
         <item>Victor</item>
         <item>Outline</item>
+        <item>Liv</item>
     </string-array>
 
     <string-array name="icons_style_values" translatable="false">
@@ -3198,6 +3201,7 @@ So, if you toggled this option and nothing changed, you now know what to do."</s
         <item>7</item>
         <item>8</item>
         <item>9</item>
+        <item>10</item>
     </string-array>
 
 
@@ -3583,5 +3587,29 @@ Are you sure you want to do that?"</string>
     <!-- QS Tile text size option -->
     <string name="qs_text_size_title">QS Tiles text size</string>
     <string name="qs_text_size">Reduce QS Tiles text size</string>
+
+    <!-- Navigation Bar Pill Thickness -->
+    <string name="gesture_navbar_thickness_title">Navbar pill thickness</string>
+    <string name="gesture_navbar_thin">Thin</string>
+    <string name="gesture_navbar_thick">Thick</string>
+    <string name="gesture_navbar_thicker">Thicker</string>
+
+    <string-array name="gesture_navbar_thickness_entries" translatable="false">
+        <item>@string/gesture_navbar_thin</item>
+        <item>@string/default_string</item>
+        <item>@string/gesture_navbar_thick</item>
+        <item>@string/gesture_navbar_thicker</item>
+    </string-array>
+
+    <string-array name="gesture_navbar_thickness_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Pixel features options -->
+    <string name="pixel_features_options">Pixel Features 2021</string>
+    <string name="pixel_features_title">Remove 2021 features from Settings</string>
 
 </resources>

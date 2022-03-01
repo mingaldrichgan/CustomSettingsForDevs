@@ -601,11 +601,19 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                 if (key.equals("exclusive_features_off")){
                     if (s.isChecked()) {
                         runCommandAction("mv /data/adb/modules/AddonFeaturesForPixel/system/framework/ /data/adb/modules/AddonFeaturesForPixel/data/systemz/framework/ && mv /data/adb/modules/AddonFeaturesForPixel/system/system_ext/ /data/adb/modules/AddonFeaturesForPixel/data/systemz/system_ext/ && mv /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/DisbaleBatteryPercentOption/ /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/DisbaleBatteryPercentOption/ && mv /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlFull/RomControl.apk.FULL && mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlLite/RomControl.apk.LITE /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk");
-                        restartRequiredWarning();
                     } else {
                         runCommandAction("mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/framework/ /data/adb/modules/AddonFeaturesForPixel/system/framework/ && mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/system_ext/ /data/adb/modules/AddonFeaturesForPixel/system/system_ext/ && mv /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/DisbaleBatteryPercentOption/ /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/DisbaleBatteryPercentOption/ && mv /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlLite/RomControl.apk.LITE && mv /data/adb/modules/AddonFeaturesForPixel/data/systemz/priv-app/RomControlFull/RomControl.apk.FULL /data/adb/modules/AddonFeaturesForPixel/system/priv-app/RomControl/RomControl.apk");
-                        restartRequiredWarning();
                     }
+                    restartRequiredWarning();
+                }
+                //Pixel features 2021 options
+                if (key.equals("pixel_features_off")){
+                    if (s.isChecked()) {
+                        runCommandAction("mv /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/PixelConfigOverlay2021.apk /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/PixelConfigOverlay2021.apk && mv /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsGoogleOverlayPixel2021.apk /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsGoogleOverlayPixel2021.apk && mv /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsOverlayG8V0U.apk /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsOverlayG8V0U.apk && mv /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsOverlayGF5KQ.apk /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsOverlayGF5KQ.apk && mv /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsOverlayGLU0G.apk /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsOverlayGLU0G.apk");
+                    } else {
+                        runCommandAction("mv /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/PixelConfigOverlay2021.apk /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/PixelConfigOverlay2021.apk && mv /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsGoogleOverlayPixel2021.apk /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsGoogleOverlayPixel2021.apk && mv /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsOverlayG8V0U.apk /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsOverlayG8V0U.apk && mv /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsOverlayGF5KQ.apk /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsOverlayGF5KQ.apk && mv /data/adb/modules/AddonFeaturesForPixel/data/productz/overlay/SettingsOverlayGLU0G.apk /data/adb/modules/AddonFeaturesForPixel/system/product/overlay/SettingsOverlayGLU0G.apk");
+                    }
+                    restartRequiredWarning();
                 }
                 //QS Tiles text size
                 if (key.equals("qs_small_text_size")){
@@ -933,6 +941,27 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                     int mValueIndex = l.findIndexOfValue(lValue);
                     l.setSummary(mEntries[mValueIndex]);
                     l.setSummary(mEntries[l.findIndexOfValue(lValue)]);
+                    //Navigation bar pill thickness
+                    if (key.equals("gesture_navbar_thickness")) {
+                        switch(mValueIndex) {
+                            case 0:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.overlay.thinpill");
+                                restartUiRequiredWarning();
+                                break;
+                            case 2:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.overlay.thickpill");
+                                restartUiRequiredWarning();
+                                break;
+                            case 3:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.overlay.thickerpill");
+                                restartUiRequiredWarning();
+                                break;
+                            default:
+                                runCommandAction("cmd overlay disable com.android.systemui.overlay.thinpill && cmd overlay disable com.android.systemui.overlay.thickpill && cmd overlay disable com.android.systemui.overlay.thickerpill");
+                                restartUiRequiredWarning();
+                                break;
+                        }
+                    }
                     //QS battery percentage warning
                     if (key.equals("qs_show_battery_percent")){
                         restartUiRequiredWarning();
@@ -1415,44 +1444,47 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
 							case 26:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch7.overlay");
                                 break;
-                            /* These next QS Styles can't be used as agreed with their developer
                             case 27:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.liarch8.overlay");
+                                break;
+                            /* These next QS Styles can't be used as agreed with their developer
+                            case 28:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.circnout.overlay");
                                 break;
-                            case 28:
+                            case 29:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dnout.overlay");
                                 break;
-                            case 29:
+                            case 30:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.dout.overlay");
                                 break;
-                            case 30:
+                            case 31:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24d.overlay");
                                 break;
-                            case 31:
+                            case 32:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24d.overlay");
                                 break;
-                            case 32:
+                            case 33:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no24l.overlay");
                                 break;
-                            case 33:
+                            case 34:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o24l.overlay");
                                 break;
-                            case 34:
+                            case 35:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no34l.overlay");
                                 break;
-                            case 35:
+                            case 36:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o34l.overlay");
                                 break;
-                            case 36:
+                            case 37:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44d.overlay");
                                 break;
-                            case 37:
+                            case 38:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44d.overlay");
                                 break;
-                            case 38:
+                            case 39:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.no44l.overlay");
                                 break;
-                            case 39:
+                            case 40:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.systemui.qstile.o44l.overlay");
                                 break;
                              */
@@ -1659,8 +1691,11 @@ public class HandlePreferenceFragments implements SharedPreferences.OnSharedPref
                             case 9:
                                 runCommandAction("cmd overlay enable-exclusive --category com.android.theme.icon_pack.outline.android && cmd overlay enable-exclusive --category com.android.theme.icon_pack.outline.systemui && cmd overlay enable-exclusive --category com.android.theme.icon_pack.outline.settings");
                                 break;
+                            case 10:
+                                runCommandAction("cmd overlay enable-exclusive --category com.android.theme.icon_pack.liv.android");
+                                break;
                             default:
-                                runCommandAction("cmd overlay disable com.android.theme.icon_pack.rounded.android && cmd overlay disable com.android.theme.icon_pack.sam.android && cmd overlay disable com.android.theme.icon_pack.filled.android && cmd overlay disable com.android.theme.icon_pack.kai.android && cmd overlay disable com.android.theme.icon_pack.victor.android && cmd overlay disable com.android.theme.icon_pack.circular.android && cmd overlay disable com.android.theme.icon_pack.rounded.launcher && cmd overlay disable com.android.theme.icon_pack.victor.launcher && cmd overlay disable com.android.theme.icon_pack.kai.launcher && cmd overlay disable com.android.theme.icon_pack.sam.launcher && cmd overlay disable com.android.theme.icon_pack.filled.launcher && cmd overlay disable com.android.theme.icon_pack.circular.launcher && cmd overlay disable com.android.theme.icon_pack.victor.settings && cmd overlay disable com.android.theme.icon_pack.kai.settings && cmd overlay disable com.android.theme.icon_pack.sam.settings && cmd overlay disable com.android.theme.icon_pack.filled.settings && cmd overlay disable com.android.theme.icon_pack.circular.settings && cmd overlay disable com.android.theme.icon_pack.rounded.settings && cmd overlay disable com.android.theme.icon_pack.circular.themepicker && cmd overlay disable com.android.theme.icon_pack.kai.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.themepicker && cmd overlay disable com.android.theme.icon_pack.filled.themepicker && cmd overlay disable com.android.theme.icon_pack.victor.themepicker && cmd overlay disable com.android.theme.icon_pack.sam.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.systemui && cmd overlay disable com.android.theme.icon_pack.victor.systemui && cmd overlay disable com.android.theme.icon_pack.kai.systemui && cmd overlay disable com.android.theme.icon_pack.sam.systemui && cmd overlay disable com.android.theme.icon_pack.filled.systemui && cmd overlay disable com.android.theme.icon_pack.circular.systemui && cmd overlay disable com.android.theme.icon_pack.oos.android && cmd overlay disable com.android.theme.icon_pack.oos.launcher && cmd overlay disable com.android.theme.icon_pack.oos.settings && cmd overlay disable com.android.theme.icon_pack.oos.systemui && cmd overlay disable com.android.theme.icon_pack.oos.themepicker && cmd overlay disable com.android.theme.icon_pack.acherus.android && cmd overlay disable com.android.theme.icon_pack.acherus.systemui && cmd overlay disable com.android.theme.icon_pack.outline.android && cmd overlay disable com.android.theme.icon_pack.outline.systemui && cmd overlay disable com.android.theme.icon_pack.outline.settings");
+                                runCommandAction("cmd overlay disable com.android.theme.icon_pack.rounded.android && cmd overlay disable com.android.theme.icon_pack.sam.android && cmd overlay disable com.android.theme.icon_pack.filled.android && cmd overlay disable com.android.theme.icon_pack.kai.android && cmd overlay disable com.android.theme.icon_pack.victor.android && cmd overlay disable com.android.theme.icon_pack.circular.android && cmd overlay disable com.android.theme.icon_pack.rounded.launcher && cmd overlay disable com.android.theme.icon_pack.victor.launcher && cmd overlay disable com.android.theme.icon_pack.kai.launcher && cmd overlay disable com.android.theme.icon_pack.sam.launcher && cmd overlay disable com.android.theme.icon_pack.filled.launcher && cmd overlay disable com.android.theme.icon_pack.circular.launcher && cmd overlay disable com.android.theme.icon_pack.victor.settings && cmd overlay disable com.android.theme.icon_pack.kai.settings && cmd overlay disable com.android.theme.icon_pack.sam.settings && cmd overlay disable com.android.theme.icon_pack.filled.settings && cmd overlay disable com.android.theme.icon_pack.circular.settings && cmd overlay disable com.android.theme.icon_pack.rounded.settings && cmd overlay disable com.android.theme.icon_pack.circular.themepicker && cmd overlay disable com.android.theme.icon_pack.kai.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.themepicker && cmd overlay disable com.android.theme.icon_pack.filled.themepicker && cmd overlay disable com.android.theme.icon_pack.victor.themepicker && cmd overlay disable com.android.theme.icon_pack.sam.themepicker && cmd overlay disable com.android.theme.icon_pack.rounded.systemui && cmd overlay disable com.android.theme.icon_pack.victor.systemui && cmd overlay disable com.android.theme.icon_pack.kai.systemui && cmd overlay disable com.android.theme.icon_pack.sam.systemui && cmd overlay disable com.android.theme.icon_pack.filled.systemui && cmd overlay disable com.android.theme.icon_pack.circular.systemui && cmd overlay disable com.android.theme.icon_pack.oos.android && cmd overlay disable com.android.theme.icon_pack.oos.launcher && cmd overlay disable com.android.theme.icon_pack.oos.settings && cmd overlay disable com.android.theme.icon_pack.oos.systemui && cmd overlay disable com.android.theme.icon_pack.oos.themepicker && cmd overlay disable com.android.theme.icon_pack.acherus.android && cmd overlay disable com.android.theme.icon_pack.acherus.systemui && cmd overlay disable com.android.theme.icon_pack.outline.android && cmd overlay disable com.android.theme.icon_pack.outline.systemui && cmd overlay disable com.android.theme.icon_pack.outline.settings && cmd overlay disable com.android.theme.icon_pack.liv.android");
                                 break;
                         }
                     }

@@ -1552,4 +1552,14 @@ Tem a certeza que pretende desinstalar?"</string>
     <string name="qs_text_size_title">Tamanho do texto nos atalhos das definições rápidas</string>
     <string name="qs_text_size">Diminuir o tamanho do texto</string>
 
+    <!-- Navigation Bar Pill Thickness -->
+    <string name="gesture_navbar_thickness_title">Espessura da barra de navegação</string>
+    <string name="gesture_navbar_thin">Fina</string>
+    <string name="gesture_navbar_thick">Espessa</string>
+    <string name="gesture_navbar_thicker">Mais espessa</string>
+
+    <!-- Pixel features options -->
+    <string name="pixel_features_options">Funcionalidades Pixel 2021</string>
+    <string name="pixel_features_title">Remover funcionalidades de 2021 das definições</string>
+
 </resources>

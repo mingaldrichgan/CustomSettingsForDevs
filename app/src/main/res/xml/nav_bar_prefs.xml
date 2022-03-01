@@ -26,6 +26,12 @@
             android:summaryOn="@string/switch_bar_on"
             android:title="@string/colorpill" />
         <com.typhus.romcontrol.prefs.MyListPreference
+            android:defaultValue="1"
+            android:entries="@array/gesture_navbar_thickness_entries"
+            android:entryValues="@array/gesture_navbar_thickness_values"
+            android:key="gesture_navbar_thickness"
+            android:title="@string/gesture_navbar_thickness_title" />
+        <com.typhus.romcontrol.prefs.MyListPreference
             android:defaultValue="0"
             android:entries="@array/gesture_navbar_lenght_entries"
             android:entryValues="@array/gesture_navbar_lenght_values"
