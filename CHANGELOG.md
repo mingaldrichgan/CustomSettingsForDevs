@@ -1,3 +1,16 @@
+## Addon features for Pixel devices V20:
+(If already using V19 LITE version, you can try to update through Magisk to test the new rescue script...experienced users only, please)
+
+- Improved boot loop rescue script so that the LITE zip isn't needed any more (needs testing from experienced users)
+- Added tinting to lock icon when no pin, pattern or fingerprint is setup
+- Added Google Dialer Theme V2 flags
+- Added one more Icon Pack
+- Added one more QS Tile Theme (thanks to @Liranazuz5)
+- Added option to choose navbar pill thickness
+- Added option to remove Pixel 2021 stuff from settings (only works on older Pixel devices)
+- Moved QS Header carrier label to the top right
+- Updated ROM Control app
+
 ## Addon features for Pixel devices V19:
 (If already using V18 LITE version, don't update through Magisk, instead download LITE zip from GitHub and manually install it)
 
