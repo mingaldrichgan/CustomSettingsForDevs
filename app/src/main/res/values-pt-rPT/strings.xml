@@ -1562,4 +1562,7 @@ Tem a certeza que pretende desinstalar?"</string>
     <string name="pixel_features_options">Funcionalidades Pixel 2021</string>
     <string name="pixel_features_title">Remover funcionalidades de 2021 das definições</string>
 
+    <!-- QS Tile text size option -->
+    <string name="qs_tiles_3_columns_title">Ativar 3 colunas nas definições rápidas</string>
+
 </resources>

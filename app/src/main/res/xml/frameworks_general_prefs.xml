@@ -51,7 +51,7 @@
         </PreferenceCategory>
         <PreferenceCategory android:title="@string/pixel_features_options">
             <SwitchPreference
-                android:defaultValue="false"
+                android:defaultValue="true"
                 android:key="pixel_features_off"
                 android:summaryOff="@string/lockscreen_charging_animation_off"
                 android:summaryOn="@string/switch_bar_on"

@@ -2693,6 +2693,8 @@
 		<item>LiArch6</item>
 		<item>LiArch7</item>
         <item>LiArch8</item>
+        <item>LiArch9</item>
+        <item>LiArch10</item>
         <!-- These next QS Styles can't be used as agreed with their developer
         <item>Circnout</item>
         <item>Dnout</item>
@@ -2738,9 +2740,9 @@
         <item>25</item>
         <item>26</item>
         <item>27</item>
-        <!-- These next QS Styles can't be used as agreed with their developer
         <item>28</item>
         <item>29</item>
+        <!-- These next QS Styles can't be used as agreed with their developer
         <item>30</item>
         <item>31</item>
         <item>32</item>
@@ -2751,7 +2753,9 @@
         <item>37</item> 
 		<item>38</item> 
 		<item>39</item>
-        <item>40</item> -->
+        <item>40</item>
+        <item>41</item>
+        <item>42</item> -->
     </string-array>
 
     <!-- Pulse -->
@@ -3611,5 +3615,8 @@ Are you sure you want to do that?"</string>
     <!-- Pixel features options -->
     <string name="pixel_features_options">Pixel Features 2021</string>
     <string name="pixel_features_title">Remove 2021 features from Settings</string>
+
+    <!-- QS Tile text size option -->
+    <string name="qs_tiles_3_columns_title">Enable 3 QS Tiles columns</string>
 
 </resources>
