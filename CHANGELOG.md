@@ -1,3 +1,14 @@
+## Addon features for Pixel devices V21:
+(If already using V20 LITE version zip, don't update through Magisk, instead download LITE zip from GitHub and manually install it)
+
+- Fixed Google Sans not being applied system wide by removing Gooogle Sans Text
+- Added two more QS Tiles Themes (thanks to @Liranazuz5)
+- Added option for 3 QS Tiles columns
+- Changed some navbar pill, width and thickness, values to a larger size
+- Fixed on going privacy chip icon position on QS Panel top
+- Option to remove Pixel 2021 stuff from settings is now enabled by default
+- Updated ROM Control app
+
 ## Addon features for Pixel devices V20:
 (If already using V19 LITE version, you can try to update through Magisk to test the new rescue script...experienced users only, please)
 
