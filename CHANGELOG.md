@@ -1,7 +1,7 @@
 ## Addon features for Pixel devices V21:
 (If already using V20 LITE version zip, don't update through Magisk, instead download LITE zip from GitHub and manually install it)
 
-- Fixed Google Sans not being applied system wide by removing Gooogle Sans Text
+- Fixed Google Sans not being applied system wide by removing Google Sans Text
 - Added two more QS Tiles Themes (thanks to @Liranazuz5)
 - Added option for 3 QS Tiles columns
 - Changed some navbar pill, width and thickness, values to a larger size
